@@ -1,193 +1,138 @@
-// ===== NAVBAR SCROLL =====
+// ===== NAVBAR =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ===== HAMBURGER MENU =====
+// ===== HAMBURGER =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-// ===== SCROLL ANIMATIONS =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+// ===== SCROLL REVEAL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      const delay = e.target.dataset.delay || 0;
+      setTimeout(() => e.target.classList.add('visible'), delay);
+    }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-document.querySelectorAll('[data-aos]').forEach(el => {
-  if (el.dataset.aosDelay) {
-    el.style.transitionDelay = el.dataset.aosDelay + 'ms';
-  }
-  observer.observe(el);
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  revealObserver.observe(el);
 });
 
-// ===== STATS COUNTER =====
-const statNums = document.querySelectorAll('.stat-num');
-let counted = false;
-
-function animateCounters() {
-  if (counted) return;
-  counted = true;
-  statNums.forEach(el => {
-    const target = parseInt(el.dataset.target);
-    const duration = 1800;
-    const step = target / (duration / 16);
-    let current = 0;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        el.textContent = target;
-        clearInterval(timer);
-      } else {
-        el.textContent = Math.floor(current);
-      }
-    }, 16);
-  });
-}
-
-const statsBar = document.querySelector('.stats-bar');
-const statsObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) animateCounters();
-}, { threshold: 0.3 });
-if (statsBar) statsObserver.observe(statsBar);
-
-// ===== CHATBOT =====
-const chatToggle = document.getElementById('chatToggle');
-const chatWindow = document.getElementById('chatWindow');
-const chatClose = document.getElementById('chatClose');
-const chatMessages = document.getElementById('chatMessages');
-const chatInput = document.getElementById('chatInput');
-const chatIcon = document.getElementById('chatIcon');
-
-chatToggle.addEventListener('click', () => {
-  chatWindow.classList.toggle('open');
-  chatIcon.textContent = chatWindow.classList.contains('open') ? '✕' : '💬';
-});
-chatClose.addEventListener('click', () => {
-  chatWindow.classList.remove('open');
-  chatIcon.textContent = '💬';
-});
-
-const faqAnswers = {
-  services: `We offer 12 services including:<br>
-🌐 Web Development<br>
-📱 Mobile App Development<br>
-🎨 Graphic Design<br>
-🖥️ UI/UX Design<br>
-📢 Social Media Management<br>
-🎬 Video Editing<br>
-💼 Branding & Identity<br>
-⚙️ Digital Marketing & SEO<br>
-🤖 Website With AI<br>
-🐍 Python Data Analysis<br>
-📦 Amazon E-Commerce<br>
-🖨️ MS Office & Data Entry`,
-
-  courses: `We currently offer 2 online courses:<br><br>
-🎨 <strong>Graphic Design</strong><br>
-Learn • Create • Earn<br><br>
-📈 <strong>Digital Marketing</strong><br>
-Learn • Grow • Earn Online<br><br>
-Both courses include:<br>
-✅ Live Google Meet Classes<br>
-✅ Beginner to Advanced<br>
-✅ Practical Projects<br>
-✅ Internship Opportunity<br><br>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform" target="_blank" style="color:#2563EB;font-weight:600">👉 Register Here</a>`,
-
-  pricing: `For pricing details, please contact us directly — we offer custom packages based on your needs.<br><br>
-📞 <strong>Call/WhatsApp:</strong> +92 348 5168409<br>
-📧 <strong>Email:</strong> digitalhunarmand1@gmail.com<br><br>
-We offer <strong>affordable rates</strong> with premium quality! 💎`,
-
-  contact: `You can reach us through:<br><br>
-📞 <strong>Phone/WhatsApp:</strong> +92 348 5168409<br>
-📧 <strong>Email:</strong> digitalhunarmand1@gmail.com<br>
-🌐 <strong>Website:</strong> www.digitalhunarmand.com<br><br>
-We reply within <strong>1 hour</strong> guaranteed! ⚡`,
-
-  whatsapp: `Click below to chat with us directly on WhatsApp!<br><br>
-<a href="https://wa.me/923485168409" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:10px 20px;border-radius:50px;font-weight:600;margin-top:6px">💬 Open WhatsApp Chat</a>`
-};
-
-function addBotMsg(html) {
-  const msg = document.createElement('div');
-  msg.className = 'chat-msg bot';
-  const bubble = document.createElement('div');
-  bubble.className = 'msg-bubble';
-  bubble.innerHTML = html;
-  msg.appendChild(bubble);
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function addUserMsg(text) {
-  const msg = document.createElement('div');
-  msg.className = 'chat-msg user';
-  const bubble = document.createElement('div');
-  bubble.className = 'msg-bubble';
-  bubble.textContent = text;
-  msg.appendChild(bubble);
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function quickReply(key) {
-  const labels = {
-    services: '🛠️ Tell me about your services',
-    courses: '🎓 What courses do you offer?',
-    pricing: '💰 What are your prices?',
-    contact: '📞 How can I contact you?',
-    whatsapp: '💬 Connect on WhatsApp'
-  };
-  const qr = document.getElementById('quickReplies');
-  if (qr) qr.remove();
-  addUserMsg(labels[key] || key);
-  setTimeout(() => addBotMsg(faqAnswers[key] || "I'm not sure about that. Please contact us at +92 348 5168409 for more info!"), 600);
-}
-
-function sendMsg() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-  chatInput.value = '';
-  const qr = document.getElementById('quickReplies');
-  if (qr) qr.remove();
-  addUserMsg(text);
-  const lower = text.toLowerCase();
-  let response;
-  if (lower.includes('service') || lower.includes('offer') || lower.includes('work')) {
-    response = faqAnswers.services;
-  } else if (lower.includes('course') || lower.includes('learn') || lower.includes('class') || lower.includes('admission')) {
-    response = faqAnswers.courses;
-  } else if (lower.includes('price') || lower.includes('cost') || lower.includes('rate') || lower.includes('how much')) {
-    response = faqAnswers.pricing;
-  } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('email') || lower.includes('reach')) {
-    response = faqAnswers.contact;
-  } else if (lower.includes('whatsapp') || lower.includes('chat')) {
-    response = faqAnswers.whatsapp;
-  } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('salam') || lower.includes('hey')) {
-    response = "السلام علیکم! 👋 Welcome to Digital Hunarmand Hub!<br><br>How can I help you today? Ask me about our services, courses, pricing, or how to contact us!";
-  } else {
-    response = "Thanks for your message! 😊<br><br>For detailed help, please contact us:<br>📞 <strong>+92 348 5168409</strong><br>📧 digitalhunarmand1@gmail.com<br><br>We reply within 1 hour! ⚡";
-  }
-  setTimeout(() => addBotMsg(response), 600);
-}
-
-// ===== SMOOTH ACTIVE NAV =====
+// ===== ACTIVE NAV =====
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
   });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? '#2563EB' : '';
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? '#2563eb' : '';
+    a.style.fontWeight = a.getAttribute('href') === '#' + current ? '600' : '';
   });
 });
+
+// ===== CHATBOT =====
+const chatFab = document.getElementById('chatFab');
+const chatBox = document.getElementById('chatBox');
+const chatCloseBtn = document.getElementById('chatCloseBtn');
+const chatBody = document.getElementById('chatBody');
+const chatIn = document.getElementById('chatIn');
+
+chatFab.addEventListener('click', () => chatBox.classList.toggle('open'));
+chatCloseBtn.addEventListener('click', () => chatBox.classList.remove('open'));
+
+const answers = {
+  services: `We offer 12 professional services:<br><br>
+— Website Design & Development<br>
+— Mobile App Development<br>
+— Graphic Design (Logo, Branding)<br>
+— UI/UX Design<br>
+— Social Media Management<br>
+— Video Editing & Motion Graphics<br>
+— Branding & Identity Design<br>
+— Digital Marketing & SEO<br>
+— MS Office & Data Entry<br>
+— Website With AI<br>
+— Python Data Analysis<br>
+— Amazon E-Commerce`,
+
+  courses: `We currently offer 2 online courses:<br><br>
+<strong>Course 01 — Graphic Design</strong><br>
+Learn, Create and Earn. Beginner to Advanced.<br><br>
+<strong>Course 02 — Digital Marketing</strong><br>
+Learn, Grow and Earn. SEO, Ads and Social Media.<br><br>
+Both include live Google Meet classes, practical training, and internship opportunities.<br><br>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform" target="_blank" style="color:#2563eb;font-weight:600;text-decoration:underline">Register Here</a>`,
+
+  pricing: `Pricing depends on your project requirements. We offer custom packages for every budget.<br><br>
+Contact us directly for a free quote:<br>
+<strong>WhatsApp:</strong> +92 348 5168409<br>
+<strong>Email:</strong> digitalhunarmand1@gmail.com`,
+
+  contact: `You can reach us through:<br><br>
+<strong>Phone / WhatsApp:</strong> +92 348 5168409<br>
+<strong>Email:</strong> digitalhunarmand1@gmail.com<br>
+<strong>Website:</strong> www.digitalhunarmand.com<br><br>
+We reply within <strong>1 hour</strong>, guaranteed.`,
+
+  whatsapp: `Click below to chat with us directly:<br><br>
+<a href="https://wa.me/923485168409" target="_blank" style="display:inline-block;background:#22c55e;color:#fff;padding:10px 22px;border-radius:8px;font-weight:600;margin-top:4px">Open WhatsApp</a>`
+};
+
+function addBot(html) {
+  const d = document.createElement('div');
+  d.className = 'cb bot';
+  d.innerHTML = `<div class="cb-bubble">${html}</div>`;
+  chatBody.appendChild(d);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function addUser(text) {
+  const d = document.createElement('div');
+  d.className = 'cb user';
+  d.innerHTML = `<div class="cb-bubble">${text}</div>`;
+  chatBody.appendChild(d);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function qr(key) {
+  const labels = {
+    services: 'Our Services',
+    courses: 'Online Courses',
+    pricing: 'Pricing Info',
+    contact: 'Contact Details',
+    whatsapp: 'Chat on WhatsApp'
+  };
+  const qrEl = document.getElementById('chatQR');
+  if (qrEl) qrEl.remove();
+  addUser(labels[key]);
+  setTimeout(() => addBot(answers[key] || 'Please contact us directly for more info.'), 500);
+}
+
+function sendChat() {
+  const text = chatIn.value.trim();
+  if (!text) return;
+  chatIn.value = '';
+  const qrEl = document.getElementById('chatQR');
+  if (qrEl) qrEl.remove();
+  addUser(text);
+  const t = text.toLowerCase();
+  let res;
+  if (t.match(/service|offer|work|do you/)) res = answers.services;
+  else if (t.match(/course|learn|class|admission|graphic|marketing/)) res = answers.courses;
+  else if (t.match(/price|cost|rate|much|charge/)) res = answers.pricing;
+  else if (t.match(/contact|phone|email|reach|call/)) res = answers.contact;
+  else if (t.match(/whatsapp|chat|message|wa/)) res = answers.whatsapp;
+  else if (t.match(/hi|hello|hey|salam|assalam/)) res = 'Welcome to Digital Hunarmand Hub. How can we help you today?';
+  else res = 'Thank you for reaching out. For detailed assistance please contact us at <strong>+92 348 5168409</strong> or email <strong>digitalhunarmand1@gmail.com</strong>. We reply within 1 hour.';
+  setTimeout(() => addBot(res), 500);
+}
+
+chatIn.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendChat(); });
