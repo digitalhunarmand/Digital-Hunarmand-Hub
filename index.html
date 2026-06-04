@@ -112,9 +112,9 @@ img{max-width:100%;display:block}
 
 /* SERVICES */
 .services{background:#fff}
-.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
-.svc-head-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.svc-head-right p{font-size:15px;color:var(--muted);text-align:right;max-width:280px;line-height:1.7}
+.svc-head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;margin-bottom:56px}
+.svc-head-right{display:flex;flex-direction:column;align-items:flex-end;gap:14px;text-align:right;min-width:260px}
+.svc-head-right p{font-size:15px;color:var(--muted);text-align:right;max-width:260px;line-height:1.7}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .svc-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:28px 22px;position:relative;transition:all .3s;cursor:default;overflow:hidden}
 .svc-card:hover{border-color:var(--blue);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
@@ -369,7 +369,10 @@ img{max-width:100%;display:block}
   .hero-p{margin:0 auto 36px}
   .hero-pill{margin:0 auto 24px}
   .svc-grid,.vmc-grid{grid-template-columns:repeat(2,1fr)}
-  .svc-head,.feat-grid,.about-in,.why-in{grid-template-columns:1fr;gap:28px}
+  .svc-head{grid-template-columns:1fr;gap:20px}
+  .svc-head-right{align-items:flex-start;text-align:left;min-width:unset}
+  .svc-head-right p{text-align:left}
+  .feat-grid,.about-in,.why-in{grid-template-columns:1fr;gap:28px}
   .svc-head-right{align-items:flex-start}
   .svc-head-right p{text-align:left}
   .team-grid,.hiring-in,.partner-in,.int-grid,.courses-grid{grid-template-columns:1fr}
@@ -428,20 +431,21 @@ img{max-width:100%;display:block}
 
 /* ── MOBILE TOUCH STATES ── */
 @media (hover: none) and (pointer: coarse) {
-  /* Service cards - show effects on tap */
-  .svc-card:active{border-color:var(--blue);box-shadow:0 16px 48px rgba(37,99,235,.1);transform:translateY(-3px)}
-  .svc-card:active .svc-arrow{color:var(--blue);transform:translate(3px,-3px)}
-  .svc-card:active .svc-line{transform:scaleX(1)}
+  /* Service cards - persistent tap effect via JS class */
+  .svc-card:active,.svc-card.tapped{border-color:var(--blue);box-shadow:0 16px 48px rgba(37,99,235,.12);transform:translateY(-3px)}
+  .svc-card:active .svc-arrow,.svc-card.tapped .svc-arrow{color:var(--blue);transform:translate(3px,-3px)}
+  .svc-card:active .svc-line,.svc-card.tapped .svc-line{transform:scaleX(1)}
+  .svc-card.tapped{background:#fafbff}
 
   /* Team cards */
-  .tc:active{border-color:rgba(37,99,235,.25);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-  .tc:active::after{opacity:1}
+  .tc:active,.tc.tapped{border-color:rgba(37,99,235,.25);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .tc:active::after,.tc.tapped::after{opacity:1}
 
   /* VMC cards */
-  .vmc-card:active{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--blue-m)}
+  .vmc-card:active,.vmc-card.tapped{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--blue-m)}
 
   /* Why cards */
-  .wc:active{border-color:var(--blue);box-shadow:var(--shadow);background:var(--blue-l)}
+  .wc:active,.wc.tapped{border-color:var(--blue);box-shadow:var(--shadow);background:var(--blue-l)}
 
   /* Benefit items internship */
   .benefit-item:active{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-2px)}
@@ -504,10 +508,39 @@ img{max-width:100%;display:block}
   .btn-blue,.btn-out,.btn-solid,.btn-enroll,.btn-reg{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
   .sl-btn{min-height:52px}
   .nav-ul.open li a{min-height:48px}
-  .svc-card,.tc,.vmc-card,.wc,.cc{-webkit-tap-highlight-color:transparent}
+  .svc-card,.tc,.vmc-card,.wc,.cc,.sl-btn,.pos-item,.benefit-item{-webkit-tap-highlight-color:transparent}
   .pos-item{min-height:48px}
   .cfab{width:60px;height:60px}
   .benefit-item{min-height:52px}
+  /* Stack hero stats on very small screens */
+  .hero-stats{flex-wrap:wrap;gap:16px}
+  /* Services grid 2 col on mobile */
+  .svc-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .svc-card{padding:20px 16px}
+  .svc-ico{width:44px;height:44px;margin-bottom:14px}
+  /* Team grid 1 col on mobile */
+  .team-grid{grid-template-columns:1fr}
+  /* Why cards 1 col on mobile */
+  .why-cards{grid-template-columns:1fr}
+  /* VMC 1 col on mobile */  
+  .vmc-grid{grid-template-columns:1fr}
+  /* Courses full width */
+  .courses-grid{grid-template-columns:1fr}
+  /* Contact grid 1 col */
+  .contact-grid{grid-template-columns:1fr}
+  /* Social grid 1 col */
+  .sg{grid-template-columns:1fr 1fr}
+  /* Popup */
+  .popup-meta-row{grid-template-columns:1fr 1fr}
+  .popup-benefits{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+  .svc-grid{grid-template-columns:1fr}
+  .sg{grid-template-columns:1fr}
+  .popup-meta-row{grid-template-columns:1fr}
+  .popup-benefits{grid-template-columns:1fr}
+  .hero-h1{font-size:34px}
+  .st{font-size:28px}
 }
 </style>
 </head>
@@ -587,9 +620,9 @@ img{max-width:100%;display:block}
         <p class="ss">Everything you need to grow digitally, under one roof.</p>
       </div>
       <div class="svc-head-right reveal-r">
-        <div style="font-size:72px;font-weight:800;line-height:1;color:var(--blue-m);letter-spacing:-4px">12</div>
+        <div style="font-size:96px;font-weight:800;line-height:0.9;background:linear-gradient(135deg,#dbeafe,#ede9fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-4px;display:block">12</div>
         <p>Premium digital services crafted by passionate experts dedicated to your success.</p>
-        <a href="https://wa.me/923485168409" target="_blank" class="btn-blue" style="font-size:13px;padding:10px 22px">Start a Project</a>
+        <a href="https://wa.me/923485168409" target="_blank" class="btn-blue" style="font-size:14px;padding:12px 28px;white-space:nowrap">Start a Project</a>
       </div>
     </div>
     <div class="svc-grid">
@@ -1053,6 +1086,34 @@ if(!sessionStorage.getItem('popupShown')){
 }else{
   document.getElementById('popupOverlay').style.display='none';
 }
+</script>
+
+<script>
+// Mobile touch - persistent card highlight effect
+(function(){
+  if(!('ontouchstart' in window)) return;
+  
+  // Cards that should have persistent tap highlight
+  const selectors = ['.svc-card','.tc','.vmc-card','.wc','.cc','.benefit-item','.pos-item'];
+  
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(card){
+      card.addEventListener('touchstart', function(){
+        // Remove tapped from siblings
+        document.querySelectorAll(sel).forEach(function(c){ c.classList.remove('tapped'); });
+        card.classList.add('tapped');
+      }, {passive:true});
+    });
+  });
+  
+  // Tap outside removes tapped
+  document.addEventListener('touchstart', function(e){
+    const allCards = document.querySelectorAll('.svc-card,.tc,.vmc-card,.wc,.cc,.benefit-item,.pos-item');
+    let hitCard = false;
+    allCards.forEach(function(c){ if(c.contains(e.target)) hitCard = true; });
+    if(!hitCard) allCards.forEach(function(c){ c.classList.remove('tapped'); });
+  }, {passive:true});
+})();
 </script>
 </body>
 </html>
