@@ -425,6 +425,90 @@ img{max-width:100%;display:block}
 .popup-later{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}
 .popup-later:hover{background:#e2e8f0;color:#0f172a}
 @media(max-width:480px){.popup-meta-row{grid-template-columns:1fr}.popup-benefits{grid-template-columns:1fr}.popup-btns{flex-direction:column}.popup-body{padding:20px 20px 24px}.popup-hero{padding:28px 20px 22px}.popup-hero h2{font-size:22px}}
+
+/* ── MOBILE TOUCH STATES ── */
+@media (hover: none) and (pointer: coarse) {
+  /* Service cards - show effects on tap */
+  .svc-card:active{border-color:var(--blue);box-shadow:0 16px 48px rgba(37,99,235,.1);transform:translateY(-3px)}
+  .svc-card:active .svc-arrow{color:var(--blue);transform:translate(3px,-3px)}
+  .svc-card:active .svc-line{transform:scaleX(1)}
+
+  /* Team cards */
+  .tc:active{border-color:rgba(37,99,235,.25);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .tc:active::after{opacity:1}
+
+  /* VMC cards */
+  .vmc-card:active{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--blue-m)}
+
+  /* Why cards */
+  .wc:active{border-color:var(--blue);box-shadow:var(--shadow);background:var(--blue-l)}
+
+  /* Benefit items internship */
+  .benefit-item:active{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-2px)}
+
+  /* Hiring position items */
+  .pos-item:active{border-color:var(--blue);box-shadow:var(--shadow);transform:translateX(4px)}
+
+  /* Social buttons */
+  .sl-btn.fb:active{background:#1877f2;color:#fff;border-color:transparent}
+  .sl-btn.tt:active{background:#0f172a;color:#fff;border-color:transparent}
+  .sl-btn.ig:active{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff;border-color:transparent}
+  .sl-btn.wa:active{background:#25d366;color:#fff;border-color:transparent}
+  .sl-btn.wg:active{background:#128c7e;color:#fff;border-color:transparent}
+  .sl-btn.gm:active{background:#ea4335;color:#fff;border-color:transparent}
+  .sl-btn:active .sl-txt small{color:rgba(255,255,255,.7)}
+
+  /* Buttons */
+  .btn-blue:active{background:var(--blue-d);transform:scale(.97)}
+  .btn-out:active{background:var(--blue-l);transform:scale(.97)}
+  .btn-solid:active{background:var(--blue-d);transform:scale(.97)}
+  .btn-enroll:active{background:var(--blue-d);transform:scale(.97)}
+  .btn-reg:active{background:var(--blue-d);transform:scale(.97)}
+  .btn-wa-big:active{background:#16a34a;transform:scale(.97)}
+  .nav-btn:active{background:var(--blue-d);transform:scale(.97)}
+
+  /* Course cards */
+  .cc:active{border-color:rgba(37,99,235,.3);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+  .cc:active::after{opacity:1}
+
+  /* Feature cards */
+  .feat-card:active{box-shadow:0 16px 40px rgba(37,99,235,.12)}
+
+  /* Footer social */
+  .ft-soc a:active{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+  /* HR boxes */
+  .hr-box:active{border-color:var(--blue-m)}
+
+  /* Popup buttons */
+  .popup-apply:active{transform:scale(.97)}
+  .popup-later:active{background:#e2e8f0}
+  .popup-close:active{background:#e2e8f0;transform:scale(.95)}
+
+  /* Chatbot */
+  .cfab:active{transform:scale(.95)}
+  .cqr button:active{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+  /* Nav mobile links */
+  .nav-ul.open li a:active{background:var(--blue-l);border-color:var(--blue-m);color:var(--blue)}
+
+  /* Partner orgs */
+  .org-pill:active{background:rgba(255,255,255,.12)}
+
+  /* About stat items */
+  .stat-item:active{border-color:var(--blue);box-shadow:0 4px 16px rgba(37,99,235,.15)}
+}
+
+/* Make touch targets bigger on mobile for better UX */
+@media(max-width:768px){
+  .btn-blue,.btn-out,.btn-solid,.btn-enroll,.btn-reg{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
+  .sl-btn{min-height:52px}
+  .nav-ul.open li a{min-height:48px}
+  .svc-card,.tc,.vmc-card,.wc,.cc{-webkit-tap-highlight-color:transparent}
+  .pos-item{min-height:48px}
+  .cfab{width:60px;height:60px}
+  .benefit-item{min-height:52px}
+}
 </style>
 </head>
 <body>
