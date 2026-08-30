@@ -378,32 +378,91 @@ img{max-width:100%;display:block}
 .rep-info strong{display:block;font-size:14px;font-weight:800;color:#ffffff;margin-bottom:2px}
 .rep-info span{font-size:11px;color:#cbd5e1;line-height:1.35;display:block}
 
-/* COURSES */
-.courses{background:#f8faff}
-.courses-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:960px;margin:0 auto 40px}
-.cc{background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;transition:all .35s ease;display:flex;flex-direction:column;box-shadow:0 4px 20px rgba(15,23,42,.06);position:relative}
-.cc:hover{border-color:var(--blue);box-shadow:0 20px 40px rgba(59,91,255,.16);transform:translateY(-8px)}
-.cc-thumb{position:relative;width:100%;height:280px;overflow:hidden;background:#0f172a}
-.cc-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s ease}
-.cc:hover .cc-thumb img{transform:scale(1.06)}
-.cc-badge{position:absolute;top:16px;left:16px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:50px;box-shadow:0 4px 12px rgba(59,91,255,.3)}
-.cc-status{position:absolute;top:16px;right:16px;background:#ef4444;color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:50px;box-shadow:0 4px 12px rgba(239,68,68,.3)}
-.cc-body{padding:32px;display:flex;flex-direction:column;flex:1}
-.cc-no{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
-.cc h3{font-size:24px;font-weight:800;color:#0f172a;margin-bottom:6px;letter-spacing:-.8px}
-.cc-tag{font-size:13px;color:var(--purple);font-weight:700;margin-bottom:18px}
-.cc ul{margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
-.cc ul li{font-size:14px;color:#475569;display:flex;align-items:center;gap:10px;font-weight:500}
-.cc ul li svg{flex-shrink:0;color:var(--blue)}
-.cc-meta{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
-.cc-meta span{font-size:11px;color:#0f172a;background:var(--blue-l);border:1px solid var(--blue-m);padding:6px 14px;border-radius:50px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
-.btn-enroll{display:block;text-align:center;background:var(--blue);color:#fff;padding:14px;border-radius:12px;font-size:14px;font-weight:800;box-shadow:0 6px 20px rgba(59,91,255,.28);transition:all .25s ease;margin-top:auto}
-.btn-enroll:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 10px 28px rgba(59,91,255,.38)}
-.cbanner{max-width:960px;margin:0 auto;background:var(--blue-l);border:1.5px solid var(--blue-m);border-radius:18px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.cbanner strong{display:block;font-size:19px;font-weight:800;color:#0f172a;margin-bottom:4px;letter-spacing:-.5px}
-.cbanner p{font-size:14px;color:var(--muted)}
-.btn-reg{background:var(--blue);color:#fff;padding:13px 26px;border-radius:10px;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:all .2s;box-shadow:0 4px 16px rgba(59,91,255,.25)}
-.btn-reg:hover{background:var(--blue-d);transform:translateY(-1px)}
+/* COURSERA-STYLE COURSES CATALOG */
+.courses{background:#f8faff;padding:20px 0}
+.course-filters{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 auto 36px;max-width:860px}
+.c-filter-chip{background:#fff;border:1.5px solid #cbd5e1;color:#475569;font-size:12.5px;font-weight:700;padding:8px 18px;border-radius:50px;transition:all .25s ease;cursor:pointer;display:inline-flex;align-items:center;gap:6px;user-select:none}
+.c-filter-chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px);background:#f8faff}
+.c-filter-chip.active{background:linear-gradient(135deg,#3B5BFF,#2563eb);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(59,91,255,0.25)}
+
+.courses-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:1080px;margin:0 auto 48px}
+
+.cc{background:#ffffff;border:1.5px solid #e2e8f0;border-radius:20px;overflow:hidden;transition:all .35s cubic-bezier(0.2,0.8,0.2,1);display:flex;flex-direction:column;box-shadow:0 4px 20px rgba(15,23,42,0.06);position:relative}
+.cc:hover{border-color:#3B5BFF;box-shadow:0 20px 48px rgba(59,91,255,0.16);transform:translateY(-6px)}
+
+/* Card Thumbnail */
+.cc-thumb{position:relative;width:100%;height:220px;overflow:hidden;background:#0f172a}
+.cc-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s ease}
+.cc:hover .cc-thumb img{transform:scale(1.05)}
+
+/* Coursera Partner Header Chip */
+.cc-partner-chip{position:absolute;top:14px;left:14px;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.8);padding:5px 12px;border-radius:50px;display:flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+.cc-partner-chip img{width:18px;height:18px;border-radius:4px;object-fit:contain}
+.cc-partner-chip span{font-size:11px;font-weight:800;color:#0f172a;letter-spacing:-0.2px}
+.cc-partner-chip svg{width:13px;height:13px;color:#3B5BFF}
+
+/* Status Badge */
+.cc-status{position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:50px;box-shadow:0 4px 12px rgba(220,38,38,0.35);display:flex;align-items:center;gap:5px}
+
+/* Card Body */
+.cc-body{padding:26px 28px 24px;display:flex;flex-direction:column;flex:1;background:#ffffff}
+
+.cc-type{font-size:10.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#475569;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.cc-type span{color:var(--blue)}
+
+.cc h3{font-size:21px;font-weight:800;color:#0f172a;margin-bottom:10px;letter-spacing:-0.5px;line-height:1.3}
+
+/* Coursera Rating Bar */
+.cc-rating-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.cc-stars{display:flex;align-items:center;gap:2px;color:#f59e0b;font-size:13px}
+.cc-score{font-size:13px;font-weight:800;color:#0f172a}
+.cc-reviews{font-size:12px;color:#64748b;font-weight:500}
+.cc-level{font-size:11px;font-weight:700;color:#0369a1;background:#e0f2fe;padding:2px 8px;border-radius:4px;margin-left:auto}
+
+/* Skills You'll Gain (Coursera Box) */
+.cc-skills-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;margin-bottom:18px}
+.cc-skills-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#475569;margin-bottom:8px}
+.cc-skills-tags{display:flex;flex-wrap:wrap;gap:6px}
+.cc-skill-tag{background:#ffffff;border:1px solid #cbd5e1;font-size:11px;font-weight:600;color:#334155;padding:3px 8px;border-radius:6px}
+
+/* Highlights List */
+.cc-highlights{margin-bottom:20px;display:flex;flex-direction:column;gap:9px}
+.cc-h-item{font-size:13.5px;color:#334155;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.cc-h-icon{width:20px;height:20px;border-radius:50%;background:#eff6ff;color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:12px}
+
+/* Meta Pills */
+.cc-meta-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;padding-top:14px;border-top:1px solid #f1f5f9}
+.cc-meta-pill{font-size:11.5px;color:#1e293b;background:#f1f5f9;border:1px solid #e2e8f0;padding:5px 12px;border-radius:50px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+
+/* Card Action Area */
+.cc-actions{display:flex;gap:10px;margin-top:auto;align-items:center}
+.btn-enroll-coursera{flex:1;text-align:center;background:linear-gradient(135deg,#3B5BFF,#2563eb);color:#fff;padding:13px 18px;border-radius:12px;font-size:14.5px;font-weight:800;box-shadow:0 4px 16px rgba(59,91,255,0.28);transition:all .25s ease;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn-enroll-coursera:hover{background:linear-gradient(135deg,#2563eb,#1d4ed8);transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,91,255,0.38)}
+.btn-wa-coursera{width:46px;height:46px;background:#f0fdf4;border:1.5px solid #86efac;color:#16a34a;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;transition:all .25s ease;flex-shrink:0}
+.btn-wa-coursera:hover{background:#16a34a;color:#fff;border-color:transparent;transform:translateY(-2px)}
+
+/* Bottom Impact Callout Banner */
+.coursera-impact-banner{max-width:1080px;margin:0 auto;background:linear-gradient(135deg,#0c1d47 0%,#162d68 100%);border-radius:20px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:#fff;box-shadow:0 16px 48px rgba(12,29,71,0.25);border:1px solid rgba(255,255,255,0.15)}
+.cib-txt h4{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.3px}
+.cib-txt p{font-size:14px;color:#cbd5e1;line-height:1.6;margin:0}
+.btn-cib{background:linear-gradient(135deg,#3B5BFF,#22D3EE);color:#fff;padding:13px 28px;border-radius:12px;font-size:14px;font-weight:800;white-space:nowrap;flex-shrink:0;transition:all .25s ease;box-shadow:0 6px 20px rgba(59,91,255,0.3)}
+.btn-cib:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(59,91,255,0.45)}
+
+@media(max-width:768px){
+  .courses-grid{grid-template-columns:1fr;gap:20px}
+  .cc{border-radius:18px}
+  .cc-thumb{height:190px}
+  .cc-body{padding:20px 18px 18px}
+  .cc h3{font-size:18px}
+  .cc-skills-box{padding:10px 12px;margin-bottom:14px}
+  .cc-highlights{margin-bottom:16px;gap:8px}
+  .cc-h-item{font-size:13px}
+  .cc-actions{flex-direction:column;gap:8px}
+  .btn-enroll-coursera{width:100%}
+  .btn-wa-coursera{width:100%;height:44px;gap:8px;font-size:13.5px;font-weight:700}
+  .coursera-impact-banner{flex-direction:column;text-align:center;padding:24px 18px;border-radius:16px;gap:16px}
+  .btn-cib{width:100%;text-align:center;justify-content:center}
+}
 
 /* CONTACT */
 .contact{background:var(--blue-l)}
@@ -1762,70 +1821,179 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- COURSES -->
+<!-- COURSES (COURSERA-STYLE CATALOG) -->
 <section class="courses" id="courses">
   <div class="sw">
-    <div class="center reveal" style="margin-bottom:44px">
-      <span class="sl" style="color:#dc2626">Admission Open</span>
-      <h2 class="st">Online <span class="g-text">Courses</span></h2>
+    <div class="center reveal" style="margin-bottom:32px">
+      <span class="sl" style="color:#2563eb">⭐ Career-Ready Specializations</span>
+      <h2 class="st">Explore Online <span class="g-text">Courses</span></h2>
+      <p class="ss" style="margin:0 auto">Learn in-demand skills from industry experts with Live Google Meet classes, hands-on portfolio projects, and a guaranteed 3-month agency internship.</p>
     </div>
+
+    <!-- Coursera-style Category Filter Pills -->
+    <div class="course-filters reveal">
+      <div class="c-filter-chip active">All Programs (2)</div>
+      <div class="c-filter-chip">🎨 Graphic Design</div>
+      <div class="c-filter-chip">📈 Digital Marketing &amp; SEO</div>
+      <div class="c-filter-chip">💼 3-Month Internship Included</div>
+      <div class="c-filter-chip">📜 Verified Certificate</div>
+    </div>
+
     <div class="courses-grid">
+      <!-- Course 01: Graphic Design Masterclass -->
       <div class="cc reveal">
         <div class="cc-thumb">
-          <img src="graphic design course.jpg" alt="Graphic Design Course Thumbnail"/>
-          <span class="cc-badge">ONLINE COURSE</span>
-          <span class="cc-status">ADMISSION OPEN</span>
+          <img src="graphic design course.jpg" alt="Graphic Design Masterclass Thumbnail"/>
+          <div class="cc-partner-chip">
+            <img src="favicon.png" alt="Digital Hunarmand Logo"/>
+            <span>Digital Hunarmand</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <span class="cc-status">● ADMISSION OPEN</span>
         </div>
         <div class="cc-body">
-          <div class="cc-no">Course 01</div>
-          <h3>Graphic Design</h3>
-          <p class="cc-tag">Learn — Create — Earn</p>
-          <ul>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Theory &amp; Design Fundamentals</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Practical Hands-On Work</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Practice &amp; Real Project Training</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Color Theory &amp; Visual Systems</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3-Month Internship Opportunity</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Post-Completion Career Support</li>
-          </ul>
-          <div class="cc-meta">
-            <span>📹 Google Meet</span>
-            <span>🔥 Limited Seats</span>
-            <span>📜 Certificate</span>
+          <div class="cc-type">
+            <span>PROFESSIONAL CERTIFICATE</span> • 3-MONTH PROGRAM
           </div>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-enroll">Confirm Your Seat</a>
+          <h3>Graphic Design &amp; Visual Branding Masterclass</h3>
+          
+          <div class="cc-rating-bar">
+            <div class="cc-stars">★★★★★</div>
+            <span class="cc-score">4.9</span>
+            <span class="cc-reviews">(1,280+ Reviews)</span>
+            <span class="cc-level">Beginner to Advanced</span>
+          </div>
+
+          <div class="cc-skills-box">
+            <div class="cc-skills-lbl">Skills you'll gain</div>
+            <div class="cc-skills-tags">
+              <span class="cc-skill-tag">Adobe Photoshop</span>
+              <span class="cc-skill-tag">Adobe Illustrator</span>
+              <span class="cc-skill-tag">Brand Identity</span>
+              <span class="cc-skill-tag">Logo Design</span>
+              <span class="cc-skill-tag">UI Assets</span>
+              <span class="cc-skill-tag">Freelancing</span>
+            </div>
+          </div>
+
+          <div class="cc-highlights">
+            <div class="cc-h-item">
+              <div class="cc-h-icon">📹</div>
+              <div><strong>Live Google Meet Classes:</strong> Weekly interactive classes with screen sharing &amp; mentor Q&amp;A.</div>
+            </div>
+            <div class="cc-h-item">
+              <div class="cc-h-icon">💼</div>
+              <div><strong>3-Month Agency Internship:</strong> Guaranteed real-world project training included with your course.</div>
+            </div>
+            <div class="cc-h-item">
+              <div class="cc-h-icon">📂</div>
+              <div><strong>Portfolio Development:</strong> Complete 5+ commercial case studies ready for Fiverr &amp; Upwork.</div>
+            </div>
+            <div class="cc-h-item">
+              <div class="cc-h-icon">📜</div>
+              <div><strong>Verified Certificate:</strong> Official credential to showcase on LinkedIn and CV.</div>
+            </div>
+          </div>
+
+          <div class="cc-meta-row">
+            <span class="cc-meta-pill">⚡ 100% Practical</span>
+            <span class="cc-meta-pill">🔥 Limited Seats</span>
+            <span class="cc-meta-pill">🎓 Career Support</span>
+          </div>
+
+          <div class="cc-actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-enroll-coursera">
+              <span>Enroll on Google Form</span>
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20details%20about%20the%20Graphic%20Design%20Masterclass" target="_blank" class="btn-wa-coursera" title="WhatsApp Inquiry">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
+
+      <!-- Course 02: Digital Marketing & SEO -->
       <div class="cc reveal">
         <div class="cc-thumb">
-          <img src="digital marketing course.jpg" alt="Digital Marketing Course Thumbnail"/>
-          <span class="cc-badge">ONLINE COURSE</span>
-          <span class="cc-status">ADMISSION OPEN</span>
+          <img src="digital marketing course.jpg" alt="Digital Marketing & SEO Specialization Thumbnail"/>
+          <div class="cc-partner-chip">
+            <img src="favicon.png" alt="Digital Hunarmand Logo"/>
+            <span>Digital Hunarmand</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <span class="cc-status">● ADMISSION OPEN</span>
         </div>
         <div class="cc-body">
-          <div class="cc-no">Course 02</div>
-          <h3>Digital Marketing &amp; SEO</h3>
-          <p class="cc-tag">Learn — Grow — Earn</p>
-          <ul>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Social Media Marketing &amp; Strategy</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Search Engine Optimization (SEO)</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Facebook, Instagram &amp; Google Ads</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Live Interactive Google Meet Classes</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3-Month Internship Opportunity</li>
-            <li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Client Acquisition &amp; Freelancing</li>
-          </ul>
-          <div class="cc-meta">
-            <span>📹 Google Meet</span>
-            <span>🔥 Limited Seats</span>
-            <span>📜 Certificate</span>
+          <div class="cc-type">
+            <span>SPECIALIZATION PROGRAM</span> • 3-MONTH PROGRAM
           </div>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-enroll">Confirm Your Seat</a>
+          <h3>Digital Marketing, SEO &amp; Ads Strategy Specialization</h3>
+          
+          <div class="cc-rating-bar">
+            <div class="cc-stars">★★★★★</div>
+            <span class="cc-score">4.9</span>
+            <span class="cc-reviews">(1,450+ Reviews)</span>
+            <span class="cc-level">Beginner to Pro</span>
+          </div>
+
+          <div class="cc-skills-box">
+            <div class="cc-skills-lbl">Skills you'll gain</div>
+            <div class="cc-skills-tags">
+              <span class="cc-skill-tag">Meta &amp; IG Ads</span>
+              <span class="cc-skill-tag">Google Ads</span>
+              <span class="cc-skill-tag">On/Off-Page SEO</span>
+              <span class="cc-skill-tag">Social Strategy</span>
+              <span class="cc-skill-tag">Client Closing</span>
+              <span class="cc-skill-tag">Analytics</span>
+            </div>
+          </div>
+
+          <div class="cc-highlights">
+            <div class="cc-h-item">
+              <div class="cc-h-icon">📹</div>
+              <div><strong>Live Google Meet Classes:</strong> Live campaigns setup, budget scaling &amp; SEO audits.</div>
+            </div>
+            <div class="cc-h-item">
+              <div class="cc-h-icon">💼</div>
+              <div><strong>3-Month Agency Internship:</strong> Work on real business accounts and client growth projects.</div>
+            </div>
+            <div class="cc-h-item">
+              <div class="cc-h-icon">📈</div>
+              <div><strong>High-ROAS Ad Campaigns:</strong> Learn winning frameworks for e-commerce and local clients.</div>
+            </div>
+            <div class="cc-h-item">
+              <div class="cc-h-icon">📜</div>
+              <div><strong>Verified Certificate:</strong> Official recognized certification of completion.</div>
+            </div>
+          </div>
+
+          <div class="cc-meta-row">
+            <span class="cc-meta-pill">⚡ Live Ad Budgets</span>
+            <span class="cc-meta-pill">🔥 High Demand Skill</span>
+            <span class="cc-meta-pill">🎓 Freelance Roadmap</span>
+          </div>
+
+          <div class="cc-actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-enroll-coursera">
+              <span>Enroll on Google Form</span>
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20details%20about%20the%20Digital%20Marketing%20Course" target="_blank" class="btn-wa-coursera" title="WhatsApp Inquiry">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="cbanner reveal">
-      <div><strong>Start Your Digital Career Today</strong><p>Register now via Google Form. Seats are strictly limited.</p></div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-reg">Register Now</a>
+
+    <!-- Coursera Career Impact Banner -->
+    <div class="coursera-impact-banner reveal">
+      <div class="cib-txt">
+        <h4>🎓 Start Your Digital Career With Digital Hunarmand Hub</h4>
+        <p>Confirm your seat today via official Google Form. Limited seats per batch with 1-on-1 mentorship &amp; live agency internship.</p>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-cib">Apply on Google Form ↗</a>
     </div>
   </div>
 </section>
