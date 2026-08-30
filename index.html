@@ -689,16 +689,16 @@ img{max-width:100%;display:block}
 }
 
 @media(max-width:768px){
-  /* Global viewport reset */
-  html,body{width:100%!important;max-width:100vw!important;overflow-x:hidden!important;-webkit-text-size-adjust:100%!important}
-  *,*::before,*::after{box-sizing:border-box!important}
-  
+  /* GLOBAL MOBILE FIX - No horizontal scroll */
+  html,body{max-width:100%!important;overflow-x:hidden!important}
+  section,div,header,footer,nav{max-width:100%!important;box-sizing:border-box!important}
+
   /* Banner display switch */
   .desktop-banner-only{display:none!important}
   .mobile-banner-only{display:block!important}
 
   /* Section Spacing & Typography */
-  .sw{padding:44px 16px!important;max-width:100%!important;width:100%!important;box-sizing:border-box!important}
+  .sw{padding:36px 18px!important;max-width:100%!important;width:100%!important;box-sizing:border-box!important;overflow:hidden!important}
   .st{font-size:clamp(24px,6.5vw,32px)!important;line-height:1.2!important;letter-spacing:-.8px!important;margin-bottom:12px!important}
   .ss{font-size:14px!important;line-height:1.65!important}
   .sl{font-size:10.5px!important;letter-spacing:2px!important;margin-bottom:8px!important}
@@ -809,10 +809,11 @@ img{max-width:100%;display:block}
   .partner-reps-grid{grid-template-columns:1fr!important;gap:10px!important}
 
   /* Leadership & Team */
-  .lead-grid{grid-template-columns:1fr!important;gap:16px!important;max-width:360px!important;margin:0 auto 16px!important}
-  .lead-card{border-radius:16px!important}
-  .team-grid{grid-template-columns:1fr!important;gap:14px!important;max-width:360px!important;margin:0 auto!important}
-  .tc{border-radius:16px!important}
+  .lead-grid{grid-template-columns:1fr!important;gap:16px!important;width:100%!important;max-width:100%!important;margin:0 0 16px!important}
+  .lead-card{border-radius:16px!important;width:100%!important;overflow:hidden!important}
+  .lead-card img{width:100%!important;max-width:100%!important;height:auto!important;object-fit:cover!important}
+  .team-grid{grid-template-columns:1fr 1fr!important;gap:12px!important;width:100%!important;max-width:100%!important}
+  .tc{border-radius:16px!important;width:100%!important;overflow:hidden!important}
 
   /* Courses */
   .courses-grid{grid-template-columns:1fr!important;gap:18px!important}
@@ -1983,85 +1984,59 @@ document.addEventListener('keydown', e => {
 
 const GEMINI_API_KEY = 'AIzaSyCXfAJVpGDldTXLQepSZNkk3rzGmbSpekA';
 
-const HUNARMAND_KNOWLEDGE = `You are "Hunarmand AI", the official smart AI assistant and digital consultant for "Digital Hunarmand Hub" (a leading digital solutions agency and training hub in Pakistan).
+const HUNARMAND_SYSTEM_INSTRUCTION = `You are "Hunarmand AI", the elite AI consultant, career counselor, and smart representative for "Digital Hunarmand Hub" (Swat, KPK, Pakistan).
 
-### Persona & Communication:
-- Speak in warm, polite, highly professional, encouraging, and intelligent tone.
-- Fluent in Roman Urdu, Urdu, and English. Automatically reply in the user's language (default to friendly Roman Urdu / English).
-- Keep responses well-formatted with bullet points and bold highlights.
-- Keep responses concise (2-4 short paragraphs/bullet points) so they fit nicely in the chat window.
+CORE MISSION & IDENTITY:
+- Organization: Digital Hunarmand Hub (Digital Solution Hub).
+- Leadership: Nidal Munir (Founder & CEO), Geeto Shakeel (Co-Founder & Director), Sayed Muhammad Arif Khan (Team Leader), Muhammad Rizwan (Administrator).
+- Strategic Partner: Nojawan Awaz Foundation (President: Muhammad Islam).
+- Contact: Official WhatsApp / Phone: +92 348 5168409 | Email: digitalhunarmand1@gmail.com | 1-Hour Guaranteed Response.
+- Slogan: "Digital Solutions That Grow Your Business" | "Learn — Create — Earn" | "Learn — Grow — Earn".
 
-### Complete Knowledge of Digital Hunarmand Hub:
-1. Organization: Digital Hunarmand Hub (Digital Solution Hub)
-   - Official WhatsApp / Phone: +92 348 5168409 (Link: https://wa.me/923485168409)
-   - Official Email: digitalhunarmand1@gmail.com
-   - Response Time: Guaranteed reply within 1 hour.
-   - Slogan: "Digital Solutions That Grow Your Business" | "Learn — Create — Earn"
+12 PROFESSIONAL DIGITAL SERVICES:
+1. Website Design & Development (Custom responsive web apps)
+2. Mobile App Development (iOS & Android)
+3. Graphic Design (Visual branding, logos, social media creatives)
+4. UI/UX Design (Figma, interactive prototypes, user journeys)
+5. Social Media Management (Organic growth, content strategy)
+6. Video Editing & Motion Graphics (Reels, TikToks, YouTube, promotional ads)
+7. Branding & Corporate Identity (Logo systems, color palettes, typography)
+8. Digital Marketing & SEO (Google ranking, paid Meta & Google Ads campaigns)
+9. MS Office & Professional Data Entry (Excel models, documentation)
+10. Website With AI (Intelligent web solutions, chatbots, automation)
+11. Python Data Analysis (Data science, reporting, automation)
+12. Amazon E-Commerce (FBA store management, product hunting, listing optimization)
 
-2. 12 Professional Digital Services:
-   1. Website Design & Development (Custom, responsive, modern web apps)
-   2. Mobile App Development (iOS & Android)
-   3. Graphic Design (Logos, banners, social media creatives, visual identity)
-   4. UI/UX Design (Figma, prototypes, user-centric interfaces)
-   5. Social Media Management (Content creation, page handling, engagement)
-   6. Video Editing & Motion Graphics (Reels, ads, promo videos, YouTube editing)
-   7. Branding & Identity (Brand guide, typography, color palettes)
-   8. Digital Marketing & SEO (Google ranking, organic traffic, social growth)
-   9. MS Office & Professional Data Entry (Excel, Word, documentation)
-   10. Website With AI (AI-powered dynamic web solutions)
-   11. Python Data Analysis (Data science, visualization, automation)
-   12. Amazon E-Commerce (FBA, product hunting, listing, store management)
+COURSES (ADMISSION OPEN 2026):
+1. Graphic Design: Live Google Meet classes, 3-Month Internship with real client work, verified certificate.
+   Registration: https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform
+2. Digital Marketing & SEO: Live Google Meet classes, Facebook/Google Ads, 3-Month Internship, international freelancing.
+   Registration: https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform
 
-3. Online Courses (Admission Open 2026 - Limited Seats):
-   - Course 01: Graphic Design ("Learn — Create — Earn")
-     - Topics: Design fundamentals, practical real project training, color theory, visual systems, 3-month internship included, career support.
-     - Mode: Live Google Meet classes.
-     - Registration Form: https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform
-   - Course 02: Digital Marketing & SEO ("Learn — Grow — Earn")
-     - Topics: SMM & strategy, SEO, Facebook/Instagram/Google Ads, 3-month internship included, client acquisition.
-     - Mode: Live Google Meet classes.
-     - Registration Form: https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform
+PROGRAMS:
+- 3-Month Internship Program 2026: Hands-on real projects, portfolio building, verified certificate. Apply: https://wa.me/923485168409
+- 1-on-1 Mentorship: Personalized career coaching, portfolio/CV review, Upwork & Fiverr client closing. Book: https://wa.me/923485168409
+- Admin Hiring: Facebook Page Admin, WhatsApp Community Admin, Group Admin. Apply: https://wa.me/923485168409
 
-4. 3-Month Professional Internship Program 2026:
-   - For students, fresh graduates, and passionate learners.
-   - Includes: Professional training, real live client projects, portfolio development, industry exposure, verified Certificate, career guidance.
-   - Mode: Online / Hybrid.
-   - Apply on WhatsApp: https://wa.me/923485168409
-
-5. 1-on-1 Mentorship Program:
-   - 1-on-1 personalized sessions with industry experts.
-   - Includes: Career consultation, portfolio & CV review, Upwork/Fiverr client acquisition secrets, tech roadmap.
-   - Book session on WhatsApp: https://wa.me/923485168409
-
-6. Hiring (Join as Admin):
-   - Positions available: Facebook Page Admin, WhatsApp Community Admin, WhatsApp Group Admin, WhatsApp Channel Admin.
-   - Apply on WhatsApp: https://wa.me/923485168409
-
-7. Leadership & Team:
-   - Founder & CEO: Nidal Munir
-   - Co-Founder & Director: Geeto Shakeel
-   - Team Leader: Sayed Muhammad Arif Khan
-   - Administrator: Muhammad Rizwan
-   - Core Tech Team: Abdur Rahman, Khan Abbas Khan, Idrees Khan, Saeedullah.
-
-8. Strategic Partner:
-   - Partnered with "Nojawan Awaz Foundation" (President: Muhammad Islam) to empower youth with digital skills and career education.
-
-9. Key Value Propositions:
-   - Fast On-Time Delivery, 1-Hour Guaranteed Reply, Premium Quality, Affordable Pricing.
-
-### Instructions:
-- Answer user queries directly and accurately.
-- When sharing links, use markdown format: [Apply on WhatsApp](https://wa.me/923485168409) or [Register for Course](https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform).`;
+RESPONSE GUIDELINES:
+- Automatically match user's language (Roman Urdu or English).
+- Be polite, concise, professional, warm, and highly structured with bullet points.
+- Always include relevant links in markdown format: [Apply on WhatsApp](https://wa.me/923485168409) or [Register for Course](https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform).`;
 
 let chatHistory = [];
+const _chatCache = new Map();
 
 function formatMarkdown(text) {
   if (!text) return '';
   return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">$1</code>')
     .replace(/\[(.*?)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" class="c-action-btn">$1 ↗</a>')
+    .replace(/(\+92\s*348\s*5168409)/g, '<a href="https://wa.me/923485168409" target="_blank" class="c-action-btn">$1 ↗</a>')
     .replace(/\n\n/g, '<br><br>')
     .replace(/\n/g, '<br>');
 }
@@ -2077,12 +2052,13 @@ function ab(h){
 function au(t){
   const d=document.createElement('div');
   d.className='cm usr';
-  d.innerHTML='<div class="cb">'+t+'</div>';
+  d.innerHTML='<div class="cb">'+t.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div>';
   cbody.appendChild(d);
   cbody.scrollTop=cbody.scrollHeight;
 }
 
 function showTypingIndicator() {
+  hideTypingIndicator();
   const d=document.createElement('div');
   d.className='cm bot';
   d.id='cTyping';
@@ -2096,94 +2072,9 @@ function hideTypingIndicator() {
   if(d) d.remove();
 }
 
-async function sendToGemini(userText) {
-  showTypingIndicator();
-  const isEng = isEnglishInput(userText);
-  
-  chatHistory.push({ role: 'user', parts: [{ text: userText }] });
-  if(chatHistory.length > 8) {
-    chatHistory = chatHistory.slice(-8);
-  }
-
-  // Robust prompt packaging ensuring compatibility across all Gemini endpoints
-  const promptContext = `[ROLE & CONTEXT]
-You are "Hunarmand AI", the official intelligent AI assistant and senior career counselor for "Digital Hunarmand Hub".
-Language Rule: ${isEng ? 'The user is communicating in English. You MUST reply ONLY in fluent, professional, and friendly English.' : 'The user is communicating in Roman Urdu / Urdu. You MUST reply in warm, clear, polite Roman Urdu.'}
-
-[COMPLETE KNOWLEDGE BASE]
-${HUNARMAND_KNOWLEDGE}
-
-[RECENT DIALOGUE]
-${chatHistory.map(m => (m.role === 'user' ? 'User: ' : 'Hunarmand AI: ') + m.parts[0].text).join('\n')}
-
-[USER MESSAGE]: ${userText}
-[HUNARMAND AI RESPONSE]:`;
-
-  const payload = {
-    contents: [
-      {
-        role: 'user',
-        parts: [{ text: promptContext }]
-      }
-    ],
-    generationConfig: {
-      temperature: 0.7,
-      maxOutputTokens: 500
-    }
-  };
-
-  let responded = false;
-
-  const timeoutId = setTimeout(() => {
-    if(!responded) {
-      responded = true;
-      hideTypingIndicator();
-      smartFallback(userText, isEng);
-    }
-  }, 4000);
-
-  try {
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (responded) return;
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
-        responded = true;
-        clearTimeout(timeoutId);
-        hideTypingIndicator();
-        const reply = data.candidates[0].content.parts[0].text;
-        chatHistory.push({ role: 'model', parts: [{ text: reply }] });
-        ab(reply);
-        return;
-      }
-    }
-    
-    if (!responded) {
-      responded = true;
-      clearTimeout(timeoutId);
-      hideTypingIndicator();
-      smartFallback(userText, isEng);
-    }
-  } catch(err) {
-    if (!responded) {
-      responded = true;
-      clearTimeout(timeoutId);
-      hideTypingIndicator();
-      smartFallback(userText, isEng);
-    }
-  }
-}
-
 function isEnglishInput(text) {
   const t = text.toLowerCase().trim();
-  const urduWords = ['kese', 'kaise', 'kya', 'konsa', 'kon', 'hai', 'hain', 'mujhe', 'karna', 'seekhna', 'batao', 'shukriya', 'salam', 'kahan', 'kab', 'kitni', 'kitna', 'hoga', 'chahiye', 'karo', 'ap', 'aap', 'ka', 'ke', 'ki', 'ko', 'bhi', 'hum', 'mein', 'main', 'nhi', 'nahi', 'ye', 'yeh', 'krna', 'acha', 'theek', 'bhai', 'sir'];
+  const urduWords = ['kese', 'kaise', 'kya', 'konsa', 'kon', 'hai', 'hain', 'mujhe', 'karna', 'seekhna', 'batao', 'shukriya', 'salam', 'kahan', 'kab', 'kitni', 'kitna', 'hoga', 'chahiye', 'karo', 'ap', 'aap', 'ka', 'ke', 'ki', 'ko', 'bhi', 'hum', 'mein', 'main', 'nhi', 'nahi', 'ye', 'yeh', 'krna', 'acha', 'theek', 'bhai', 'sir', 'rabta'];
   const words = t.replace(/[^a-zA-Z0-9\s]/g, '').split(/\s+/);
   let urduScore = 0;
   words.forEach(w => {
@@ -2192,122 +2083,170 @@ function isEnglishInput(text) {
   return urduScore === 0;
 }
 
+async function sendToGemini(userText) {
+  showTypingIndicator();
+  const isEng = isEnglishInput(userText);
+  const cacheKey = userText.trim().toLowerCase();
+
+  // Instant Semantic Cache Hit (0ms response)
+  if (_chatCache.has(cacheKey)) {
+    setTimeout(() => {
+      hideTypingIndicator();
+      const cachedReply = _chatCache.get(cacheKey);
+      chatHistory.push({ role: 'user', parts: [{ text: userText }] });
+      chatHistory.push({ role: 'model', parts: [{ text: cachedReply }] });
+      ab(cachedReply);
+    }, 150);
+    return;
+  }
+
+  chatHistory.push({ role: 'user', parts: [{ text: userText }] });
+  if (chatHistory.length > 8) {
+    chatHistory = chatHistory.slice(-8);
+  }
+
+  const modelChain = [
+    'gemini-2.0-flash',
+    'gemini-1.5-flash',
+    'gemini-1.5-flash-8b'
+  ];
+
+  let completed = false;
+  const abortController = new AbortController();
+  const timeoutId = setTimeout(() => {
+    if (!completed) {
+      completed = true;
+      abortController.abort();
+      hideTypingIndicator();
+      smartFallback(userText, isEng);
+    }
+  }, 3500);
+
+  const payload = {
+    system_instruction: {
+      parts: [{ text: HUNARMAND_SYSTEM_INSTRUCTION + `\n\nLanguage Preference: ${isEng ? 'English' : 'Roman Urdu'}.` }]
+    },
+    contents: chatHistory,
+    generationConfig: {
+      temperature: 0.5,
+      maxOutputTokens: 350,
+      topP: 0.95
+    }
+  };
+
+  for (const model of modelChain) {
+    if (completed) break;
+    try {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: abortController.signal
+      });
+
+      if (response.ok && !completed) {
+        const data = await response.json();
+        if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
+          completed = true;
+          clearTimeout(timeoutId);
+          hideTypingIndicator();
+          const reply = data.candidates[0].content.parts[0].text;
+          _chatCache.set(cacheKey, reply);
+          chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+          ab(reply);
+          return;
+        }
+      }
+    } catch (e) {
+      // Continue to next model in cascade
+    }
+  }
+
+  if (!completed) {
+    completed = true;
+    clearTimeout(timeoutId);
+    hideTypingIndicator();
+    smartFallback(userText, isEng);
+  }
+}
+
 function smartFallback(t, isEng) {
   const l = t.toLowerCase().trim();
   let r = '';
   
-  // 1. Greetings & Pleasantries
   if (l.match(/^(hi|hello|hey|hie|helo|hola|howdy|good morning|good afternoon|good evening)/) || l.match(/how are you|how r u|kese ho|kaise ho|how do you do/)) {
-    if (isEng) {
-      r = "Hello! I am doing great, thank you for asking! 😊<br><br>I am **Hunarmand AI**, your smart digital assistant at Digital Hunarmand Hub. How can I guide you today? Feel free to ask about our **Purpose & Mission**, **Services**, **Online Courses**, **3-Month Internship**, or **Mentorship**!";
-    } else {
-      r = "Assalam-o-Alaikum! Main bilkul theek-thaak hoon, poochne ka shukriya! 😊<br><br>Main **Hunarmand AI** hoon. Aaj main aap ki kya madad kar sakta hoon? Aap hamare **Maqsad (Vision & Mission)**, **Digital Services**, **Online Courses**, ya **Internship** ke baray mein pooch sakte hain!";
-    }
+    r = isEng
+      ? "Hello! I'm doing great, thank you! 😊\n\nI am **Hunarmand AI**, your smart career counselor at Digital Hunarmand Hub. How can I guide you today? Feel free to ask about our **Services**, **Online Courses**, **3-Month Internship**, or **1-on-1 Mentorship**!"
+      : "Assalam-o-Alaikum! Main bilkul theek hoon, poochne ka shukriya! 😊\n\nMain **Hunarmand AI** hoon. Aaj main aap ki kya madad kar sakta hoon? Aap hamare **Vision & Mission**, **Digital Services**, **Online Courses**, ya **Internship Program** ke baray mein pooch sakte hain!";
   }
-  // 2. Purpose / Vision / Mission / About Us / What is Digital Hunarmand
-  else if (l.match(/purpose|mission|vision|goal|goals|aim|aims|objective|about|what is digital hunarmand|what do you do|why digital hunarmand|maqsad|contribution|contribution/)) {
-    if (isEng) {
-      r = "🎯 **The Purpose & Mission of Digital Hunarmand Hub:**<br><br>• **Our Vision:** To build a complete digital ecosystem empowering youth, students, and businesses with future-ready skills (AI, Design, Web, Marketing).<br>• **Our Mission:** To bridge the gap between academic education and high-paying digital jobs through practical live training, verified internships, and global agency services.<br>• **Our Contribution:** Actively conducting digital awareness sessions in schools/institutes and training skilled teams across Pakistan.<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>Connect with Leadership on WhatsApp ↗</a>";
-    } else {
-      r = "🎯 **Digital Hunarmand Hub ka Maqsad (Vision & Mission):**<br><br>• **Hamara Vision:** Pakistan ke naujawano aur businesses ko modern digital skills (AI, Web, Design, Marketing) se aagay barhana.<br>• **Hamara Mission:** Practical hands-on training, live Google Meet classes aur real-client internships ke zariye youth ko independent aur earning-ready banana.<br>• **Hamari Khidmaat:** Schools aur colleges mein digital awareness workshops conduct karna aur skilled teams build karna.<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>WhatsApp par Mazeed Maloomat Lein ↗</a>";
-    }
+  else if (l.match(/purpose|mission|vision|goal|goals|aim|aims|objective|about|what is digital hunarmand|what do you do|why digital hunarmand|maqsad/)) {
+    r = isEng
+      ? "🎯 **Digital Hunarmand Hub Vision & Mission:**\n\n• **Vision:** Building a future-ready digital ecosystem across Pakistan empowering youth with AI, Web, Design & Marketing skills.\n• **Mission:** Bridging academic education with high-income global remote careers via practical live training & certified internships.\n\n[Connect on WhatsApp](https://wa.me/923485168409)"
+      : "🎯 **Digital Hunarmand Hub ka Maqsad (Vision & Mission):**\n\n• **Hamara Vision:** Pakistan ke naujawano ko modern digital skills (AI, Web, Design, Marketing) se aagay barhana.\n• **Hamara Mission:** Practical live training aur verified internships ke zariye youth ko independent aur earning-ready banana.\n\n[WhatsApp par Rabta Karein](https://wa.me/923485168409)";
   }
-  // 3. Identity / Who are you
   else if (l.match(/who are you|what are you|ap kon ho|aap kaun ho|your name|naam kya hai/)) {
-    if (isEng) {
-      r = "I'm **Hunarmand AI**, the official AI counselor and assistant for **Digital Hunarmand Hub**! I'm here 24/7 to guide you through courses, internships, project inquiries, and career roadmaps.";
-    } else {
-      r = "Main **Hunarmand AI** hoon, **Digital Hunarmand Hub** ka official smart assistant! Main 24/7 yahan hoon aapko courses, internships, digital services aur freelancing mein guide karne ke liye.";
-    }
+    r = isEng
+      ? "I am **Hunarmand AI**, the official intelligent digital assistant and career counselor for **Digital Hunarmand Hub**! I am here 24/7 to guide you through courses, internships, project inquiries, and career roadmaps."
+      : "Main **Hunarmand AI** hoon, **Digital Hunarmand Hub** ka official smart assistant! Main 24/7 hazir hoon aapko courses, internships, digital services aur freelancing mein guide karne ke liye.";
   }
-  // 4. Course Guidance & Selection
   else if (l.match(/which course|konsa course|suggest|recommend|beginner|kya seekhu|kya karu|best course/)) {
-    if (isEng) {
-      r = "Here is how to pick the right course for your career:<br><br>🎨 **Choose Graphic Design** if you love creativity, visual art, branding, and logo design (High demand on Fiverr/Upwork).<br>📈 **Choose Digital Marketing & SEO** if you want to master online business growth, Facebook/Google ads, and organic SEO ranking.<br><br>💡 *Both courses feature Live Google Meet classes, a 3-Month Internship with real projects, and verified certificates!*<br><br><a href='https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform' target='_blank' class='c-action-btn'>Register on Google Form ↗</a>";
-    } else {
-      r = "Aap apne shoq ke mutabiq best course chun sakte hain:<br><br>🎨 **Graphic Design:** Agar aap visual creativity, logos, banners aur branding seekhna chahte hain.<br>📈 **Digital Marketing & SEO:** Agar aap online business growth, ads chalana aur SEO se ranking seekhna chahte hain.<br><br>💡 *Dono courses mein Live Google Meet classes, 3-Month Internship aur verified certificate shamil hai!*<br><br><a href='https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform' target='_blank' class='c-action-btn'>Course ke liye Register Karein ↗</a>";
-    }
+    r = isEng
+      ? "Here is how to choose the best track for you:\n\n🎨 **Graphic Design:** Perfect if you love visual creativity, branding, UI, and logo design (High demand on Fiverr/Upwork).\n📈 **Digital Marketing & SEO:** Master Facebook/Google Ads, SEO, and client acquisition for business growth.\n\n💡 *Both courses include Live Google Meet classes, 3-Month Internship, and verified certificate!*\n\n[Register for Course](https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform)"
+      : "Aap apne shoq ke mutabiq best course chun sakte hain:\n\n🎨 **Graphic Design:** Agar aap visual creativity, logos aur branding seekhna chahte hain.\n📈 **Digital Marketing & SEO:** Agar aap online ads, SEO aur client acquisition seekhna chahte hain.\n\n💡 *Dono courses mein Live Google Meet classes, 3-Month Internship aur certificate shamil hai!*\n\n[Course Form Fill Karein](https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform)";
   }
-  // 5. Fees / Pricing / Cost
   else if (l.match(/fee|fees|cost|price|pricing|kitne paise|kitni fees|charges|rate|payment|easypaisa|jazzcash|installment/)) {
-    if (isEng) {
-      r = "Our courses and internship programs are offered at highly student-friendly, affordable fees with easy installment options!<br><br>For the exact fee breakdown, discount vouchers, and EasyPaisa/JazzCash/Bank details, reach out directly to our admissions team on WhatsApp:<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20please%20share%20the%20fee%20structure%20and%20payment%20details' target='_blank' class='c-action-btn'>Get Fee Structure on WhatsApp ↗</a>";
-    } else {
-      r = "Hamare tamam courses aur programs bohot affordable aur student-friendly fees par dastiyab hain sath mein aasan installment sahulat bhi mojood hai!<br><br>EasyPaisa, JazzCash ya Bank payment details aur discounts ke liye WhatsApp par admission desk se rabta karein:<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20please%20share%20the%20fee%20structure%20and%20payment%20details' target='_blank' class='c-action-btn'>WhatsApp par Fee Maloom Karein ↗</a>";
-    }
+    r = isEng
+      ? "Our courses and internship programs are offered at highly affordable, student-friendly rates with easy installment options!\n\nFor exact fee breakdown, discount vouchers, and EasyPaisa/JazzCash details, contact our admissions desk:\n\n[Get Fee Structure on WhatsApp](https://wa.me/923485168409?text=Hi%2C%20please%20share%20the%20fee%20structure%20and%20payment%20details)"
+      : "Hamare tamam courses bohot affordable aur student-friendly fees par dastiyab hain sath mein aasan installment sahulat bhi mojood hai!\n\nEasyPaisa, JazzCash ya Bank payment details aur discounts ke liye WhatsApp par admission desk se rabta karein:\n\n[WhatsApp par Fee Maloom Karein](https://wa.me/923485168409?text=Hi%2C%20please%20share%20the%20fee%20structure%20and%20payment%20details)";
   }
-  // 6. Courses Info
   else if (l.match(/course|class|admission|graphic design|digital marketing|classes|timing|duration|syllabus/)) {
-    if (isEng) {
-      r = "Admissions are currently **OPEN** for Batch 2026:<br><br>1. **Graphic Design** (Theory, Practical Tools, Real Projects, Color Systems, Portfolio)<br>2. **Digital Marketing & SEO** (SMM, Meta/Google Ads, SEO & Freelancing Roadmap)<br><br>✓ Live Google Meet Classes<br>✓ 3-Month Hands-on Internship Included<br>✓ Official Verified Certificate<br><br><a href='https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform' target='_blank' class='c-action-btn'>Register on Google Form ↗</a>";
-    } else {
-      r = "Hamare **2 Online Courses** ke admissions open hain:<br><br>1. **Graphic Design** (Fundamentals, Hands-on practice, Real client projects, Portfolio)<br>2. **Digital Marketing & SEO** (SMM, Ads campaigns, SEO, Freelancing roadmap)<br><br>✓ Live Google Meet Classes<br>✓ 3-Month Internship Shamil Hai<br>✓ Verified Certificate<br><br><a href='https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform' target='_blank' class='c-action-btn'>Google Form par Apply Karein ↗</a>";
-    }
+    r = isEng
+      ? "Admissions are currently **OPEN** for Batch 2026:\n\n1. **Graphic Design** (Theory, Practical Tools, Real Projects, Portfolio)\n2. **Digital Marketing & SEO** (SMM, Meta/Google Ads, SEO & Freelancing)\n\n✓ Live Google Meet Classes\n✓ 3-Month Hands-on Internship Included\n✓ Official Verified Certificate\n\n[Register for Course](https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform)"
+      : "Hamare **2 Online Courses** ke admissions open hain:\n\n1. **Graphic Design** (Fundamentals, Hands-on practice, Real client projects, Portfolio)\n2. **Digital Marketing & SEO** (SMM, Ads campaigns, SEO, Freelancing roadmap)\n\n✓ Live Google Meet Classes\n✓ 3-Month Internship Shamil Hai\n✓ Verified Certificate\n\n[Google Form par Apply Karein](https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform)";
   }
-  // 7. Internship Program
   else if (l.match(/intern|internship|experience|training/)) {
-    if (isEng) {
-      r = "Our **3-Month Professional Internship Program 2026** helps learners build a solid career:<br><br>✓ Real Client Live Projects<br>✓ Professional Mentorship & Feedback<br>✓ Strong Freelancing Portfolio Building<br>✓ Verified Completion Certificate<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%203-Month%20Internship%20Program' target='_blank' class='c-action-btn'>Apply for Internship on WhatsApp ↗</a>";
-    } else {
-      r = "Hamara **3-Month Professional Internship Program 2026** students aur freshers ke liye practical career stepping stone hai:<br><br>✓ Real client live projects par practical kaam<br>✓ Professional portfolio aur CV building<br>✓ Verified Internship Certificate<br>✓ Mentorship & guidance<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%203-Month%20Internship%20Program' target='_blank' class='c-action-btn'>WhatsApp par Internship Apply Karein ↗</a>";
-    }
+    r = isEng
+      ? "Our **3-Month Professional Internship Program 2026** helps learners build a solid career:\n\n✓ Real Client Live Projects\n✓ Professional Mentorship & Feedback\n✓ Strong Freelancing Portfolio\n✓ Verified Completion Certificate\n\n[Apply for Internship](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%203-Month%20Internship%20Program)"
+      : "Hamara **3-Month Professional Internship Program 2026** students aur freshers ke liye practical career stepping stone hai:\n\n✓ Real client live projects par practical kaam\n✓ Professional portfolio aur CV building\n✓ Verified Internship Certificate\n✓ Mentorship & guidance\n\n[WhatsApp par Internship Apply Karein](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%203-Month%20Internship%20Program)";
   }
-  // 8. Mentorship Program
   else if (l.match(/mentor|mentorship|1-on-1|consultation|career guidance/)) {
-    if (isEng) {
-      r = "Accelerate your career with our **1-on-1 Mentorship Program**:<br><br>✓ 1-on-1 personalized live coaching<br>✓ Portfolio & Resume audit<br>✓ Upwork, Fiverr & International client closing secrets<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20book%20a%201-on-1%20Mentorship%20Session' target='_blank' class='c-action-btn'>Book 1-on-1 Mentorship ↗</a>";
-    } else {
-      r = "Hamare **1-on-1 Mentorship Program** mein direct industry leader se one-on-one consultation milti hai:<br><br>✓ Portfolio aur Resume review<br>✓ Upwork aur Fiverr par international clients lene ka roadmap<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20book%20a%201-on-1%20Mentorship%20Session' target='_blank' class='c-action-btn'>Mentorship Session Book Karein ↗</a>";
-    }
+    r = isEng
+      ? "Accelerate your career with our **1-on-1 Mentorship Program**:\n\n✓ 1-on-1 personalized live coaching\n✓ Portfolio & Resume audit\n✓ Upwork & Fiverr client closing secrets\n\n[Book 1-on-1 Mentorship](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20book%20a%201-on-1%20Mentorship%20Session)"
+      : "Hamare **1-on-1 Mentorship Program** mein direct industry leader se one-on-one consultation milti hai:\n\n✓ Portfolio aur Resume review\n✓ Upwork aur Fiverr par international clients lene ka roadmap\n\n[Mentorship Session Book Karein](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20book%20a%201-on-1%20Mentorship%20Session)";
   }
-  // 9. Services (Web, App, AI, Video, Marketing)
   else if (l.match(/service|services|website|app|development|ui|ux|seo|marketing|video|ecommerce|amazon|python|data|client/)) {
-    if (isEng) {
-      r = "We provide **12 Top-Tier Digital Solutions**:<br><br>• **Web & App:** Custom Websites, Mobile Apps, AI Web Apps<br>• **Design & Media:** UI/UX Design, Graphic Design, Video Editing, Motion<br>• **Growth:** Digital Marketing, SEO, Social Media Ads, Branding<br>• **Tech & Data:** Python Data Analytics, Amazon E-Commerce<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20discuss%20a%20project%20for%20my%20business' target='_blank' class='c-action-btn'>Discuss Your Project on WhatsApp ↗</a>";
-    } else {
-      r = "Hum businesses aur startups ke liye **12 Professional Services** provide karte hain:<br><br>• **Web & App:** Custom Websites, Mobile Apps, AI Web Apps<br>• **Design & Video:** UI/UX Design, Graphic Design, Video Editing<br>• **Marketing & Growth:** Digital Marketing, SEO, Social Media Ads<br>• **Tech:** Python Data Analysis, Amazon E-Commerce<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20discuss%20a%20project%20for%20my%20business' target='_blank' class='c-action-btn'>WhatsApp par Project Discuss Karein ↗</a>";
-    }
+    r = isEng
+      ? "We provide **12 Top-Tier Digital Solutions**:\n\n• **Web & App:** Custom Websites, Mobile Apps, AI Web Apps\n• **Design & Media:** UI/UX Design, Graphic Design, Video Editing\n• **Growth:** Digital Marketing, SEO, Social Media Ads\n• **Tech & Data:** Python Data Analytics, Amazon E-Commerce\n\n[Discuss Your Project on WhatsApp](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20discuss%20a%20project%20for%20my%20business)"
+      : "Hum businesses aur startups ke liye **12 Professional Services** provide karte hain:\n\n• **Web & App:** Custom Websites, Mobile Apps, AI Web Apps\n• **Design & Video:** UI/UX Design, Graphic Design, Video Editing\n• **Marketing & Growth:** Digital Marketing, SEO, Social Media Ads\n• **Tech:** Python Data Analysis, Amazon E-Commerce\n\n[WhatsApp par Project Discuss Karein](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20discuss%20a%20project%20for%20my%20business)";
   }
-  // 10. Location / Office / Where are you
   else if (l.match(/location|where|address|office|city|kahan|swat|mingora|kpk/)) {
-    if (isEng) {
-      r = "📍 **Location & Reach:**<br><br>Digital Hunarmand Hub operates from **Swat, KPK, Pakistan (Fizagat, Mingora)** while providing live online training and digital agency services to clients & students globally!<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>Chat on WhatsApp ↗</a>";
-    } else {
-      r = "📍 **Hamari Location:**<br><br>Digital Hunarmand Hub **Fizagat, Mingora, Swat (KPK, Pakistan)** mein waqia hai, aur hum poori dunya ke students aur clients ko live online services aur training provide karte hain!<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>WhatsApp par Rabta Karein ↗</a>";
-    }
+    r = isEng
+      ? "📍 **Location & Reach:**\n\nDigital Hunarmand Hub operates from **Swat, KPK, Pakistan (Fizagat, Mingora)** while providing live online training and digital agency services globally!\n\n[Chat on WhatsApp](https://wa.me/923485168409)"
+      : "📍 **Hamari Location:**\n\nDigital Hunarmand Hub **Fizagat, Mingora, Swat (KPK, Pakistan)** mein waqia hai, aur hum poori dunya ke students aur clients ko live online services aur training provide karte hain!\n\n[WhatsApp par Rabta Karein](https://wa.me/923485168409)";
   }
-  // 11. Team & Leadership
   else if (l.match(/team|leadership|founder|ceo|director|nidal|geeto|arif|rizwan|owner/)) {
-    if (isEng) {
-      r = "Digital Hunarmand Hub leadership team:<br><br>• **Nidal Munir** — Founder & CEO<br>• **Geeto Shakeel** — Co-Founder & Director<br>• **Sayed Muhammad Arif Khan** — Team Leader<br>• **Muhammad Rizwan** — Administrator<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>Contact Our Leadership ↗</a>";
-    } else {
-      r = "Digital Hunarmand Hub ki leadership team:<br><br>• **Nidal Munir** — Founder & CEO<br>• **Geeto Shakeel** — Co-Founder & Director<br>• **Sayed Muhammad Arif Khan** — Team Leader<br>• **Muhammad Rizwan** — Administrator<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>Leadership se Rabta Karein ↗</a>";
-    }
+    r = isEng
+      ? "Digital Hunarmand Hub leadership team:\n\n• **Nidal Munir** — Founder & CEO\n• **Geeto Shakeel** — Co-Founder & Director\n• **Sayed Muhammad Arif Khan** — Team Leader\n• **Muhammad Rizwan** — Administrator\n\n[Contact Leadership](https://wa.me/923485168409)"
+      : "Digital Hunarmand Hub ki leadership team:\n\n• **Nidal Munir** — Founder & CEO\n• **Geeto Shakeel** — Co-Founder & Director\n• **Sayed Muhammad Arif Khan** — Team Leader\n• **Muhammad Rizwan** — Administrator\n\n[Leadership se Rabta Karein](https://wa.me/923485168409)";
   }
-  // 12. Hiring / Jobs
   else if (l.match(/hire|hiring|job|jobs|vacancy|admin|apply for job/)) {
-    if (isEng) {
-      r = "We are currently hiring for **Admin Roles**:<br>• Facebook Page Admin<br>• WhatsApp Community Admin<br>• WhatsApp Group Admin<br>• WhatsApp Channel Admin<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20an%20Admin%20position' target='_blank' class='c-action-btn'>Apply for Admin Role on WhatsApp ↗</a>";
-    } else {
-      r = "Hum **Admin Positions** ke liye hiring kar rahe hain:<br>• Facebook Page Admin<br>• WhatsApp Community Admin<br>• WhatsApp Group Admin<br>• WhatsApp Channel Admin<br><br><a href='https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20an%20Admin%20position' target='_blank' class='c-action-btn'>Job ke liye WhatsApp par Apply Karein ↗</a>";
-    }
+    r = isEng
+      ? "We are currently hiring for **Admin Roles**:\n• Facebook Page Admin\n• WhatsApp Community Admin\n• WhatsApp Group Admin\n• WhatsApp Channel Admin\n\n[Apply for Admin Role](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20an%20Admin%20position)"
+      : "Hum **Admin Positions** ke liye hiring kar rahe hain:\n• Facebook Page Admin\n• WhatsApp Community Admin\n• WhatsApp Group Admin\n• WhatsApp Channel Admin\n\n[Job ke liye Apply Karein](https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20an%20Admin%20position)";
   }
-  // 13. Contact & Support
   else if (l.match(/contact|phone|whatsapp|email|number|call|rabta/)) {
-    if (isEng) {
-      r = "Connect with Digital Hunarmand Hub directly:<br><br>📞 **WhatsApp / Phone:** +92 348 5168409<br>📧 **Email:** digitalhunarmand1@gmail.com<br>⚡ **Guaranteed Reply:** Within 60 minutes!<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>Chat on WhatsApp Now ↗</a>";
-    } else {
-      r = "Direct rabtay ki details:<br><br>📞 **WhatsApp / Phone:** +92 348 5168409<br>📧 **Email:** digitalhunarmand1@gmail.com<br>⚡ **Response Time:** 1 ghantay ke andar pakka jawab!<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>WhatsApp par Direct Message Bhejein ↗</a>";
-    }
+    r = isEng
+      ? "Connect with Digital Hunarmand Hub directly:\n\n📞 **WhatsApp / Phone:** +92 348 5168409\n📧 **Email:** digitalhunarmand1@gmail.com\n⚡ **Guaranteed Reply:** Within 60 minutes!\n\n[Chat on WhatsApp Now](https://wa.me/923485168409)"
+      : "Direct rabtay ki details:\n\n📞 **WhatsApp / Phone:** +92 348 5168409\n📧 **Email:** digitalhunarmand1@gmail.com\n⚡ **Response Time:** 1 ghantay ke andar pakka jawab!\n\n[WhatsApp par Direct Rabta](https://wa.me/923485168409)";
   }
-  // 14. Fallback / General
   else {
-    if (isEng) {
-      r = "I'm here to help you with everything at Digital Hunarmand Hub! You can ask me about:<br>• **Purpose & Mission** of Digital Hunarmand<br>• **12 Professional Services** (Web, App, SEO, AI, Design)<br>• **Online Courses** (Graphic Design & Digital Marketing)<br>• **3-Month Internship Program 2026**<br>• **1-on-1 Mentorship & Career Guidance**<br><br>Or chat directly with our team on WhatsApp:<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>WhatsApp: +92 348 5168409 ↗</a>";
-    } else {
-      r = "Main Digital Hunarmand Hub par aapki mukammal rehnumai ke liye hazir hoon! Aap mujh se pooch sakte hain:<br>• **Digital Hunarmand ka Maqsad aur Vision**<br>• **12 Digital Services** (Web, App, Design, SEO, Video)<br>• **Live Online Courses** (Graphic Design aur Digital Marketing)<br>• **3-Month Internship Program 2026**<br>• **1-on-1 Career Mentorship**<br><br>Direct hamari team se WhatsApp par rabta karein:<br><br><a href='https://wa.me/923485168409' target='_blank' class='c-action-btn'>WhatsApp: +92 348 5168409 ↗</a>";
-    }
+    r = isEng
+      ? "I'm here to help you with everything at Digital Hunarmand Hub! You can ask me about:\n• **Purpose & Mission** of Digital Hunarmand\n• **12 Professional Services** (Web, App, SEO, AI, Design)\n• **Online Courses** (Graphic Design & Digital Marketing)\n• **3-Month Internship Program 2026**\n• **1-on-1 Mentorship & Career Guidance**\n\n[Chat on WhatsApp: +92 348 5168409](https://wa.me/923485168409)"
+      : "Main Digital Hunarmand Hub par aapki mukammal rehnumai ke liye hazir hoon! Aap mujh se pooch sakte hain:\n• **Digital Hunarmand ka Maqsad aur Vision**\n• **12 Digital Services** (Web, App, Design, SEO, Video)\n• **Live Online Courses** (Graphic Design aur Digital Marketing)\n• **3-Month Internship Program 2026**\n• **1-on-1 Career Mentorship**\n\n[WhatsApp par Rabta: +92 348 5168409](https://wa.me/923485168409)";
   }
+  
+  _chatCache.set(l, r);
   ab(r);
 }
 
