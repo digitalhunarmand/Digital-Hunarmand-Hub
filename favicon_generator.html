@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Favicon Generator - Digital Hunarmand</title>
+<style>
+  body { font-family: sans-serif; background: #0f172a; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; gap: 20px; }
+  h2 { color: #60a5fa; }
+  canvas { border: 2px solid #334155; border-radius: 8px; }
+  button { background: #3B5BFF; color: #fff; border: none; padding: 14px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; }
+  button:hover { background: #2942d6; }
+  #status { color: #22D3EE; font-size: 14px; }
+  .preview { display: flex; gap: 32px; align-items: center; }
+  .preview-box { text-align: center; }
+  .preview-box p { margin: 8px 0 0; font-size: 13px; color: #94a3b8; }
+</style>
+</head>
+<body>
+<h2>🎨 Favicon Round Corner Generator</h2>
+<p id="status">favicon.png load ho rahi hai...</p>
+
+<div class="preview">
+  <div class="preview-box">
+    <canvas id="original" width="128" height="128"></canvas>
+    <p>Original</p>
+  </div>
+  <div class="preview-box">
+    <canvas id="rounded" width="512" height="512"></canvas>
+    <p>Rounded (512×512)</p>
+  </div>
+  <div class="preview-box">
+    <canvas id="small" width="32" height="32"></canvas>
+    <p>Tab Preview (32×32)</p>
+  </div>
+</div>
+
+<button onclick="downloadFavicon()">⬇️ Download favicon.png (Rounded)</button>
+
+<script>
+const img = new Image();
+img.onload = function() {
+  document.getElementById('status').textContent = '✅ Image loaded! Preview dekho aur download karo.';
+
+  // Original preview
+  const origCtx = document.getElementById('original').getContext('2d');
+  origCtx.drawImage(img, 0, 0, 128, 128);
+
+  // Rounded 512x512
+  const size = 512;
+  const radius = 90;
+  const c = document.getElementById('rounded');
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, size, size);
+  roundedRect(ctx, size, radius);
+  ctx.clip();
+  ctx.drawImage(img, 0, 0, size, size);
+
+  // Small 32x32 preview
+  const sc = document.getElementById('small');
+  const sctx = sc.getContext('2d');
+  sctx.clearRect(0, 0, 32, 32);
+  roundedRect(sctx, 32, 6);
+  sctx.clip();
+  sctx.drawImage(img, 0, 0, 32, 32);
+};
+
+img.onerror = function() {
+  document.getElementById('status').textContent = '❌ favicon.png load nahi hui — same folder mein honi chahiye!';
+};
+
+img.src = 'favicon.png';
+
+function roundedRect(ctx, size, r) {
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.arcTo(size, 0, size, size, r);
+  ctx.arcTo(size, size, 0, size, r);
+  ctx.arcTo(0, size, 0, 0, r);
+  ctx.arcTo(0, 0, size, 0, r);
+  ctx.closePath();
+}
+
+function downloadFavicon() {
+  const c = document.getElementById('rounded');
+  const link = document.createElement('a');
+  link.download = 'favicon.png';
+  link.href = c.toDataURL('image/png');
+  link.click();
+  document.getElementById('status').textContent = '✅ Download ho gayi! Ab downloaded favicon.png ko replace karo.';
+}
+</script>
+</body>
+</html>
