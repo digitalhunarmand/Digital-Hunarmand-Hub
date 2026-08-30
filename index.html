@@ -507,28 +507,32 @@ img{max-width:100%;display:block}
 }
 
 @media(max-width:768px){
-  .sw{padding:60px 18px}
-  .st{font-size:clamp(26px,5.5vw,36px);letter-spacing:-.8px}
-  .ss{font-size:14.5px;line-height:1.7}
+  .sw{padding:50px 18px}
+  .st{font-size:clamp(24px,6vw,34px);letter-spacing:-.8px}
+  .ss{font-size:14px;line-height:1.7}
   
   /* Hero Mobile */
-  .hero{min-height:auto;padding:32px 0 44px;background-position:center top}
-  .hero-in{padding:0 18px;text-align:left;justify-content:flex-start}
-  .hero-left{align-items:flex-start;text-align:left;max-width:100%}
-  .hero-h1{font-size:clamp(28px,7.5vw,40px);line-height:1.2;margin-bottom:20px;letter-spacing:-.8px}
-  .hero-badge{margin-bottom:18px;padding:6px 14px;font-size:11px}
-  .hero-p{margin-bottom:24px;font-size:14.5px;line-height:1.65}
-  .hero-btns{flex-direction:column;align-items:stretch;width:100%;gap:12px}
-  .btn-blue,.btn-out{width:100%;justify-content:center;text-align:center;padding:13px 20px;font-size:14px}
+  .hero{min-height:auto;padding:84px 0 44px;background:linear-gradient(180deg, #f8faff 0%, #edf2ff 100%);position:relative}
+  .hero-in{padding:0 18px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center}
+  .hero-left{align-items:center;text-align:center;max-width:100%}
+  .hero-h1{font-size:clamp(26px,7vw,38px);line-height:1.2;margin-bottom:20px;letter-spacing:-.8px;text-align:center}
+  .hero-badge{margin-bottom:16px;padding:6px 16px;font-size:11.5px}
+  .hero-p{margin-bottom:24px;font-size:14.5px;line-height:1.65;text-align:center}
+  .hero-btns{flex-direction:column;align-items:stretch;width:100%;max-width:360px;margin:0 auto;gap:12px}
+  .btn-blue,.btn-out{width:100%;justify-content:center;text-align:center;padding:14px 20px;font-size:14.5px;border-radius:14px;min-height:50px}
+  .hero-trust{justify-content:center;gap:16px;margin-top:8px}
   
   /* About & Numbers */
   .about-stat-box{padding:24px 18px;border-radius:20px;margin-top:28px}
-  .stat-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .stat-item{padding:18px 12px;border-radius:14px}
   .stat-num{font-size:clamp(28px,7vw,38px)}
   .stat-label{font-size:11.5px;line-height:1.4}
   
   /* Grids */
   .svc-grid,.vmc-grid{grid-template-columns:1fr;gap:16px}
+  .svc-card{padding:22px 18px;border-radius:18px}
+  .svc-ico{width:54px;height:54px;margin-bottom:16px}
   .mentor-grid{grid-template-columns:1fr;gap:16px}
   .mentor-card{padding:24px 20px;border-radius:18px}
   .mentor-cta{flex-direction:column;text-align:center;padding:28px 20px;border-radius:20px;gap:20px}
@@ -545,8 +549,8 @@ img{max-width:100%;display:block}
   .partner-reps-grid{grid-template-columns:1fr;gap:12px}
   
   /* Leadership & Team */
-  .lead-grid{grid-template-columns:1fr;gap:18px}
-  .lead-card{padding:24px 18px;border-radius:20px}
+  .lead-grid{grid-template-columns:1fr;gap:20px;max-width:440px;margin:0 auto 20px}
+  .lead-card{border-radius:20px}
   .team-grid{grid-template-columns:1fr;gap:16px}
   
   /* Courses & Internships */
@@ -588,16 +592,15 @@ img{max-width:100%;display:block}
 }
 
 /* ── MENTORSHIP POSTER POPUP ── */
-.popup-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;opacity:0;animation:popoverIn .4s ease forwards}
+.popup-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;opacity:0;animation:popoverIn .4s ease forwards}
 @keyframes popoverIn{to{opacity:1}}
-.popup-box{background:#fff;border-radius:24px;max-width:min(440px,calc(100vw - 32px));width:100%;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:popboxIn .4s ease both;transform:scale(.92) translateY(20px);overflow:hidden}
+.popup-box{background:#fff;border-radius:24px;max-width:min(460px,calc(100vw - 32px));width:100%;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.45);animation:popboxIn .4s ease both;transform:scale(.92) translateY(20px);overflow:hidden;border:1.5px solid rgba(255,255,255,0.2)}
 @keyframes popboxIn{to{transform:scale(1) translateY(0)}}
-.popup-close{position:absolute;top:12px;right:12px;width:34px;height:34px;background:rgba(15,23,42,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:#ffffff;transition:all .2s;z-index:10}
+.popup-close{position:absolute;top:12px;right:12px;width:34px;height:34px;background:rgba(15,23,42,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:#ffffff;transition:all .2s;z-index:10}
 .popup-close:hover{background:rgba(239,68,68,0.9);border-color:transparent;transform:scale(1.1)}
-.popup-poster-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#0f172a}
-.popup-poster-img{width:100%;height:100%;object-fit:cover;display:block}
+.popup-poster-wrap{position:relative;width:100%;overflow:hidden}
 .popup-poster-btns{display:flex;gap:10px;padding:14px 18px 18px;background:#ffffff;border-top:1px solid #f1f5f9}
-.popup-poster-btns a{flex:1;text-align:center;padding:12px 14px;border-radius:12px;font-size:13.5px;font-weight:700;transition:all .25s ease;display:inline-flex;align-items:center;justify-content:center}
+.popup-poster-btns a{flex:1;text-align:center;padding:13px 14px;border-radius:12px;font-size:13.5px;font-weight:700;transition:all .25s ease;display:inline-flex;align-items:center;justify-content:center}
 .popup-apply{background:linear-gradient(135deg,#3B5BFF,#2563eb);color:#fff;box-shadow:0 4px 16px rgba(59,91,255,.3)}
 .popup-apply:hover{background:linear-gradient(135deg,#2563eb,#1d4ed8);transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,91,255,.4)}
 .popup-later{background:#f8fafc;color:#64748b;border:1px solid #e2e8f0}
@@ -700,12 +703,12 @@ img{max-width:100%;display:block}
 .lead-card{background:linear-gradient(160deg,#0d1b3e 0%,#0f2060 60%,#162b6e 100%);border:1.5px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;position:relative;transition:all .35s;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,.25)}
 .lead-card:hover,.lead-card.tapped{transform:translateY(-6px);box-shadow:0 16px 48px rgba(59,91,255,.3);border-color:rgba(59,91,255,.35)}
 .lead-card-photo{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a1535 0%,#132060 100%)}
-.lead-card-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .4s}
+.lead-card-photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;transition:transform .4s}
 .lead-card:hover .lead-card-photo img{transform:scale(1.04)}
 .lead-card-silhouette{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:0}
 .lead-card-silhouette svg{width:70%;height:auto;opacity:.22;filter:blur(0.5px)}
-.lead-focus-chip{position:absolute;top:14px;left:14px;background:#fff;color:#0f172a;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border-radius:8px;padding:6px 11px;box-shadow:0 2px 8px rgba(0,0,0,.18);line-height:1.3}
-.lead-focus-chip span{display:block;font-size:7.5px;font-weight:600;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:1px}
+.lead-focus-chip{position:absolute;bottom:12px;left:12px;right:12px;background:rgba(10,21,53,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:1px;border-radius:10px;padding:6px 10px;box-shadow:0 4px 16px rgba(0,0,0,.35);line-height:1.3;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:space-between}
+.lead-focus-chip span{display:inline-block;font-size:8px;font-weight:800;color:#67e8f9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0;background:rgba(6,182,212,0.25);padding:2px 6px;border-radius:4px}
 .lead-card-info{padding:18px 18px 20px;position:relative}
 .lead-card-info h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;letter-spacing:-.3px}
 .lead-card-info small{font-size:11.5px;color:rgba(255,255,255,.5);font-weight:500}
@@ -722,7 +725,7 @@ img{max-width:100%;display:block}
 .team-section-title span.sl{display:block;margin-bottom:6px}
 .team-section-title h3{font-size:22px;font-weight:800;color:#0f172a;letter-spacing:-.5px}
 @media(max-width:1100px){.lead-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:540px){.lead-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+@media(max-width:540px){.lead-grid{grid-template-columns:1fr;gap:18px}}
 
 /* ── TEAM PROFILE MODAL ── */
 .tm-overlay{position:fixed;inset:0;background:rgba(8,11,22,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease}
@@ -777,8 +780,8 @@ img{max-width:100%;display:block}
 }
 .preloader-inner {
   position: relative;
-  width: 80%;
-  max-width: 900px;
+  width: 86%;
+  max-width: 860px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -786,19 +789,75 @@ img{max-width:100%;display:block}
 #preloader video {
   width: 100%;
   height: auto;
-  max-width: 900px;
+  max-width: 860px;
   object-fit: contain;
   background: #ffffff;
 }
+.preloader-skip-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000000;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+.preloader-skip-btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  transform: scale(1.04);
+}
+
+/* ── MENTORSHIP & INTERNSHIP SHOWCASE COMPONENTS ── */
+.mentor-showcase-box{background:linear-gradient(135deg,#070e28 0%,#111d4e 45%,#1f124a 100%);border-radius:24px;padding:40px 36px;color:#fff;border:1.5px solid rgba(255,255,255,0.12);box-shadow:0 24px 60px rgba(7,14,40,0.35);position:relative;overflow:hidden}
+.mentor-showcase-box::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.08) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.ms-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,91,255,0.25);border:1px solid rgba(59,91,255,0.45);color:#93c5fd;padding:6px 16px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+.ms-title{font-size:clamp(22px,3.2vw,34px);font-weight:800;line-height:1.2;margin-bottom:16px;letter-spacing:-0.8px}
+.ms-desc{font-size:14.5px;color:#cbd5e1;line-height:1.75;max-width:720px;margin-bottom:32px}
+.ms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;position:relative;z-index:1;margin-bottom:28px}
+.ms-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(8px);border-radius:16px;padding:20px;display:flex;align-items:flex-start;gap:14px;transition:all .3s ease}
+.ms-card:hover{background:rgba(255,255,255,0.12);border-color:rgba(96,165,250,0.5);transform:translateY(-2px)}
+.ms-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ms-card strong{display:block;font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.ms-card p{font-size:12.5px;color:#94a3b8;line-height:1.5;margin:0}
+.ms-footer-pills{display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:relative;z-index:1}
+.ms-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;color:#e0e7ff;display:inline-flex;align-items:center;gap:6px}
+@media(max-width:768px){
+  .mentor-showcase-box{padding:26px 20px;border-radius:20px}
+  .ms-grid{grid-template-columns:1fr;gap:12px}
+  .ms-card{padding:16px}
+}
+
+.int-perks-card{background:linear-gradient(135deg,#0c1d47 0%,#152b68 100%);border-radius:24px;padding:34px 28px;color:#fff;border:1.5px solid rgba(255,255,255,0.12);box-shadow:0 18px 48px rgba(12,29,71,0.3)}
+.int-perks-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.12)}
+.int-perks-head strong{font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px}
+.int-perks-head span{font-size:11px;font-weight:800;color:#86efac;background:rgba(34,197,94,0.2);border:1px solid rgba(34,197,94,0.35);padding:4px 12px;border-radius:50px;letter-spacing:1px;text-transform:uppercase}
+.int-perks-list{display:flex;flex-direction:column;gap:12px}
+.int-perk-item{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:#e2e8f0;line-height:1.55}
+.int-perk-check{width:20px;height:20px;border-radius:50%;background:rgba(59,91,255,0.3);border:1.5px solid #60a5fa;display:flex;align-items:center;justify-content:center;color:#93c5fd;flex-shrink:0;margin-top:2px}
+@media(max-width:768px){.int-perks-card{padding:24px 18px;border-radius:20px}}
 
 </style>
 </head>
 <body>
 
-<!-- LOADING PRELOADER ANIMATION (10 SECONDS) -->
+<!-- LOADING PRELOADER ANIMATION (7 SECONDS) -->
 <div id="preloader">
+  <button id="preloaderSkip" class="preloader-skip-btn" aria-label="Skip Loading">Skip ➔</button>
   <div class="preloader-inner">
-    <video id="loadingVideo" autoplay muted playsinline preload="auto">
+    <video id="loadingVideo" autoplay muted playsinline loop preload="auto">
       <source src="loading animation.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -890,18 +949,29 @@ img{max-width:100%;display:block}
       </div>
     </div>
     <div class="svc-grid">
-      <div class="svc-card reveal"><div class="svc-ico ic-b"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_web_dev_1788002769907.jpg" alt="Web Dev 3D Icon"/></div><div class="svc-num">01</div><h3>Website Design &amp; Development</h3><p>Fast, modern, mobile-friendly websites tailored to your brand.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-p"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_app_dev_1788002795675.jpg" alt="App Dev 3D Icon"/></div><div class="svc-num">02</div><h3>Mobile App Development</h3><p>iOS and Android apps built for performance and great UX.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-pk"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_graphic_design_1788003099003.jpg" alt="Graphic Design 3D Icon"/></div><div class="svc-num">03</div><h3>Graphic Design</h3><p>Logos, social posts, and branding that make you stand out.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-c"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_uiux_design_1788003128771.jpg" alt="UI/UX 3D Icon"/></div><div class="svc-num">04</div><h3>UI/UX Design</h3><p>Intuitive, beautiful interfaces users love to interact with.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-b"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_social_media_1788003160411.jpg" alt="Social Media 3D Icon"/></div><div class="svc-num">05</div><h3>Social Media Management</h3><p>Consistent content and strategy to grow your online presence.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-o"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_video_editing_3d_1788004465573.jpg" alt="Video Editing 3D Icon"/></div><div class="svc-num">06</div><h3>Video Editing &amp; Motion</h3><p>Engaging videos and motion graphics for every platform.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-p"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_branding_3d_1788004501879.jpg" alt="Branding 3D Icon"/></div><div class="svc-num">07</div><h3>Branding &amp; Identity</h3><p>Complete brand systems that tell your story professionally.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-g"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_marketing_seo_3d_1788004538711.jpg" alt="Marketing &amp; SEO 3D Icon"/></div><div class="svc-num">08</div><h3>Digital Marketing &amp; SEO</h3><p>Drive real traffic and leads with proven strategies.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-b"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_msoffice_data_3d_1788004577316.jpg" alt="MS Office 3D Icon"/></div><div class="svc-num">09</div><h3>MS Office &amp; Data Entry</h3><p>Word, Excel, PowerPoint and data entry services.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-c"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_ai_website_3d_1788004638377.jpg" alt="AI Website 3D Icon"/></div><div class="svc-num">10</div><h3>Website With AI</h3><p>AI-powered websites built for the modern landscape.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-g"><img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/svc_python_data_3d_1788004683850.jpg" alt="Python Data 3D Icon"/></div><div class="svc-num">11</div><h3>Python Data Analysis</h3><p>Data insights and automation using Python and analytics.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
-      <div class="svc-card reveal"><div class="svc-ico ic-b" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="bgGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f1f5f9"/></linearGradient><linearGradient id="cartGrad" x1="15" y1="20" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3B5BFF"/><stop offset="50%" stop-color="#8B3EF2"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient><linearGradient id="boxGrad" x1="30" y1="25" x2="70" y2="55" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#ea580c"/></linearGradient><filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3B5BFF" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="2"/><g filter="url(#shadow3d)" transform="translate(2, 2)"><path d="M22 28h12l6 28h38l8-22H36" stroke="url(#cartGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M44 26 L64 16 L80 26 L60 36 Z" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/><path d="M44 26 L60 36 L60 52 L44 42 Z" fill="url(#boxGrad)"/><path d="M60 36 L80 26 L80 42 L60 52 Z" fill="#b45309"/><path d="M48 38 c5 3 9 2 11 0" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M57 37 l3 2 l-1 -3" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="44" cy="64" r="6" fill="#3B5BFF"/><circle cx="44" cy="64" r="2.5" fill="#ffffff"/><circle cx="72" cy="64" r="6" fill="#8B3EF2"/><circle cx="72" cy="64" r="2.5" fill="#ffffff"/></g></svg></div><div class="svc-num">12</div><h3>Amazon E-Commerce</h3><p>Amazon store setup, listings and e-commerce management.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="webBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient><linearGradient id="webGrad" x1="15" y1="20" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3B5BFF"/><stop offset="50%" stop-color="#8B3EF2"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient><filter id="webShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3B5BFF" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#webBg)" stroke="#dbeafe" stroke-width="2"/><g filter="url(#webShad)"><rect x="18" y="22" width="64" height="46" rx="8" fill="#ffffff" stroke="url(#webGrad)" stroke-width="3"/><path d="M18 34 h64" stroke="#e2e8f0" stroke-width="2"/><circle cx="26" cy="28" r="2.5" fill="#ef4444"/><circle cx="33" cy="28" r="2.5" fill="#f59e0b"/><circle cx="40" cy="28" r="2.5" fill="#10b981"/><path d="M38 44 L30 51 L38 58" stroke="url(#webGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 44 L70 51 L62 58" stroke="url(#webGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M53 42 L47 60" stroke="#3B5BFF" stroke-width="3" stroke-linecap="round"/><path d="M36 68 L32 78 h36 l-4 -10" fill="url(#webGrad)" opacity="0.9"/></g></svg></div><div class="svc-num">01</div><h3>Website Design &amp; Development</h3><p>Fast, modern, mobile-friendly websites tailored to your brand.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="appBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f5f3ff"/></linearGradient><linearGradient id="appGrad" x1="20" y1="15" x2="80" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8B3EF2"/><stop offset="50%" stop-color="#3B5BFF"/><stop offset="100%" stop-color="#ec4899"/></linearGradient><filter id="appShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#8B3EF2" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#appBg)" stroke="#ddd6fe" stroke-width="2"/><g filter="url(#appShad)"><rect x="28" y="16" width="44" height="68" rx="10" fill="#ffffff" stroke="url(#appGrad)" stroke-width="3.5"/><path d="M42 22 h16" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/><rect x="34" y="30" width="14" height="14" rx="4" fill="#3B5BFF"/><rect x="52" y="30" width="14" height="14" rx="4" fill="#8B3EF2"/><rect x="34" y="48" width="14" height="14" rx="4" fill="#ec4899"/><rect x="52" y="48" width="14" height="14" rx="4" fill="#22D3EE"/><circle cx="50" cy="74" r="4" fill="url(#appGrad)"/></g></svg></div><div class="svc-num">02</div><h3>Mobile App Development</h3><p>iOS and Android apps built for performance and great UX.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="gdBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#fdf2f8"/></linearGradient><linearGradient id="gdGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ec4899"/><stop offset="50%" stop-color="#8B3EF2"/><stop offset="100%" stop-color="#3B5BFF"/></linearGradient><filter id="gdShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#ec4899" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#gdBg)" stroke="#fbcfe8" stroke-width="2"/><g filter="url(#gdShad)"><path d="M50 18 C30 18, 18 32, 18 50 C18 68, 32 80, 50 80 C56 80, 60 76, 60 70 C60 67, 58 64, 56 62 C54 60, 53 58, 53 55 C53 49, 58 44, 64 44 L70 44 C77 44, 82 39, 82 32 C82 24, 68 18, 50 18 Z" fill="#ffffff" stroke="url(#gdGrad)" stroke-width="3"/><circle cx="34" cy="36" r="5" fill="#ef4444"/><circle cx="48" cy="30" r="5" fill="#f59e0b"/><circle cx="64" cy="34" r="5" fill="#10b981"/><circle cx="34" cy="52" r="5" fill="#3B5BFF"/><circle cx="44" cy="66" r="5" fill="#8B3EF2"/><path d="M66 54 L78 66 L82 82 L72 78 Z" fill="url(#gdGrad)"/></g></svg></div><div class="svc-num">03</div><h3>Graphic Design</h3><p>Logos, social posts, and branding that make you stand out.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="uiBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#ecfeff"/></linearGradient><linearGradient id="uiGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#06b6d4"/><stop offset="50%" stop-color="#3B5BFF"/><stop offset="100%" stop-color="#8B3EF2"/></linearGradient><filter id="uiShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#06b6d4" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#uiBg)" stroke="#cffafe" stroke-width="2"/><g filter="url(#uiShad)"><rect x="20" y="24" width="46" height="34" rx="6" fill="#ffffff" stroke="url(#uiGrad)" stroke-width="3"/><path d="M20 34 h46" stroke="#e2e8f0" stroke-width="2"/><rect x="26" y="40" width="14" height="12" rx="3" fill="#06b6d4" opacity="0.5"/><rect x="44" y="40" width="16" height="4" rx="2" fill="#3B5BFF"/><rect x="44" y="48" width="12" height="4" rx="2" fill="#94a3b8"/><rect x="36" y="44" width="44" height="32" rx="6" fill="#ffffff" stroke="url(#uiGrad)" stroke-width="3"/><circle cx="48" cy="56" r="5" fill="#8B3EF2"/><path d="M58 54 h14 M58 60 h10" stroke="url(#uiGrad)" stroke-width="2.5" stroke-linecap="round"/><path d="M68 64 l12 12 l-4 2 l5 7 l-3 1 l-5 -7 l-5 3 z" fill="#0f172a"/></g></svg></div><div class="svc-num">04</div><h3>UI/UX Design</h3><p>Intuitive, beautiful interfaces users love to interact with.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="smBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient><linearGradient id="smGrad" x1="20" y1="15" x2="80" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3B5BFF"/><stop offset="50%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient><filter id="smShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3B5BFF" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#smBg)" stroke="#bfdbfe" stroke-width="2"/><g filter="url(#smShad)"><circle cx="50" cy="50" r="16" fill="url(#smGrad)"/><circle cx="50" cy="50" r="10" fill="#ffffff"/><path d="M46 50 C46 47, 50 44, 50 48 C50 44, 54 47, 54 50 C54 53, 50 56, 50 56 C50 56, 46 53, 46 50 Z" fill="#ef4444"/><circle cx="24" cy="32" r="10" fill="#3B5BFF"/><path d="M22 32 h4 M24 30 v4" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><circle cx="76" cy="32" r="10" fill="#8B3EF2"/><circle cx="76" cy="32" r="4" fill="#ffffff"/><circle cx="28" cy="72" r="10" fill="#22D3EE"/><circle cx="72" cy="72" r="10" fill="#ec4899"/><path d="M32 38 L42 45 M68 38 L58 45 M34 66 L44 56 M66 66 L56 56" stroke="url(#smGrad)" stroke-width="3" stroke-linecap="round"/></g></svg></div><div class="svc-num">05</div><h3>Social Media Management</h3><p>Consistent content and strategy to grow your online presence.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="veBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#fff7ed"/></linearGradient><linearGradient id="veGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ea580c"/><stop offset="50%" stop-color="#f97316"/><stop offset="100%" stop-color="#fbbf24"/></linearGradient><filter id="veShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#ea580c" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#veBg)" stroke="#fed7aa" stroke-width="2"/><g filter="url(#veShad)"><rect x="18" y="24" width="64" height="52" rx="10" fill="#0f172a" stroke="url(#veGrad)" stroke-width="3"/><path d="M18 40 h64" stroke="url(#veGrad)" stroke-width="3"/><path d="M26 24 L32 40 M42 24 L48 40 M58 24 L64 40 M74 24 L80 40" stroke="#ffffff" stroke-width="2.5"/><polygon points="44,48 44,66 62,57" fill="url(#veGrad)"/><circle cx="72" cy="57" r="3" fill="#fbbf24"/></g></svg></div><div class="svc-num">06</div><h3>Video Editing &amp; Motion</h3><p>Engaging videos and motion graphics for every platform.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="brBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#fdf2f8"/></linearGradient><linearGradient id="brGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8B3EF2"/><stop offset="50%" stop-color="#ec4899"/><stop offset="100%" stop-color="#3B5BFF"/></linearGradient><filter id="brShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#8B3EF2" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#brBg)" stroke="#ddd6fe" stroke-width="2"/><g filter="url(#brShad)"><path d="M50 18 L76 34 L50 82 L24 34 Z" fill="#ffffff" stroke="url(#brGrad)" stroke-width="3.5" stroke-linejoin="round"/><path d="M50 18 L62 34 L50 82 L38 34 Z" fill="url(#brGrad)" opacity="0.3"/><path d="M24 34 h52" stroke="url(#brGrad)" stroke-width="2.5"/><path d="M38 34 L50 18 L62 34" stroke="url(#brGrad)" stroke-width="2.5"/><polygon points="50,12 52,16 57,16 53,19 55,23 50,20 45,23 47,19 43,16 48,16" fill="#f59e0b"/></g></svg></div><div class="svc-num">07</div><h3>Branding &amp; Identity</h3><p>Complete brand systems that tell your story professionally.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="mktBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f0fdf4"/></linearGradient><linearGradient id="mktGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#16a34a"/><stop offset="50%" stop-color="#10b981"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient><filter id="mktShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#16a34a" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#mktBg)" stroke="#bbf7d0" stroke-width="2"/><g filter="url(#mktShad)"><rect x="22" y="54" width="12" height="24" rx="3" fill="#10b981" opacity="0.7"/><rect x="38" y="42" width="12" height="36" rx="3" fill="#16a34a"/><rect x="54" y="30" width="12" height="48" rx="3" fill="#3B5BFF"/><path d="M22 52 L38 38 L54 26 L76 18" stroke="url(#mktGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="78,16 68,18 74,24" fill="#16a34a"/><circle cx="70" cy="56" r="12" fill="#ffffff" stroke="url(#mktGrad)" stroke-width="3"/><path d="M78 64 L86 72" stroke="url(#mktGrad)" stroke-width="4" stroke-linecap="round"/></g></svg></div><div class="svc-num">08</div><h3>Digital Marketing &amp; SEO</h3><p>Drive real traffic and leads with proven strategies.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="msBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient><linearGradient id="msGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2563eb"/><stop offset="50%" stop-color="#0284c7"/><stop offset="100%" stop-color="#3B5BFF"/></linearGradient><filter id="msShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#2563eb" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#msBg)" stroke="#bfdbfe" stroke-width="2"/><g filter="url(#msShad)"><rect x="22" y="20" width="56" height="62" rx="8" fill="#ffffff" stroke="url(#msGrad)" stroke-width="3"/><path d="M22 36 h56 M22 52 h56 M40 36 v46 M58 36 v46" stroke="#cbd5e1" stroke-width="2"/><rect x="22" y="20" width="56" height="16" rx="8" fill="url(#msGrad)"/><circle cx="32" cy="28" r="3" fill="#ffffff"/><circle cx="42" cy="28" r="3" fill="#ffffff"/><path d="M27 44 l4 4 l8 -8" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="46" y="42" width="8" height="6" rx="2" fill="#3B5BFF"/><rect x="64" y="42" width="8" height="6" rx="2" fill="#8B3EF2"/><rect x="46" y="58" width="8" height="6" rx="2" fill="#06b6d4"/></g></svg></div><div class="svc-num">09</div><h3>MS Office &amp; Data Entry</h3><p>Word, Excel, PowerPoint and data entry services.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="aiBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#ecfeff"/></linearGradient><linearGradient id="aiGrad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#06b6d4"/><stop offset="50%" stop-color="#3B5BFF"/><stop offset="100%" stop-color="#8B3EF2"/></linearGradient><filter id="aiShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#06b6d4" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#aiBg)" stroke="#cffafe" stroke-width="2"/><g filter="url(#aiShad)"><rect x="22" y="22" width="56" height="56" rx="14" fill="#ffffff" stroke="url(#aiGrad)" stroke-width="3"/><circle cx="50" cy="50" r="14" fill="url(#aiGrad)"/><path d="M50 36 v-8 M50 72 v-8 M36 50 h-8 M72 50 h-8 M40 40 l-6 -6 M60 60 l6 6 M60 40 l6 -6 M40 60 l-6 6" stroke="url(#aiGrad)" stroke-width="2.5" stroke-linecap="round"/><polygon points="50,42 52,47 57,48 53,52 54,57 50,54 46,57 47,52 43,48 48,47" fill="#ffffff"/></g></svg></div><div class="svc-num">10</div><h3>Website With AI</h3><p>AI-powered websites built for the modern landscape.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="pyBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f0fdf4"/></linearGradient><linearGradient id="pyGrad1" x1="20" y1="15" x2="60" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3B5BFF"/><stop offset="100%" stop-color="#0284c7"/></linearGradient><linearGradient id="pyGrad2" x1="40" y1="40" x2="80" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#eab308"/></linearGradient><filter id="pyShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3B5BFF" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#pyBg)" stroke="#bbf7d0" stroke-width="2"/><g filter="url(#pyShad)"><path d="M48 20 C32 20 34 26 34 26 L34 32 L49 32 L49 34 L28 34 C28 34 20 34 20 45 C20 56 26 56 26 56 L30 56 L30 50 C30 50 30 43 38 43 L52 43 C52 43 58 43 58 37 L58 26 C58 26 58 20 48 20 Z" fill="url(#pyGrad1)"/><circle cx="40" cy="26" r="2.5" fill="#ffffff"/><path d="M52 80 C68 80 66 74 66 74 L66 68 L51 68 L51 66 L72 66 C72 66 80 66 80 55 C80 44 74 44 74 44 L70 44 L70 50 C70 50 70 57 62 57 L48 57 C48 57 42 57 42 63 L42 74 C42 74 42 80 52 80 Z" fill="url(#pyGrad2)"/><circle cx="60" cy="74" r="2.5" fill="#ffffff"/></g></svg></div><div class="svc-num">11</div><h3>Python Data Analysis</h3><p>Data insights and automation using Python and analytics.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
+      
+      <div class="svc-card reveal"><div class="svc-ico" style="background:#fff;border:none;padding:0"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;width:100%;height:100%"><defs><linearGradient id="bgGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f1f5f9"/></linearGradient><linearGradient id="cartGrad" x1="15" y1="20" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3B5BFF"/><stop offset="50%" stop-color="#8B3EF2"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient><linearGradient id="boxGrad" x1="30" y1="25" x2="70" y2="55" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#ea580c"/></linearGradient><filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3B5BFF" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="2"/><g filter="url(#shadow3d)" transform="translate(2, 2)"><path d="M22 28h12l6 28h38l8-22H36" stroke="url(#cartGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M44 26 L64 16 L80 26 L60 36 Z" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/><path d="M44 26 L60 36 L60 52 L44 42 Z" fill="url(#boxGrad)"/><path d="M60 36 L80 26 L80 42 L60 52 Z" fill="#b45309"/><path d="M48 38 c5 3 9 2 11 0" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M57 37 l3 2 l-1 -3" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="44" cy="64" r="6" fill="#3B5BFF"/><circle cx="44" cy="64" r="2.5" fill="#ffffff"/><circle cx="72" cy="64" r="6" fill="#8B3EF2"/><circle cx="72" cy="64" r="2.5" fill="#ffffff"/></g></svg></div><div class="svc-num">12</div><h3>Amazon E-Commerce</h3><p>Amazon store setup, listings and e-commerce management.</p><div class="svc-arrow">&#8599;</div><div class="svc-line"></div></div>
     </div>
   </div>
 </section>
@@ -1074,7 +1144,7 @@ img{max-width:100%;display:block}
       <!-- Geeto Shakeel -->
       <div class="lead-card reveal" data-member="geeto">
         <div class="lead-card-photo">
-          <img src="team/Geeto Shakeel.webp" alt="Geeto Shakeel"/>
+          <img src="Geeto Shakeel.png" alt="Geeto Shakeel"/>
           <div class="lead-focus-chip">
             <span>FOCUS</span>
             Web Dev · Growth
@@ -1090,7 +1160,7 @@ img{max-width:100%;display:block}
       <!-- Sayed Muhammad Arif Khan -->
       <div class="lead-card reveal" data-member="sayed">
         <div class="lead-card-photo">
-          <img src="team/Sayed M. Arif Khan.webp" alt="Sayed M. Arif Khan"/>
+          <img src="Sayed M. Arif Khan.png" alt="Sayed M. Arif Khan"/>
           <div class="lead-focus-chip">
             <span>FOCUS</span>
             Project · Quality
@@ -1106,7 +1176,7 @@ img{max-width:100%;display:block}
       <!-- Muhammad Rizwan -->
       <div class="lead-card reveal" data-member="rizwan">
         <div class="lead-card-photo">
-          <img src="team/Muhammad Rizwan.webp" alt="Muhammad Rizwan"/>
+          <img src="Muhammad Rizwan.png" alt="Muhammad Rizwan"/>
           <div class="lead-focus-chip">
             <span>FOCUS</span>
             Admin · Community
@@ -1172,7 +1242,117 @@ img{max-width:100%;display:block}
       </div>
       <div class="reveal-r">
         <div class="int-banner-card" style="background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);transition:all .35s ease">
-          <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/internship_benefits_banner_1788013799295.jpg" alt="Internship Program Benefits Banner" style="width:100%;height:auto;display:block"/>
+          <svg viewBox="0 0 1000 640" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+            <defs>
+              <linearGradient id="ibBg" x1="0" y1="0" x2="1000" y2="640" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="60%" stop-color="#f8faff"/>
+                <stop offset="100%" stop-color="#eff6ff"/>
+              </linearGradient>
+              <linearGradient id="ibBlue" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3B5BFF"/>
+                <stop offset="100%" stop-color="#1d37b3"/>
+              </linearGradient>
+              <linearGradient id="ibCard" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f1f5fd"/>
+              </linearGradient>
+              <filter id="ibShad" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.08"/>
+              </filter>
+            </defs>
+            <rect width="1000" height="640" rx="24" fill="url(#ibBg)" stroke="#e2e8f0" stroke-width="2"/>
+            <path d="M680 0 C760 140, 720 380, 1000 480 L1000 0 Z" fill="#3B5BFF" opacity="0.06"/>
+            <path d="M740 0 C820 180, 800 420, 1000 520 L1000 0 Z" fill="#3B5BFF" opacity="0.12"/>
+            
+            <g transform="translate(60, 48)">
+              <text x="0" y="42" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#1e3a8a" letter-spacing="-1">INTERNSHIP</text>
+              <text x="0" y="92" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#0f172a" letter-spacing="-1">PROGRAM BENEFITS</text>
+              <rect x="0" y="112" width="220" height="30" rx="15" fill="#dbeafe"/>
+              <text x="14" y="132" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#1d4ed8" letter-spacing="1">INTERNSHIP BATCH 2026</text>
+            </g>
+
+            <g transform="translate(760, 48)">
+              <rect width="180" height="64" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#ibShad)"/>
+              <circle cx="36" cy="32" r="18" fill="#3B5BFF"/>
+              <text x="64" y="28" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#0f172a">Digital</text>
+              <text x="64" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#3B5BFF">Hunarmand</text>
+              <text x="64" y="55" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="9" fill="#64748b">Digital Solution Hub</text>
+            </g>
+
+            <g transform="translate(60, 210)" filter="url(#ibShad)">
+              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">👨‍🏫</text>
+              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Professional</text>
+              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Training</text>
+              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Expert-led modules</text>
+            </g>
+
+            <g transform="translate(260, 210)" filter="url(#ibShad)">
+              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">💻</text>
+              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Real Project</text>
+              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Experience</text>
+              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Live commercial work</text>
+            </g>
+
+            <g transform="translate(460, 210)" filter="url(#ibShad)">
+              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">📂</text>
+              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Portfolio</text>
+              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Development</text>
+              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">5+ Case studies</text>
+            </g>
+
+            <g transform="translate(60, 380)" filter="url(#ibShad)">
+              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">🌐</text>
+              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Industry</text>
+              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Exposure</text>
+              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Global agency standard</text>
+            </g>
+
+            <g transform="translate(260, 380)" filter="url(#ibShad)">
+              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">🧭</text>
+              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Career</text>
+              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Guidance</text>
+              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Upwork &amp; Freelancing</text>
+            </g>
+
+            <g transform="translate(460, 380)" filter="url(#ibShad)">
+              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">📜</text>
+              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Verified</text>
+              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Certificate</text>
+              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Official credential</text>
+            </g>
+
+            <g transform="translate(680, 180)">
+              <circle cx="160" cy="180" r="130" fill="url(#ibBlue)" opacity="0.1"/>
+              <rect x="40" y="80" width="240" height="260" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#ibShad)"/>
+              <circle cx="160" cy="150" r="45" fill="#3B5BFF"/>
+              <text x="160" y="165" font-size="42" text-anchor="middle" fill="#ffffff">👨‍💻</text>
+              <rect x="70" y="215" width="180" height="34" rx="17" fill="#f1f5f9"/>
+              <text x="160" y="238" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#0f172a" text-anchor="middle">Hands-on Agency Internship</text>
+              <rect x="60" y="265" width="200" height="44" rx="22" fill="url(#ibBlue)"/>
+              <text x="160" y="292" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#ffffff" text-anchor="middle">⭐ 100% Practical</text>
+            </g>
+
+            <rect y="560" width="1000" height="80" rx="0" fill="#0f172a"/>
+            <path d="M0 616 C0 629, 11 640, 24 640 L976 640 C989 640, 1000 629, 1000 616 L1000 560 L0 560 Z" fill="#0f172a"/>
+            <g transform="translate(60, 585)">
+              <text x="0" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📞 +92 348 5168409</text>
+              <text x="240" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
+              <text x="640" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#22c55e">🌐 Official Digital Hunarmand Hub</text>
+            </g>
+          </svg>
         </div>
       </div>
     </div>
@@ -1187,7 +1367,105 @@ img{max-width:100%;display:block}
       <h2 class="st">1-on-1 <span class="g-text">Mentorship</span> Program</h2>
     </div>
     <div class="mentor-banner-wrap reveal" style="margin:36px auto;max-width:1080px;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);border:1.5px solid var(--border);background:#fff">
-      <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/mentorship_program_banner_1788014202279.jpg" alt="1-on-1 Mentorship Program Banner" style="width:100%;height:auto;display:block"/>
+      <svg viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+        <defs>
+          <linearGradient id="mbBg" x1="0" y1="0" x2="1200" y2="620" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="50%" stop-color="#faf5ff"/>
+            <stop offset="100%" stop-color="#eff6ff"/>
+          </linearGradient>
+          <linearGradient id="mbGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3B5BFF"/>
+            <stop offset="50%" stop-color="#8B3EF2"/>
+            <stop offset="100%" stop-color="#22D3EE"/>
+          </linearGradient>
+          <linearGradient id="mbCard" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#fcfaff"/>
+          </linearGradient>
+          <filter id="mbShad" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#8B3EF2" flood-opacity="0.1"/>
+          </filter>
+        </defs>
+        <rect width="1200" height="620" rx="24" fill="url(#mbBg)" stroke="#e2e8f0" stroke-width="2"/>
+        
+        <path d="M0 0 C300 80, 500 0, 750 120 C950 220, 1100 80, 1200 160 L1200 0 Z" fill="url(#mbGrad)" opacity="0.08"/>
+        <path d="M700 0 C850 160, 950 380, 1200 480 L1200 0 Z" fill="url(#mbGrad)" opacity="0.12"/>
+        
+        <g transform="translate(70, 50)">
+          <rect width="240" height="34" rx="17" fill="#ede9fe"/>
+          <text x="16" y="23" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#7c3aed" letter-spacing="1.5">⭐ 1-ON-1 VIP MENTORSHIP</text>
+          <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" fill="#1e1b4b" letter-spacing="-1.5">1-ON-1 MENTORSHIP PROGRAM</text>
+          <text x="0" y="114" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" fill="#64748b">Accelerate Your Skills, Portfolio &amp; Freelance Career</text>
+        </g>
+
+        <g transform="translate(70, 190)" filter="url(#mbShad)">
+          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+          <rect x="20" y="20" width="46" height="46" rx="12" fill="#ede9fe"/>
+          <text x="43" y="50" font-size="22" text-anchor="middle">🎯</text>
+          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Career Consultation</text>
+          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#7c3aed">1-on-1 Private Live Session</text>
+          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Personalized guidance tailored</text>
+          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">to your exact goals &amp; growth.</text>
+        </g>
+
+        <g transform="translate(370, 190)" filter="url(#mbShad)">
+          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+          <rect x="20" y="20" width="46" height="46" rx="12" fill="#ede9fe"/>
+          <text x="43" y="50" font-size="22" text-anchor="middle">🔍</text>
+          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Portfolio &amp; Resume</text>
+          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#7c3aed">In-depth Audit</text>
+          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Direct feedback to convert</text>
+          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">profiles into client magnets.</text>
+        </g>
+
+        <g transform="translate(70, 360)" filter="url(#mbShad)">
+          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+          <rect x="20" y="20" width="46" height="46" rx="12" fill="#dbeafe"/>
+          <text x="43" y="50" font-size="22" text-anchor="middle">💼</text>
+          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Client Acquisition</text>
+          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#2563eb">Fiverr &amp; Upwork Secrets</text>
+          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Winning proposals &amp; closing</text>
+          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">high-ticket overseas deals.</text>
+        </g>
+
+        <g transform="translate(370, 360)" filter="url(#mbShad)">
+          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+          <rect x="20" y="20" width="46" height="46" rx="12" fill="#dcfce7"/>
+          <text x="43" y="50" font-size="22" text-anchor="middle">🚀</text>
+          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Skill &amp; Roadmap</text>
+          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#16a34a">6-Month Action Plan</text>
+          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Step-by-step scaling plan</text>
+          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">for Web, UI/UX, Video &amp; Ads.</text>
+        </g>
+
+        <g transform="translate(700, 160)" filter="url(#mbShad)">
+          <rect width="430" height="350" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+          <rect x="24" y="24" width="382" height="180" rx="20" fill="url(#mbGrad)"/>
+          <text x="215" y="100" font-size="64" text-anchor="middle" fill="#ffffff">🤝</text>
+          <text x="215" y="150" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">Direct 1-on-1 Coaching</text>
+          
+          <g transform="translate(30, 230)">
+            <rect width="170" height="38" rx="19" fill="#f5f3ff" stroke="#ddd6fe"/>
+            <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#7c3aed" text-anchor="middle">📹 Google Meet Live</text>
+          </g>
+          <g transform="translate(225, 230)">
+            <rect width="170" height="38" rx="19" fill="#eff6ff" stroke="#bfdbfe"/>
+            <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#2563eb" text-anchor="middle">⏱️ 60-Minute Session</text>
+          </g>
+          <g transform="translate(30, 280)">
+            <rect width="365" height="42" rx="21" fill="#0f172a"/>
+            <text x="182" y="26" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#ffffff" text-anchor="middle">Book Session on WhatsApp ➔</text>
+          </g>
+        </g>
+
+        <rect y="540" width="1200" height="80" fill="#0f172a"/>
+        <g transform="translate(70, 565)">
+          <text x="0" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📞 +92 348 5168409</text>
+          <text x="260" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
+          <text x="760" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="15" fill="#22c55e">🚀 Digital Hunarmand Hub Mentorship</text>
+        </g>
+      </svg>
     </div>
     <div class="mentor-cta reveal">
       <div class="mentor-cta-txt">
@@ -1217,7 +1495,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="reveal-r">
         <div class="hiring-banner-card" style="background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);transition:all .35s ease">
-          <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/hiring_admin_banner_1788014234311.jpg" alt="We Are Hiring Community Admin Banner" style="width:100%;height:auto;display:block"/>
+          <img src="hiring banner.jpg" alt="We Are Hiring Community Admin Banner" style="width:100%;height:auto;display:block"/>
         </div>
       </div>
     </div>
@@ -1244,7 +1522,7 @@ img{max-width:100%;display:block}
           <div class="org-sep">&times;</div>
           <div class="org-card">
             <div class="org-card-ico org-ico-na">
-              <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/99780d28-0110-4908-9759-879b3b402d5a/.user_uploaded/media_1788026517345.png" alt="Nojawan Awaz Foundation Logo"/>
+              <img src="nojawan logo.png" alt="Nojawan Awaz Foundation Logo"/>
             </div>
             <div class="org-card-txt">
               <strong>Nojawan Awaz</strong>
@@ -1327,7 +1605,7 @@ img{max-width:100%;display:block}
     <div class="courses-grid">
       <div class="cc reveal">
         <div class="cc-thumb">
-          <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/.user_uploaded/media_1788003467280.jpg" alt="Graphic Design Course Thumbnail"/>
+          <img src="graphic design course.jpg" alt="Graphic Design Course Thumbnail"/>
           <span class="cc-badge">ONLINE COURSE</span>
           <span class="cc-status">ADMISSION OPEN</span>
         </div>
@@ -1353,7 +1631,7 @@ img{max-width:100%;display:block}
       </div>
       <div class="cc reveal">
         <div class="cc-thumb">
-          <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/1b53e7db-335d-4467-aef7-7bf2534391c8/.user_uploaded/media_1788003722981.jpg" alt="Digital Marketing Course Thumbnail"/>
+          <img src="digital marketing course.jpg" alt="Digital Marketing Course Thumbnail"/>
           <span class="cc-badge">ONLINE COURSE</span>
           <span class="cc-status">ADMISSION OPEN</span>
         </div>
@@ -1396,7 +1674,7 @@ img{max-width:100%;display:block}
       <div class="reveal-l">
         <div class="cbox">
           <h3>Contact Information</h3>
-          <div class="ci"><div class="ci-ico ci-ph"><img src="phone logo.webp" alt="Phone Logo"/></div><div><div class="ci-lbl">Phone / WhatsApp</div><a href="tel:+923485168409" class="ci-val">+92 348 5168409</a></div></div>
+          <div class="ci"><div class="ci-ico ci-ph"><img src="phone logo.png" alt="Phone Logo"/></div><div><div class="ci-lbl">Phone / WhatsApp</div><a href="tel:+923485168409" class="ci-val">+92 348 5168409</a></div></div>
           <div class="ci"><div class="ci-ico ci-em"><img src="gmail logo.jpg" alt="Gmail Logo"/></div><div><div class="ci-lbl">Email</div><a href="mailto:digitalhunarmand1@gmail.com" class="ci-val">digitalhunarmand1@gmail.com</a></div></div>
           <div class="ctag">Your Vision. Our Mission.<br/><span class="g-text">Digital Success.</span></div>
         </div>
@@ -1964,42 +2242,96 @@ cin.addEventListener('keydown', e => {
 
 </script>
 
-<!-- MENTORSHIP POPUP -->
+<!-- MENTORSHIP & ADMISSION POPUP -->
 <div class="popup-overlay" id="popupOverlay">
   <div class="popup-box poster-modal">
     <button class="popup-close" onclick="closePopup()" aria-label="Close">&#10005;</button>
     <div class="popup-poster-wrap">
-      <img src="file:///C:/Users/Strike.Khan/.gemini/antigravity/brain/99780d28-0110-4908-9759-879b3b402d5a/dh_mentorship_poster_1788014496080.jpg" alt="1-on-1 Mentorship Program Poster" class="popup-poster-img"/>
+      <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;border-radius:20px 20px 0 0">
+        <defs>
+          <linearGradient id="popBg" x1="0" y1="0" x2="600" y2="600" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#eff6ff"/>
+          </linearGradient>
+          <linearGradient id="popBlue" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3B5BFF"/>
+            <stop offset="100%" stop-color="#1e3a8a"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="600" fill="url(#popBg)"/>
+        
+        <path d="M420 0 C480 120, 520 200, 600 240 L600 0 Z" fill="#3B5BFF" opacity="0.1"/>
+        
+        <g transform="translate(36, 36)">
+          <rect width="140" height="28" rx="14" fill="#fee2e2"/>
+          <text x="12" y="19" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="11" fill="#dc2626" letter-spacing="1">📢 ADMISSION OPEN</text>
+          <text x="0" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#1e3a8a">1-ON-1 MENTORSHIP</text>
+          <text x="0" y="92" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#0f172a">PROGRAM</text>
+        </g>
+
+        <g transform="translate(36, 150)">
+          <rect width="528" height="42" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+          <text x="20" y="26" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#1d4ed8">🤝 1-ON-1 CONSULTATION</text>
+          
+          <rect y="50" width="528" height="42" rx="12" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+          <text x="20" y="76" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#7c3aed">📁 PORTFOLIO REVIEW</text>
+          
+          <rect y="100" width="528" height="42" rx="12" fill="#ecfeff" stroke="#a5f3fc" stroke-width="1.5"/>
+          <text x="20" y="126" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#0891b2">🌐 FREELANCING STRATEGY</text>
+        </g>
+
+        <g transform="translate(36, 310)">
+          <rect width="280" height="24" rx="6" fill="#3B5BFF"/>
+          <text x="10" y="17" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="11" fill="#ffffff" letter-spacing="0.5">IN THIS PROGRAM YOU WILL MASTER:</text>
+          
+          <text x="0" y="55" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#0f172a">✓ Career Guidance &amp; Goal Setting</text>
+          <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#0f172a">✓ Client Acquisition (Fiverr &amp; Upwork)</text>
+          <text x="0" y="105" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#0f172a">✓ Tech &amp; Design Roadmap</text>
+          <text x="0" y="130" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#0f172a">✓ Skill Mastery (Web, AI, Branding)</text>
+          <text x="0" y="155" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#0f172a">✓ Direct Agency Mentor Support</text>
+        </g>
+
+        <g transform="translate(370, 310)">
+          <rect width="194" height="175" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+          <text x="16" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#0f172a">LEARN,</text>
+          <text x="16" y="50" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#3B5BFF">GROW</text>
+          <text x="16" y="68" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#0f172a">&amp; EARN</text>
+          <path d="M120 70 L145 45 M145 45 L130 45 M145 45 L145 60" stroke="#3B5BFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="20" y="130" width="30" height="30" rx="4" fill="#93c5fd"/>
+          <rect x="60" y="110" width="30" height="50" rx="4" fill="#60a5fa"/>
+          <rect x="100" y="90" width="30" height="70" rx="4" fill="#3B5BFF"/>
+          <rect x="140" y="70" width="30" height="90" rx="4" fill="#1d4ed8"/>
+        </g>
+
+        <rect y="530" width="600" height="70" fill="#0f172a"/>
+        <g transform="translate(36, 552)">
+          <text x="0" y="20" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#ffffff">📞 +92 348 5168409</text>
+          <text x="220" y="20" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
+        </g>
+      </svg>
     </div>
     <div class="popup-poster-btns">
-      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%201-on-1%20Mentorship%20Program" target="_blank" class="popup-apply">Apply Now</a>
+      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%20Mentorship%20Program%20and%20Courses" target="_blank" class="popup-apply">Apply Now</a>
       <a href="#" class="popup-later" onclick="closePopup();return false;">Maybe Later</a>
     </div>
   </div>
 </div>
 <script>
-// ── PRELOADER LOGIC (10 Seconds Video Loader) ──
+// ── PRELOADER LOGIC (7 SECONDS MINIMUM DURATION) ──
 (function(){
   var preloader = document.getElementById('preloader');
   var video = document.getElementById('loadingVideo');
+  var skipBtn = document.getElementById('preloaderSkip');
+  var preloaderClosed = false;
   
   if (!preloader) return;
   
   // Disable scrolling during loading animation
   document.body.style.overflow = 'hidden';
   
-  if (video) {
-    var playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(function(){
-        // Handled silently
-      });
-    }
-  }
-  
-  var totalDuration = 7000; // Exactly 7 seconds
-  
-  setTimeout(function() {
+  function hidePreloader() {
+    if (preloaderClosed) return;
+    preloaderClosed = true;
     preloader.classList.add('fade-out');
     document.body.style.overflow = '';
     startHeroTyping();
@@ -2007,8 +2339,48 @@ cin.addEventListener('keydown', e => {
     setTimeout(function() {
       preloader.style.display = 'none';
       if (video) video.pause();
-    }, 800);
-  }, totalDuration);
+      
+      // Trigger popup 800ms after preloader closes if first visit
+      if (!sessionStorage.getItem('popupShown')) {
+        var pop = document.getElementById('popupOverlay');
+        if (pop) pop.style.display = 'flex';
+      }
+    }, 600);
+  }
+  
+  if (skipBtn) {
+    skipBtn.addEventListener('click', hidePreloader);
+  }
+  
+  if (video) {
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function(){
+        // Silently handled - fallback to 7s timer
+      });
+    }
+  }
+  
+  // Exactly 7 seconds duration
+  setTimeout(hidePreloader, 7000);
+})();
+
+// ── MOBILE NAVIGATION HELPER ──
+(function(){
+  var navUl = document.getElementById('navUl');
+  var hbg = document.querySelector('.hbg');
+  if (navUl) {
+    navUl.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navUl.classList.remove('open');
+      });
+    });
+  }
+  document.addEventListener('click', function(e){
+    if (navUl && navUl.classList.contains('open') && !navUl.contains(e.target) && (!hbg || !hbg.contains(e.target))) {
+      navUl.classList.remove('open');
+    }
+  });
 })();
 
 // ── TYPEWRITER ANIMATION FOR HERO TITLE ──
@@ -2062,15 +2434,6 @@ function closePopup(){
   o.style.opacity='0';o.style.transition='opacity .3s';
   setTimeout(()=>o.style.display='none',300);
   sessionStorage.setItem('popupShown','1');
-}
-if(!sessionStorage.getItem('popupShown')){
-  // Display popup smoothly after 7-second loader finishes
-  setTimeout(function(){
-    var pop = document.getElementById('popupOverlay');
-    if (pop) pop.style.display = 'flex';
-  }, 7800);
-}else{
-  document.getElementById('popupOverlay').style.display='none';
 }
 </script>
 
@@ -2147,7 +2510,7 @@ if(!sessionStorage.getItem('popupShown')){
       name: 'Geeto Shakeel',
       role: 'Co-Founder & Director',
       roleClass: 'co',
-      photo: 'team/Geeto Shakeel.webp',
+      photo: 'Geeto Shakeel.png',
       quals: [
         'Co-Founder & Director — Digital Hunarmand Hub',
         'Web Development & Digital Growth Specialist',
@@ -2168,7 +2531,7 @@ if(!sessionStorage.getItem('popupShown')){
       name: 'Sayed M. Arif Khan',
       role: 'Leader',
       roleClass: 'ld',
-      photo: 'team/Sayed M. Arif Khan.webp',
+      photo: 'Sayed M. Arif Khan.png',
       quals: [
         'Project Leader — Digital Hunarmand Hub',
         'Quality Assurance & Project Delivery Specialist',
@@ -2189,7 +2552,7 @@ if(!sessionStorage.getItem('popupShown')){
       name: 'Rizwanullah',
       role: 'Administrator',
       roleClass: 'ad',
-      photo: 'team/Muhammad Rizwan.webp',
+      photo: 'Muhammad Rizwan.png',
       quals: [
         'Administrator — Digital Hunarmand Hub',
         'Multi-Disciplinary Digital & IT Professional',
