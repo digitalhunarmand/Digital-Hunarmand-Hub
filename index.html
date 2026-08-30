@@ -491,11 +491,16 @@ img{max-width:100%;display:block}
 .c-action-btn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:var(--grad);color:#fff!important;text-decoration:none!important;padding:7px 14px;border-radius:8px;font-size:11.5px;font-weight:700;box-shadow:0 2px 8px rgba(59,91,255,.25);transition:transform .2s}
 .c-action-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,91,255,.35)}
 
+/* ── DESKTOP VS MOBILE BANNER DISPLAY ── */
+.desktop-banner-only{display:block}
+.mobile-banner-only{display:none}
+
 /* RESPONSIVE & MOBILE OPTIMIZATIONS */
 @media(max-width:1024px){
   .nav-ul,.nav-btn{display:none}
-  .nav-ul.open{display:flex;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:16px 20px 24px;border-bottom:1px solid rgba(59,91,255,0.15);box-shadow:0 18px 40px rgba(0,0,0,.15);border-radius:0 0 24px 24px;gap:6px;z-index:999;max-height:80vh;overflow-y:auto}
-  .nav-ul.open li a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;font-size:14px;font-weight:600;color:#0f172a;transition:all .2s;border:1px solid transparent}
+  .nav-ul.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:16px 20px 24px;border-bottom:1.5px solid rgba(59,91,255,0.15);box-shadow:0 18px 40px rgba(0,0,0,.15);border-radius:0 0 24px 24px;gap:6px;z-index:9999;max-height:80vh;overflow-y:auto}
+  .nav-ul.open li{width:100%}
+  .nav-ul.open li a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;font-size:14px;font-weight:600;color:#0f172a;transition:all .2s;border:1px solid transparent;width:100%}
   .nav-ul.open li a svg{width:16px;height:16px}
   .nav-ul.open li a:hover{background:var(--blue-l);border-color:var(--blue-m);color:var(--blue)}
   .hbg{display:flex}
@@ -507,88 +512,166 @@ img{max-width:100%;display:block}
 }
 
 @media(max-width:768px){
-  .sw{padding:50px 18px}
-  .st{font-size:clamp(24px,6vw,34px);letter-spacing:-.8px}
-  .ss{font-size:14px;line-height:1.7}
+  /* Global viewport reset */
+  html,body{width:100%!important;max-width:100vw!important;overflow-x:hidden!important;-webkit-text-size-adjust:100%!important}
+  *,*::before,*::after{box-sizing:border-box!important}
   
-  /* Hero Mobile */
-  .hero{min-height:auto;padding:84px 0 44px;background:linear-gradient(180deg, #f8faff 0%, #edf2ff 100%);position:relative}
-  .hero-in{padding:0 18px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center}
-  .hero-left{align-items:center;text-align:center;max-width:100%}
-  .hero-h1{font-size:clamp(26px,7vw,38px);line-height:1.2;margin-bottom:20px;letter-spacing:-.8px;text-align:center}
-  .hero-badge{margin-bottom:16px;padding:6px 16px;font-size:11.5px}
-  .hero-p{margin-bottom:24px;font-size:14.5px;line-height:1.65;text-align:center}
-  .hero-btns{flex-direction:column;align-items:stretch;width:100%;max-width:360px;margin:0 auto;gap:12px}
-  .btn-blue,.btn-out{width:100%;justify-content:center;text-align:center;padding:14px 20px;font-size:14.5px;border-radius:14px;min-height:50px}
-  .hero-trust{justify-content:center;gap:16px;margin-top:8px}
-  
+  /* Banner display switch */
+  .desktop-banner-only{display:none!important}
+  .mobile-banner-only{display:block!important}
+
+  /* Section Spacing & Typography */
+  .sw{padding:44px 16px!important;max-width:100%!important;width:100%!important;box-sizing:border-box!important}
+  .st{font-size:clamp(24px,6.5vw,32px)!important;line-height:1.2!important;letter-spacing:-.8px!important;margin-bottom:12px!important}
+  .ss{font-size:14px!important;line-height:1.65!important}
+  .sl{font-size:10.5px!important;letter-spacing:2px!important;margin-bottom:8px!important}
+
+  /* Header & Navigation */
+  .nav{height:62px!important}
+  .nav-in{height:62px!important;padding:0 16px!important;width:100%!important}
+  .nav-logo{gap:8px!important}
+  .nav-ico{width:36px!important;height:36px!important}
+  .nav-txt strong{font-size:13.5px!important}
+  .nav-txt small{font-size:9px!important}
+  .hbg{display:flex!important;padding:6px!important}
+  .nav-ul{display:none!important}
+  .nav-ul.open{display:flex!important;flex-direction:column!important;position:fixed!important;top:62px!important;left:0!important;right:0!important;width:100%!important;background:rgba(255,255,255,0.98)!important;backdrop-filter:blur(24px)!important;-webkit-backdrop-filter:blur(24px)!important;border-radius:0 0 20px 20px!important;padding:14px 16px 20px!important;box-shadow:0 16px 40px rgba(0,0,0,0.15)!important;border-bottom:1px solid rgba(59,91,255,0.15)!important;gap:6px!important;z-index:9999!important;max-height:calc(100vh - 75px)!important;overflow-y:auto!important}
+  .nav-ul.open li{width:100%!important}
+  .nav-ul.open li a{display:flex!important;align-items:center!important;gap:12px!important;padding:12px 14px!important;font-size:14px!important;font-weight:600!important;border-radius:12px!important;width:100%!important}
+
+  /* Marquee */
+  .mq-top{margin-top:62px!important}
+  .mq{padding:10px 0!important}
+  .mq-track span{font-size:11px!important;letter-spacing:1px!important}
+
+  /* Hero Section */
+  .hero{min-height:auto!important;padding:36px 0 32px!important;background:linear-gradient(180deg,#f8faff 0%,#edf2ff 100%)!important;overflow:hidden!important;width:100%!important}
+  .hero-deco{display:none!important}
+  .hero-in{padding:0 16px!important;width:100%!important;max-width:100%!important}
+  .hero-left{max-width:100%!important;width:100%!important;text-align:left!important;align-items:flex-start!important}
+  .hero-h1{font-size:clamp(24px,7vw,32px)!important;line-height:1.25!important;margin-bottom:22px!important;letter-spacing:-.8px!important;word-break:break-word!important;text-align:left!important}
+  .hero-btns{display:flex!important;flex-direction:column!important;gap:10px!important;width:100%!important}
+  .btn-blue,.btn-out{width:100%!important;min-height:48px!important;padding:13px 18px!important;font-size:14.5px!important;font-weight:700!important;border-radius:12px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important}
+
+  /* Photo Banner / Live Stats */
+  .photo-banner{min-height:auto!important;padding:40px 0!important;width:100%!important;overflow:hidden!important}
+  .photo-banner .pb-overlay{padding:0 16px!important}
+  .pb-title{font-size:clamp(22px,5.5vw,28px)!important;margin-bottom:22px!important;line-height:1.25!important}
+  .pb-stats{grid-template-columns:1fr 1fr!important;gap:10px!important;width:100%!important}
+  .pb-stat{padding:18px 12px!important;border-radius:16px!important;animation:none!important;transform:none!important}
+  .pb-stat strong{font-size:clamp(24px,6vw,30px)!important;margin-bottom:4px!important}
+  .pb-stat span{font-size:10.5px!important}
+
+  /* Services */
+  .svc-head{display:flex!important;flex-direction:column!important;gap:14px!important;align-items:flex-start!important;margin-bottom:24px!important}
+  .svc-head-right{display:none!important}
+  .svc-grid{display:flex!important;flex-direction:column!important;gap:12px!important;width:100%!important}
+  .svc-card{padding:20px 18px!important;border-radius:16px!important;width:100%!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important}
+  .svc-ico{width:50px!important;height:50px!important;margin-bottom:12px!important}
+  .svc-num{font-size:10px!important;margin-bottom:6px!important}
+  .svc-card h3{font-size:15.5px!important;font-weight:700!important;margin-bottom:6px!important}
+  .svc-card p{font-size:13px!important;line-height:1.6!important}
+  .svc-arrow{top:18px!important;right:18px!important}
+
+  /* Vision, Mission & Values */
+  .vmc-grid{grid-template-columns:1fr!important;gap:12px!important;margin-top:20px!important}
+  .vmc-card{padding:20px 18px!important;border-radius:16px!important}
+  .vmc-ico{width:52px!important;height:52px!important;margin-bottom:14px!important}
+  .vmc-card h3{font-size:17px!important}
+  .vmc-card p{font-size:13.5px!important}
+
+  /* Two Column Features */
+  .feat-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .feat-card{padding:22px 18px!important;border-radius:16px!important}
+  .feat-card h3{font-size:19px!important}
+  .feat-card>p{font-size:13.5px!important;margin-bottom:18px!important}
+  .btn-solid{width:100%!important;text-align:center!important;justify-content:center!important;min-height:48px!important;display:flex!important;align-items:center!important}
+
   /* About & Numbers */
-  .about-stat-box{padding:24px 18px;border-radius:20px;margin-top:28px}
-  .stat-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .stat-item{padding:18px 12px;border-radius:14px}
-  .stat-num{font-size:clamp(28px,7vw,38px)}
-  .stat-label{font-size:11.5px;line-height:1.4}
-  
-  /* Grids */
-  .svc-grid,.vmc-grid{grid-template-columns:1fr;gap:16px}
-  .svc-card{padding:22px 18px;border-radius:18px}
-  .svc-ico{width:54px;height:54px;margin-bottom:16px}
-  .mentor-grid{grid-template-columns:1fr;gap:16px}
-  .mentor-card{padding:24px 20px;border-radius:18px}
-  .mentor-cta{flex-direction:column;text-align:center;padding:28px 20px;border-radius:20px;gap:20px}
-  .mentor-cta-btn{width:100%;justify-content:center;text-align:center}
-  
-  /* Partnership */
-  .partner{padding:60px 0}
-  .partner-left h2{font-size:clamp(26px,6vw,36px)}
-  .partner-orgs{flex-direction:column;gap:10px;width:100%}
-  .org-card{width:100%;min-width:unset;padding:14px 16px}
-  .org-sep{margin:0 auto}
-  .partner-obj{padding:22px 18px;border-radius:18px}
-  .partner-reps{padding:20px 18px;border-radius:18px}
-  .partner-reps-grid{grid-template-columns:1fr;gap:12px}
-  
+  .about-in{grid-template-columns:1fr!important;gap:24px!important}
+  .about-stat-box{padding:20px 16px!important;border-radius:16px!important;width:100%!important}
+  .stat-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .stat-item{padding:16px 10px!important;border-radius:14px!important}
+  .stat-item strong{font-size:26px!important}
+  .stat-item span{font-size:10px!important}
+
+  /* Why Us */
+  .why-in{grid-template-columns:1fr!important;gap:20px!important}
+  .why-cards{grid-template-columns:1fr!important;gap:10px!important}
+  .wc{padding:18px 16px!important;border-radius:14px!important}
+
+  /* Internship */
+  .int-grid{grid-template-columns:1fr!important;gap:22px!important}
+  .int-left{font-size:clamp(22px,6vw,28px)!important;margin-bottom:16px!important}
+  .int-meta{display:flex!important;flex-direction:column!important;gap:8px!important;margin-bottom:18px!important}
+  .int-meta-item{padding:12px 14px!important;border-radius:12px!important;background:#fff!important;border:1px solid var(--border)!important;display:flex!important;align-items:center!important;gap:12px!important}
+  .int-banner-card{border-radius:16px!important;width:100%!important;overflow:hidden!important}
+
+  /* Mentorship */
+  .mentor-banner-wrap{margin:18px 0!important;border-radius:16px!important;width:100%!important;overflow:hidden!important}
+  .mentor-cta{flex-direction:column!important;text-align:center!important;padding:22px 16px!important;border-radius:16px!important;gap:14px!important;margin-top:20px!important}
+  .mentor-cta-txt h3{font-size:17px!important}
+  .mentor-cta-txt p{font-size:13px!important}
+  .mentor-cta-btn{width:100%!important;justify-content:center!important;text-align:center!important;min-height:48px!important;display:flex!important;align-items:center!important}
+
+  /* Hiring & Partnership */
+  .hiring-in{grid-template-columns:1fr!important;gap:22px!important}
+  .positions-list{gap:8px!important;margin-bottom:18px!important}
+  .pos-item{padding:12px 14px!important;font-size:13.5px!important;border-radius:12px!important;min-height:48px!important}
+  .hiring-banner-card{border-radius:16px!important;overflow:hidden!important;width:100%!important}
+  .partner{padding:44px 0!important;overflow:hidden!important}
+  .partner-in{grid-template-columns:1fr!important;gap:24px!important}
+  .partner-left h2{font-size:clamp(22px,6vw,28px)!important}
+  .partner-left p.partner-lead{font-size:13.5px!important;margin-bottom:18px!important}
+  .partner-orgs{flex-direction:column!important;gap:8px!important;width:100%!important}
+  .org-card{width:100%!important;min-width:unset!important;padding:12px 14px!important;border-radius:12px!important}
+  .partner-quote{padding:14px 16px!important}
+  .partner-obj{padding:18px 14px!important;border-radius:16px!important}
+  .partner-reps{padding:18px 14px!important;border-radius:16px!important;margin-top:12px!important}
+  .partner-reps-grid{grid-template-columns:1fr!important;gap:10px!important}
+
   /* Leadership & Team */
-  .lead-grid{grid-template-columns:1fr;gap:20px;max-width:440px;margin:0 auto 20px}
-  .lead-card{border-radius:20px}
-  .team-grid{grid-template-columns:1fr;gap:16px}
-  
-  /* Courses & Internships */
-  .courses-grid{grid-template-columns:1fr;gap:24px}
-  .cc{border-radius:20px}
-  .cc-thumb{height:220px}
-  .cc-body{padding:24px 18px}
-  .int-grid{grid-template-columns:1fr;gap:28px}
-  .benefits-grid{grid-template-columns:1fr;gap:10px}
-  .int-meta{grid-template-columns:1fr;gap:10px}
-  
-  /* Why Us & Hiring */
-  .why-cards{grid-template-columns:1fr;gap:14px}
-  .hiring-in{grid-template-columns:1fr;gap:28px}
-  .cbanner{flex-direction:column;text-align:center;padding:24px 20px}
-  
-  /* Contact & Footer */
-  .contact-grid{grid-template-columns:1fr;gap:20px}
-  .cbox{padding:24px 18px;border-radius:20px}
-  .sg{grid-template-columns:1fr;gap:8px}
-  .sl-btn{padding:12px 14px}
-  .ft-in{grid-template-columns:1fr;gap:28px;padding:40px 20px 30px}
-  
-  /* Chatbot Mobile */
-  .cwin{width:calc(100vw - 24px);right:12px;bottom:80px;max-height:74vh;border-radius:20px}
-  .cfab{bottom:18px;right:18px;width:52px;height:52px}
+  .lead-grid{grid-template-columns:1fr!important;gap:16px!important;max-width:360px!important;margin:0 auto 16px!important}
+  .lead-card{border-radius:16px!important}
+  .team-grid{grid-template-columns:1fr!important;gap:14px!important;max-width:360px!important;margin:0 auto!important}
+  .tc{border-radius:16px!important}
+
+  /* Courses */
+  .courses-grid{grid-template-columns:1fr!important;gap:18px!important}
+  .cc{border-radius:16px!important}
+  .cc-thumb{height:190px!important}
+  .cc-body{padding:18px 14px!important}
+  .btn-enroll{min-height:48px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+  .cbanner{flex-direction:column!important;text-align:center!important;padding:20px 16px!important;border-radius:16px!important;gap:12px!important}
+  .btn-reg{width:100%!important;min-height:48px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+
+  /* Contact & Social */
+  .contact-grid{grid-template-columns:1fr!important;gap:16px!important}
+  .cbox{padding:20px 16px!important;border-radius:16px!important}
+  .sg{grid-template-columns:1fr!important;gap:8px!important}
+  .sl-btn{padding:12px 14px!important;min-height:48px!important;border-radius:12px!important}
+  .btn-wa-big{min-height:48px!important;font-size:14px!important;border-radius:12px!important}
+
+  /* Footer & Chatbot */
+  .ft-in{grid-template-columns:1fr!important;gap:22px!important;padding:32px 16px 20px!important}
+  .ft-bot{padding:16px!important}
+  .cfab{bottom:16px!important;right:16px!important;width:50px!important;height:50px!important}
+  .cwin{left:10px!important;right:10px!important;width:auto!important;bottom:74px!important;max-height:72vh!important;border-radius:16px!important}
+
+  /* Popup Modal */
+  .popup-box{max-width:min(380px,calc(100vw - 24px))!important;border-radius:18px!important;margin:0 auto!important}
 }
 
 @media(max-width:480px){
-  .nav-in{padding:0 16px}
-  .nav-ico{width:36px;height:36px}
-  .nav-txt strong{font-size:13.5px}
-  .nav-txt small{font-size:9.5px}
-  .stat-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .stat-item{padding:14px 10px}
-  .stat-num{font-size:30px}
-  .ft-bot p{font-size:12px}
-  .cfab{bottom:14px;right:14px;width:48px;height:48px}
+  .nav-in{padding:0 14px!important}
+  .nav-ico{width:34px!important;height:34px!important}
+  .nav-txt strong{font-size:13px!important}
+  .nav-txt small{font-size:8.5px!important}
+  .stat-grid{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .stat-item{padding:14px 8px!important}
+  .stat-num{font-size:24px!important}
+  .ft-bot p{font-size:11.5px!important}
+  .cfab{bottom:14px!important;right:14px!important;width:46px!important;height:46px!important}
 }
 
 /* ── MENTORSHIP POSTER POPUP ── */
@@ -1242,117 +1325,152 @@ img{max-width:100%;display:block}
       </div>
       <div class="reveal-r">
         <div class="int-banner-card" style="background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);transition:all .35s ease">
-          <svg viewBox="0 0 1000 640" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
-            <defs>
-              <linearGradient id="ibBg" x1="0" y1="0" x2="1000" y2="640" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="60%" stop-color="#f8faff"/>
-                <stop offset="100%" stop-color="#eff6ff"/>
-              </linearGradient>
-              <linearGradient id="ibBlue" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#3B5BFF"/>
-                <stop offset="100%" stop-color="#1d37b3"/>
-              </linearGradient>
-              <linearGradient id="ibCard" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#f1f5fd"/>
-              </linearGradient>
-              <filter id="ibShad" x="-10%" y="-10%" width="120%" height="120%">
-                <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.08"/>
-              </filter>
-            </defs>
-            <rect width="1000" height="640" rx="24" fill="url(#ibBg)" stroke="#e2e8f0" stroke-width="2"/>
-            <path d="M680 0 C760 140, 720 380, 1000 480 L1000 0 Z" fill="#3B5BFF" opacity="0.06"/>
-            <path d="M740 0 C820 180, 800 420, 1000 520 L1000 0 Z" fill="#3B5BFF" opacity="0.12"/>
-            
-            <g transform="translate(60, 48)">
-              <text x="0" y="42" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#1e3a8a" letter-spacing="-1">INTERNSHIP</text>
-              <text x="0" y="92" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#0f172a" letter-spacing="-1">PROGRAM BENEFITS</text>
-              <rect x="0" y="112" width="220" height="30" rx="15" fill="#dbeafe"/>
-              <text x="14" y="132" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#1d4ed8" letter-spacing="1">INTERNSHIP BATCH 2026</text>
-            </g>
+          <div class="desktop-banner-only">
+            <svg viewBox="0 0 1000 640" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+              <defs>
+                <linearGradient id="ibBg" x1="0" y1="0" x2="1000" y2="640" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="60%" stop-color="#f8faff"/>
+                  <stop offset="100%" stop-color="#eff6ff"/>
+                </linearGradient>
+                <linearGradient id="ibBlue" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3B5BFF"/>
+                  <stop offset="100%" stop-color="#1d37b3"/>
+                </linearGradient>
+                <linearGradient id="ibCard" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#f1f5fd"/>
+                </linearGradient>
+                <filter id="ibShad" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.08"/>
+                </filter>
+              </defs>
+              <rect width="1000" height="640" rx="24" fill="url(#ibBg)" stroke="#e2e8f0" stroke-width="2"/>
+              <path d="M680 0 C760 140, 720 380, 1000 480 L1000 0 Z" fill="#3B5BFF" opacity="0.06"/>
+              <path d="M740 0 C820 180, 800 420, 1000 520 L1000 0 Z" fill="#3B5BFF" opacity="0.12"/>
+              
+              <g transform="translate(60, 48)">
+                <text x="0" y="42" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#1e3a8a" letter-spacing="-1">INTERNSHIP</text>
+                <text x="0" y="92" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#0f172a" letter-spacing="-1">PROGRAM BENEFITS</text>
+                <rect x="0" y="112" width="220" height="30" rx="15" fill="#dbeafe"/>
+                <text x="14" y="132" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#1d4ed8" letter-spacing="1">INTERNSHIP BATCH 2026</text>
+              </g>
 
-            <g transform="translate(760, 48)">
-              <rect width="180" height="64" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#ibShad)"/>
-              <circle cx="36" cy="32" r="18" fill="#3B5BFF"/>
-              <text x="64" y="28" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#0f172a">Digital</text>
-              <text x="64" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#3B5BFF">Hunarmand</text>
-              <text x="64" y="55" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="9" fill="#64748b">Digital Solution Hub</text>
-            </g>
+              <g transform="translate(760, 48)">
+                <rect width="180" height="64" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#ibShad)"/>
+                <circle cx="36" cy="32" r="18" fill="#3B5BFF"/>
+                <text x="64" y="28" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#0f172a">Digital</text>
+                <text x="64" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#3B5BFF">Hunarmand</text>
+                <text x="64" y="55" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="9" fill="#64748b">Digital Solution Hub</text>
+              </g>
 
-            <g transform="translate(60, 210)" filter="url(#ibShad)">
-              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
-              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">👨‍🏫</text>
-              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Professional</text>
-              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Training</text>
-              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Expert-led modules</text>
-            </g>
+              <g transform="translate(60, 210)" filter="url(#ibShad)">
+                <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+                <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">👨‍🏫</text>
+                <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Professional</text>
+                <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Training</text>
+                <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Expert-led modules</text>
+              </g>
 
-            <g transform="translate(260, 210)" filter="url(#ibShad)">
-              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
-              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">💻</text>
-              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Real Project</text>
-              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Experience</text>
-              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Live commercial work</text>
-            </g>
+              <g transform="translate(260, 210)" filter="url(#ibShad)">
+                <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+                <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">💻</text>
+                <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Real Project</text>
+                <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Experience</text>
+                <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Live commercial work</text>
+              </g>
 
-            <g transform="translate(460, 210)" filter="url(#ibShad)">
-              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
-              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">📂</text>
-              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Portfolio</text>
-              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Development</text>
-              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">5+ Case studies</text>
-            </g>
+              <g transform="translate(460, 210)" filter="url(#ibShad)">
+                <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+                <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">📂</text>
+                <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Portfolio</text>
+                <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Development</text>
+                <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">5+ Case studies</text>
+              </g>
 
-            <g transform="translate(60, 380)" filter="url(#ibShad)">
-              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
-              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">🌐</text>
-              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Industry</text>
-              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Exposure</text>
-              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Global agency standard</text>
-            </g>
+              <g transform="translate(60, 380)" filter="url(#ibShad)">
+                <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+                <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">🌐</text>
+                <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Industry</text>
+                <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Exposure</text>
+                <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Global agency standard</text>
+              </g>
 
-            <g transform="translate(260, 380)" filter="url(#ibShad)">
-              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
-              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">🧭</text>
-              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Career</text>
-              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Guidance</text>
-              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Upwork &amp; Freelancing</text>
-            </g>
+              <g transform="translate(260, 380)" filter="url(#ibShad)">
+                <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+                <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">🧭</text>
+                <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Career</text>
+                <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Guidance</text>
+                <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Upwork &amp; Freelancing</text>
+              </g>
 
-            <g transform="translate(460, 380)" filter="url(#ibShad)">
-              <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
-              <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">📜</text>
-              <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Verified</text>
-              <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Certificate</text>
-              <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Official credential</text>
-            </g>
+              <g transform="translate(460, 380)" filter="url(#ibShad)">
+                <rect width="180" height="150" rx="18" fill="url(#ibCard)" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="20" y="18" width="46" height="46" rx="12" fill="url(#ibBlue)"/>
+                <text x="43" y="48" font-size="22" text-anchor="middle" fill="#ffffff">📜</text>
+                <text x="20" y="94" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Verified</text>
+                <text x="20" y="116" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#3B5BFF">Certificate</text>
+                <text x="20" y="134" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="11" fill="#64748b">Official credential</text>
+              </g>
 
-            <g transform="translate(680, 180)">
-              <circle cx="160" cy="180" r="130" fill="url(#ibBlue)" opacity="0.1"/>
-              <rect x="40" y="80" width="240" height="260" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#ibShad)"/>
-              <circle cx="160" cy="150" r="45" fill="#3B5BFF"/>
-              <text x="160" y="165" font-size="42" text-anchor="middle" fill="#ffffff">👨‍💻</text>
-              <rect x="70" y="215" width="180" height="34" rx="17" fill="#f1f5f9"/>
-              <text x="160" y="238" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#0f172a" text-anchor="middle">Hands-on Agency Internship</text>
-              <rect x="60" y="265" width="200" height="44" rx="22" fill="url(#ibBlue)"/>
-              <text x="160" y="292" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#ffffff" text-anchor="middle">⭐ 100% Practical</text>
-            </g>
+              <g transform="translate(680, 180)">
+                <circle cx="160" cy="180" r="130" fill="url(#ibBlue)" opacity="0.1"/>
+                <rect x="40" y="80" width="240" height="260" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" filter="url(#ibShad)"/>
+                <circle cx="160" cy="150" r="45" fill="#3B5BFF"/>
+                <text x="160" y="165" font-size="42" text-anchor="middle" fill="#ffffff">👨‍💻</text>
+                <rect x="70" y="215" width="180" height="34" rx="17" fill="#f1f5f9"/>
+                <text x="160" y="238" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#0f172a" text-anchor="middle">Hands-on Agency Internship</text>
+                <rect x="60" y="265" width="200" height="44" rx="22" fill="url(#ibBlue)"/>
+                <text x="160" y="292" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#ffffff" text-anchor="middle">⭐ 100% Practical</text>
+              </g>
 
-            <rect y="560" width="1000" height="80" rx="0" fill="#0f172a"/>
-            <path d="M0 616 C0 629, 11 640, 24 640 L976 640 C989 640, 1000 629, 1000 616 L1000 560 L0 560 Z" fill="#0f172a"/>
-            <g transform="translate(60, 585)">
-              <text x="0" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📞 +92 348 5168409</text>
-              <text x="240" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
-              <text x="640" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#22c55e">🌐 Official Digital Hunarmand Hub</text>
-            </g>
-          </svg>
+              <rect y="560" width="1000" height="80" rx="0" fill="#0f172a"/>
+              <path d="M0 616 C0 629, 11 640, 24 640 L976 640 C989 640, 1000 629, 1000 616 L1000 560 L0 560 Z" fill="#0f172a"/>
+              <g transform="translate(60, 585)">
+                <text x="0" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📞 +92 348 5168409</text>
+                <text x="240" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
+                <text x="640" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#22c55e">🌐 Official Digital Hunarmand Hub</text>
+              </g>
+            </svg>
+          </div>
+          <div class="mobile-banner-only">
+            <div class="int-perks-card" style="border:none;border-radius:0;box-shadow:none">
+              <div class="int-perks-head">
+                <div>
+                  <strong>Internship Perks &amp; Benefits</strong>
+                  <div style="font-size:12px;color:#94a3b8;margin-top:2px">Official Digital Hunarmand Program</div>
+                </div>
+                <span>Batch 2026</span>
+              </div>
+              <div class="int-perks-list">
+                <div class="int-perk-item">
+                  <div class="int-perk-check"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div><strong>Live Client Projects:</strong> Work on real agency briefs &amp; live websites.</div>
+                </div>
+                <div class="int-perk-item">
+                  <div class="int-perk-check"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div><strong>Verified Certificate:</strong> Recognized credential for your resume.</div>
+                </div>
+                <div class="int-perk-item">
+                  <div class="int-perk-check"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div><strong>Portfolio Building:</strong> Finish with 5+ commercial project case studies.</div>
+                </div>
+                <div class="int-perk-item">
+                  <div class="int-perk-check"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div><strong>1-on-1 Mentor Feedback:</strong> Direct code and design reviews every week.</div>
+                </div>
+                <div class="int-perk-item">
+                  <div class="int-perk-check"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div><strong>Hiring Opportunities:</strong> Top performers get hired into our core team.</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1367,105 +1485,154 @@ img{max-width:100%;display:block}
       <h2 class="st">1-on-1 <span class="g-text">Mentorship</span> Program</h2>
     </div>
     <div class="mentor-banner-wrap reveal" style="margin:36px auto;max-width:1080px;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);border:1.5px solid var(--border);background:#fff">
-      <svg viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
-        <defs>
-          <linearGradient id="mbBg" x1="0" y1="0" x2="1200" y2="620" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="50%" stop-color="#faf5ff"/>
-            <stop offset="100%" stop-color="#eff6ff"/>
-          </linearGradient>
-          <linearGradient id="mbGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#3B5BFF"/>
-            <stop offset="50%" stop-color="#8B3EF2"/>
-            <stop offset="100%" stop-color="#22D3EE"/>
-          </linearGradient>
-          <linearGradient id="mbCard" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="100%" stop-color="#fcfaff"/>
-          </linearGradient>
-          <filter id="mbShad" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#8B3EF2" flood-opacity="0.1"/>
-          </filter>
-        </defs>
-        <rect width="1200" height="620" rx="24" fill="url(#mbBg)" stroke="#e2e8f0" stroke-width="2"/>
-        
-        <path d="M0 0 C300 80, 500 0, 750 120 C950 220, 1100 80, 1200 160 L1200 0 Z" fill="url(#mbGrad)" opacity="0.08"/>
-        <path d="M700 0 C850 160, 950 380, 1200 480 L1200 0 Z" fill="url(#mbGrad)" opacity="0.12"/>
-        
-        <g transform="translate(70, 50)">
-          <rect width="240" height="34" rx="17" fill="#ede9fe"/>
-          <text x="16" y="23" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#7c3aed" letter-spacing="1.5">⭐ 1-ON-1 VIP MENTORSHIP</text>
-          <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" fill="#1e1b4b" letter-spacing="-1.5">1-ON-1 MENTORSHIP PROGRAM</text>
-          <text x="0" y="114" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" fill="#64748b">Accelerate Your Skills, Portfolio &amp; Freelance Career</text>
-        </g>
-
-        <g transform="translate(70, 190)" filter="url(#mbShad)">
-          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
-          <rect x="20" y="20" width="46" height="46" rx="12" fill="#ede9fe"/>
-          <text x="43" y="50" font-size="22" text-anchor="middle">🎯</text>
-          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Career Consultation</text>
-          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#7c3aed">1-on-1 Private Live Session</text>
-          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Personalized guidance tailored</text>
-          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">to your exact goals &amp; growth.</text>
-        </g>
-
-        <g transform="translate(370, 190)" filter="url(#mbShad)">
-          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
-          <rect x="20" y="20" width="46" height="46" rx="12" fill="#ede9fe"/>
-          <text x="43" y="50" font-size="22" text-anchor="middle">🔍</text>
-          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Portfolio &amp; Resume</text>
-          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#7c3aed">In-depth Audit</text>
-          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Direct feedback to convert</text>
-          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">profiles into client magnets.</text>
-        </g>
-
-        <g transform="translate(70, 360)" filter="url(#mbShad)">
-          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
-          <rect x="20" y="20" width="46" height="46" rx="12" fill="#dbeafe"/>
-          <text x="43" y="50" font-size="22" text-anchor="middle">💼</text>
-          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Client Acquisition</text>
-          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#2563eb">Fiverr &amp; Upwork Secrets</text>
-          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Winning proposals &amp; closing</text>
-          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">high-ticket overseas deals.</text>
-        </g>
-
-        <g transform="translate(370, 360)" filter="url(#mbShad)">
-          <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
-          <rect x="20" y="20" width="46" height="46" rx="12" fill="#dcfce7"/>
-          <text x="43" y="50" font-size="22" text-anchor="middle">🚀</text>
-          <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Skill &amp; Roadmap</text>
-          <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#16a34a">6-Month Action Plan</text>
-          <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Step-by-step scaling plan</text>
-          <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">for Web, UI/UX, Video &amp; Ads.</text>
-        </g>
-
-        <g transform="translate(700, 160)" filter="url(#mbShad)">
-          <rect width="430" height="350" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
-          <rect x="24" y="24" width="382" height="180" rx="20" fill="url(#mbGrad)"/>
-          <text x="215" y="100" font-size="64" text-anchor="middle" fill="#ffffff">🤝</text>
-          <text x="215" y="150" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">Direct 1-on-1 Coaching</text>
+      <div class="desktop-banner-only">
+        <svg viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <defs>
+            <linearGradient id="mbBg" x1="0" y1="0" x2="1200" y2="620" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#faf5ff"/>
+              <stop offset="100%" stop-color="#eff6ff"/>
+            </linearGradient>
+            <linearGradient id="mbGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3B5BFF"/>
+              <stop offset="50%" stop-color="#8B3EF2"/>
+              <stop offset="100%" stop-color="#22D3EE"/>
+            </linearGradient>
+            <linearGradient id="mbCard" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#fcfaff"/>
+            </linearGradient>
+            <filter id="mbShad" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#8B3EF2" flood-opacity="0.1"/>
+            </filter>
+          </defs>
+          <rect width="1200" height="620" rx="24" fill="url(#mbBg)" stroke="#e2e8f0" stroke-width="2"/>
           
-          <g transform="translate(30, 230)">
-            <rect width="170" height="38" rx="19" fill="#f5f3ff" stroke="#ddd6fe"/>
-            <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#7c3aed" text-anchor="middle">📹 Google Meet Live</text>
+          <path d="M0 0 C300 80, 500 0, 750 120 C950 220, 1100 80, 1200 160 L1200 0 Z" fill="url(#mbGrad)" opacity="0.08"/>
+          <path d="M700 0 C850 160, 950 380, 1200 480 L1200 0 Z" fill="url(#mbGrad)" opacity="0.12"/>
+          
+          <g transform="translate(70, 50)">
+            <rect width="240" height="34" rx="17" fill="#ede9fe"/>
+            <text x="16" y="23" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#7c3aed" letter-spacing="1.5">⭐ 1-ON-1 VIP MENTORSHIP</text>
+            <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" fill="#1e1b4b" letter-spacing="-1.5">1-ON-1 MENTORSHIP PROGRAM</text>
+            <text x="0" y="114" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" fill="#64748b">Accelerate Your Skills, Portfolio &amp; Freelance Career</text>
           </g>
-          <g transform="translate(225, 230)">
-            <rect width="170" height="38" rx="19" fill="#eff6ff" stroke="#bfdbfe"/>
-            <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#2563eb" text-anchor="middle">⏱️ 60-Minute Session</text>
-          </g>
-          <g transform="translate(30, 280)">
-            <rect width="365" height="42" rx="21" fill="#0f172a"/>
-            <text x="182" y="26" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#ffffff" text-anchor="middle">Book Session on WhatsApp ➔</text>
-          </g>
-        </g>
 
-        <rect y="540" width="1200" height="80" fill="#0f172a"/>
-        <g transform="translate(70, 565)">
-          <text x="0" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📞 +92 348 5168409</text>
-          <text x="260" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
-          <text x="760" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="15" fill="#22c55e">🚀 Digital Hunarmand Hub Mentorship</text>
-        </g>
-      </svg>
+          <g transform="translate(70, 190)" filter="url(#mbShad)">
+            <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="20" y="20" width="46" height="46" rx="12" fill="#ede9fe"/>
+            <text x="43" y="50" font-size="22" text-anchor="middle">🎯</text>
+            <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Career Consultation</text>
+            <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#7c3aed">1-on-1 Private Live Session</text>
+            <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Personalized guidance tailored</text>
+            <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">to your exact goals &amp; growth.</text>
+          </g>
+
+          <g transform="translate(370, 190)" filter="url(#mbShad)">
+            <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="20" y="20" width="46" height="46" rx="12" fill="#ede9fe"/>
+            <text x="43" y="50" font-size="22" text-anchor="middle">🔍</text>
+            <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Portfolio &amp; Resume</text>
+            <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#7c3aed">In-depth Audit</text>
+            <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Direct feedback to convert</text>
+            <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">profiles into client magnets.</text>
+          </g>
+
+          <g transform="translate(70, 360)" filter="url(#mbShad)">
+            <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="20" y="20" width="46" height="46" rx="12" fill="#dbeafe"/>
+            <text x="43" y="50" font-size="22" text-anchor="middle">💼</text>
+            <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Client Acquisition</text>
+            <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#2563eb">Fiverr &amp; Upwork Secrets</text>
+            <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Winning proposals &amp; closing</text>
+            <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">high-ticket overseas deals.</text>
+          </g>
+
+          <g transform="translate(370, 360)" filter="url(#mbShad)">
+            <rect width="280" height="150" rx="20" fill="url(#mbCard)" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="20" y="20" width="46" height="46" rx="12" fill="#dcfce7"/>
+            <text x="43" y="50" font-size="22" text-anchor="middle">🚀</text>
+            <text x="78" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#0f172a">Skill &amp; Roadmap</text>
+            <text x="78" y="60" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#16a34a">6-Month Action Plan</text>
+            <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">Step-by-step scaling plan</text>
+            <text x="20" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="12" fill="#64748b">for Web, UI/UX, Video &amp; Ads.</text>
+          </g>
+
+          <g transform="translate(700, 160)" filter="url(#mbShad)">
+            <rect width="430" height="350" rx="28" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+            <rect x="24" y="24" width="382" height="180" rx="20" fill="url(#mbGrad)"/>
+            <text x="215" y="100" font-size="64" text-anchor="middle" fill="#ffffff">🤝</text>
+            <text x="215" y="150" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">Direct 1-on-1 Coaching</text>
+            
+            <g transform="translate(30, 230)">
+              <rect width="170" height="38" rx="19" fill="#f5f3ff" stroke="#ddd6fe"/>
+              <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#7c3aed" text-anchor="middle">📹 Google Meet Live</text>
+            </g>
+            <g transform="translate(225, 230)">
+              <rect width="170" height="38" rx="19" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#2563eb" text-anchor="middle">⏱️ 60-Minute Session</text>
+            </g>
+            <g transform="translate(30, 280)">
+              <rect width="365" height="42" rx="21" fill="#0f172a"/>
+              <text x="182" y="26" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#ffffff" text-anchor="middle">Book Session on WhatsApp ➔</text>
+            </g>
+          </g>
+
+          <rect y="540" width="1200" height="80" fill="#0f172a"/>
+          <g transform="translate(70, 565)">
+            <text x="0" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📞 +92 348 5168409</text>
+            <text x="260" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#ffffff">📧 digitalhunarmand1@gmail.com</text>
+            <text x="760" y="22" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="15" fill="#22c55e">🚀 Digital Hunarmand Hub Mentorship</text>
+          </g>
+        </svg>
+      </div>
+      <div class="mobile-banner-only">
+        <div class="mentor-showcase-box" style="border:none;border-radius:0;box-shadow:none;padding:26px 18px">
+          <div class="ms-badge">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Premium 1-on-1 Guidance
+          </div>
+          <h3 class="ms-title" style="font-size:22px;line-height:1.25">1-on-1 Mentorship Program</h3>
+          <p class="ms-desc" style="font-size:13px;line-height:1.6;margin-bottom:20px">Personalized, undivided coaching from experienced agency directors to scale your skills and freelancing income.</p>
+          
+          <div class="ms-grid" style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
+            <div class="ms-card" style="padding:14px;border-radius:14px">
+              <div class="ms-ico" style="background:rgba(59,91,255,0.25);color:#93c5fd;width:38px;height:38px;font-size:18px">🎯</div>
+              <div>
+                <strong style="font-size:14px">Career Consultation</strong>
+                <p style="font-size:12px">1-on-1 private live consultation focused on your exact goals.</p>
+              </div>
+            </div>
+            <div class="ms-card" style="padding:14px;border-radius:14px">
+              <div class="ms-ico" style="background:rgba(139,62,242,0.25);color:#c4b5fd;width:38px;height:38px;font-size:18px">🔍</div>
+              <div>
+                <strong style="font-size:14px">Portfolio &amp; Resume Review</strong>
+                <p style="font-size:12px">Direct feedback to convert profiles into client magnets.</p>
+              </div>
+            </div>
+            <div class="ms-card" style="padding:14px;border-radius:14px">
+              <div class="ms-ico" style="background:rgba(6,182,212,0.2);color:#67e8f9;width:38px;height:38px;font-size:18px">💼</div>
+              <div>
+                <strong style="font-size:14px">Upwork &amp; Fiverr Secrets</strong>
+                <p style="font-size:12px">Winning proposals and international client negotiation.</p>
+              </div>
+            </div>
+            <div class="ms-card" style="padding:14px;border-radius:14px">
+              <div class="ms-ico" style="background:rgba(34,197,94,0.2);color:#86efac;width:38px;height:38px;font-size:18px">🚀</div>
+              <div>
+                <strong style="font-size:14px">Skill &amp; Roadmap</strong>
+                <p style="font-size:12px">Step-by-step 6-month roadmap for high-earning success.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ms-footer-pills" style="gap:8px">
+            <span class="ms-pill" style="font-size:11px;padding:5px 12px">📹 Google Meet Live</span>
+            <span class="ms-pill" style="font-size:11px;padding:5px 12px">⏱️ 60-Min Session</span>
+            <span class="ms-pill" style="font-size:11px;padding:5px 12px">🤝 Direct Founder Q&amp;A</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="mentor-cta reveal">
       <div class="mentor-cta-txt">
