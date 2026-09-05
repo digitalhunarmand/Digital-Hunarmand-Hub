@@ -94,9 +94,28 @@ img{max-width:100%;display:block}
 /* TILT */
 .tilt{transform-style:preserve-3d;transition:transform .15s ease}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
-.nav.s{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+/* NAV - Circle-Type Curved Bottom Corners */
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:0 0 32px 32px;
+  border-bottom:1.5px solid rgba(59,91,255,0.16);
+  border-left:1.5px solid rgba(59,91,255,0.1);
+  border-right:1.5px solid rgba(59,91,255,0.1);
+  border-top:none;
+  box-shadow:0 10px 32px -4px rgba(15,23,42,0.08);
+  transition:all .3s ease;
+}
+.nav.s{
+  box-shadow:0 14px 40px -4px rgba(59,91,255,0.15);
+  border-bottom-color:rgba(59,91,255,0.25);
+}
 .nav-in{width:100%;max-width:100%;margin:0;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .nav-ico{width:40px;height:40px;object-fit:contain;border-radius:8px}
@@ -120,9 +139,12 @@ img{max-width:100%;display:block}
   align-items:center;
   width:40px;
   height:40px;
-  background:rgba(59,91,255,0.06);
-  border:1.5px solid rgba(59,91,255,0.16);
-  border-radius:10px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(238,244,255,0.55) 50%, rgba(220,235,255,0.75) 100%);
+  backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border:1.5px solid rgba(255,255,255,0.95);
+  border-radius:12px;
+  box-shadow:0 6px 18px -2px rgba(59,91,255,0.18), 0 2px 6px rgba(15,23,42,0.06), inset 0 1px 2px rgba(255,255,255,1), inset 0 -1px 2px rgba(59,91,255,0.14);
   cursor:pointer;
   padding:0;
   margin-left:auto;
@@ -130,21 +152,24 @@ img{max-width:100%;display:block}
   transition:all .3s cubic-bezier(0.4,0,0.2,1);
 }
 .hbg:hover{
-  background:rgba(59,91,255,0.12);
-  border-color:var(--blue);
+  background:linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(228,239,255,0.75) 100%);
+  border-color:rgba(255,255,255,1);
+  box-shadow:0 8px 24px -2px rgba(59,91,255,0.28), inset 0 1px 2px rgba(255,255,255,1), inset 0 -1px 2px rgba(59,91,255,0.22);
+  transform:scale(1.04);
 }
 .hbg span{
   display:block;
   width:20px;
-  height:2px;
+  height:2.2px;
   background:#0f172a;
-  border-radius:2px;
+  border-radius:3px;
   transition:all .3s cubic-bezier(0.4,0,0.2,1);
   transform-origin:center;
 }
 .hbg.active{
-  background:rgba(59,91,255,0.12);
-  border-color:var(--blue);
+  background:linear-gradient(135deg, rgba(238,244,255,0.95) 0%, rgba(215,232,255,0.85) 100%);
+  border-color:rgba(59,91,255,0.4);
+  box-shadow:0 6px 22px -2px rgba(59,91,255,0.3), inset 0 1px 2px rgba(255,255,255,1);
 }
 .hbg.active span:nth-child(1){
   transform:translateY(7px) rotate(45deg);
@@ -161,26 +186,194 @@ img{max-width:100%;display:block}
 
 /* HERO */
 .hero{
-  min-height:calc(100vh - 68px);
+  min-height:100vh;
+  margin-top:0;
   background-color:#ffffff;
   background-image:
-    radial-gradient(ellipse 65% 55% at 90% 20%, rgba(59,91,255,0.16) 0%, rgba(34,211,238,0.09) 45%, transparent 75%),
-    radial-gradient(ellipse 40% 40% at 10% 85%, rgba(139,62,242,0.05) 0%, transparent 60%),
     linear-gradient(to right, rgba(15,23,42,0.045) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15,23,42,0.045) 1px, transparent 1px);
-  background-size:100% 100%, 100% 100%, 46px 46px, 46px 46px;
-  background-position:0 0, 0 0, -1px -1px, -1px -1px;
+  background-size:46px 46px;
+  background-position:-1px -1px;
   position:relative;
   overflow:hidden;
   display:flex;
   align-items:center;
-  padding:60px 0;
+  padding:118px 0 60px;
 }
-.hero-deco{position:absolute;inset:0;pointer-events:none}
-.hero-circle{position:absolute;border-radius:50%;opacity:.06}
-.hc1{width:600px;height:600px;background:var(--blue);top:-200px;right:-100px}
-.hc2{width:400px;height:400px;background:var(--purple);bottom:-100px;left:-100px}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(59,91,255,.08) 1px,transparent 1px);background-size:32px 32px}
+.hero-deco{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+
+/* HERO GLOW ORBS - LIVE FLOATING BACKGROUND BLOBS */
+.hero-glow-orb{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
+.hero-glow-orb.orb-1{
+  width:620px;height:620px;
+  background:radial-gradient(circle at 40% 40%, rgba(59,91,255,0.24) 0%, rgba(34,211,238,0.15) 45%, transparent 72%);
+  top:-100px;right:-80px;filter:blur(65px);
+  animation:heroOrbFloat1 13s ease-in-out infinite alternate;
+}
+.hero-glow-orb.orb-2{
+  width:540px;height:540px;
+  background:radial-gradient(circle at 50% 50%, rgba(139,62,242,0.2) 0%, rgba(236,72,153,0.12) 45%, transparent 70%);
+  bottom:-120px;left:-90px;filter:blur(60px);
+  animation:heroOrbFloat2 15s ease-in-out infinite alternate;
+}
+.hero-glow-orb.orb-3{
+  width:440px;height:440px;
+  background:radial-gradient(circle at 45% 45%, rgba(34,211,238,0.18) 0%, rgba(59,91,255,0.1) 50%, transparent 72%);
+  top:28%;right:12%;filter:blur(52px);
+  animation:heroOrbFloat3 11s ease-in-out infinite alternate;
+}
+.hero-glow-orb.orb-4{
+  width:380px;height:380px;
+  background:radial-gradient(circle at 50% 50%, rgba(99,102,241,0.16) 0%, rgba(168,85,247,0.09) 45%, transparent 70%);
+  top:-40px;left:18%;filter:blur(48px);
+  animation:heroOrbFloat4 16s ease-in-out infinite alternate;
+}
+.hero-glow-orb.orb-5{
+  width:480px;height:480px;
+  background:radial-gradient(circle at 40% 40%, rgba(59,91,255,0.16) 0%, rgba(139,62,242,0.1) 48%, transparent 72%);
+  bottom:-60px;right:6%;filter:blur(58px);
+  animation:heroOrbFloat5 14s ease-in-out infinite alternate;
+}
+
+@keyframes heroOrbFloat1{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-80px,50px,0) scale(1.14)}
+  100%{transform:translate3d(-140px,-35px,0) scale(0.94)}
+}
+@keyframes heroOrbFloat2{
+  0%{transform:translate3d(0,0,0) scale(0.96)}
+  50%{transform:translate3d(85px,-60px,0) scale(1.16)}
+  100%{transform:translate3d(140px,35px,0) scale(1)}
+}
+@keyframes heroOrbFloat3{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-60px,-50px,0) scale(1.18)}
+  100%{transform:translate3d(45px,60px,0) scale(1.04)}
+}
+@keyframes heroOrbFloat4{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(60px,70px,0) scale(1.12)}
+  100%{transform:translate3d(-35px,100px,0) scale(0.94)}
+}
+@keyframes heroOrbFloat5{
+  0%{transform:translate3d(0,0,0) scale(0.95)}
+  50%{transform:translate3d(-75px,-55px,0) scale(1.15)}
+  100%{transform:translate3d(55px,-90px,0) scale(0.92)}
+}
+
+/* HERO FLOATING 3D GLASS BUBBLES */
+.hero-bubble{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle at 30% 28%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.45) 20%, rgba(59,91,255,0.14) 55%, rgba(139,62,242,0.2) 80%, rgba(34,211,238,0.26) 100%);
+  border:1.5px solid rgba(255,255,255,0.85);
+  box-shadow:
+    0 12px 32px -4px rgba(59,91,255,0.12),
+    inset 0 3px 6px rgba(255,255,255,0.95),
+    inset 0 -3px 8px rgba(59,91,255,0.15);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  will-change:transform;
+}
+.hero-bubble::before{
+  content:'';
+  position:absolute;
+  top:15%;
+  left:20%;
+  width:24%;
+  height:18%;
+  border-radius:50%;
+  background:rgba(255,255,255,0.95);
+  transform:rotate(-35deg);
+  filter:blur(0.5px);
+}
+.hero-bubble::after{
+  content:'';
+  position:absolute;
+  bottom:18%;
+  right:20%;
+  width:14%;
+  height:12%;
+  border-radius:50%;
+  background:rgba(255,255,255,0.6);
+  filter:blur(1px);
+}
+
+/* Bubble Placements & Animations */
+.hb-1{width:130px;height:130px;top:12%;right:10%;animation:bMov1 8.5s ease-in-out infinite alternate}
+.hb-2{width:86px;height:86px;top:32%;right:24%;animation:bMov2 10s ease-in-out infinite alternate}
+.hb-3{width:64px;height:64px;top:60%;right:7%;animation:bMov3 7.5s ease-in-out infinite alternate}
+.hb-4{width:108px;height:108px;bottom:10%;right:18%;animation:bMov4 11.5s ease-in-out infinite alternate}
+.hb-5{width:76px;height:76px;bottom:22%;left:6%;animation:bMov5 9s ease-in-out infinite alternate}
+.hb-6{width:56px;height:56px;top:16%;left:44%;animation:bMov6 10.5s ease-in-out infinite alternate}
+.hb-7{width:48px;height:48px;top:46%;left:50%;animation:bMov7 8s ease-in-out infinite alternate}
+.hb-8{width:38px;height:38px;top:8%;right:36%;animation:bMov8 7s ease-in-out infinite alternate}
+.hb-9{width:32px;height:32px;bottom:20%;right:40%;animation:bMov9 8.5s ease-in-out infinite alternate}
+.hb-10{width:24px;height:24px;top:72%;left:28%;animation:bMov10 6.5s ease-in-out infinite alternate}
+.hb-11{width:92px;height:92px;bottom:6%;left:36%;animation:bMov11 12.5s ease-in-out infinite alternate}
+.hb-12{width:42px;height:42px;top:26%;left:16%;animation:bMov12 9.5s ease-in-out infinite alternate}
+
+@keyframes bMov1{
+  0%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(-40px,-45px,0) rotate(10deg)}
+  100%{transform:translate3d(30px,-75px,0) rotate(-8deg)}
+}
+@keyframes bMov2{
+  0%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(35px,-40px,0) rotate(-12deg)}
+  100%{transform:translate3d(-25px,-60px,0) rotate(10deg)}
+}
+@keyframes bMov3{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-30px,35px,0)}
+  100%{transform:translate3d(35px,-30px,0)}
+}
+@keyframes bMov4{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-45px,-40px,0) scale(1.08)}
+  100%{transform:translate3d(25px,-55px,0) scale(0.95)}
+}
+@keyframes bMov5{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(40px,-35px,0)}
+  100%{transform:translate3d(-30px,-50px,0)}
+}
+@keyframes bMov6{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-25px,40px,0) scale(1.12)}
+  100%{transform:translate3d(35px,25px,0) scale(0.9)}
+}
+@keyframes bMov7{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(30px,-30px,0)}
+  100%{transform:translate3d(-35px,-40px,0)}
+}
+@keyframes bMov8{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-24px,30px,0)}
+  100%{transform:translate3d(25px,-25px,0)}
+}
+@keyframes bMov9{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(20px,-25px,0)}
+  100%{transform:translate3d(-18px,20px,0)}
+}
+@keyframes bMov10{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-18px,-24px,0)}
+  100%{transform:translate3d(18px,-35px,0)}
+}
+@keyframes bMov11{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(35px,-45px,0) scale(1.08)}
+  100%{transform:translate3d(-30px,-25px,0) scale(0.94)}
+}
+@keyframes bMov12{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-25px,30px,0)}
+  100%{transform:translate3d(26px,-35px,0)}
+}
 .hero-in{max-width:1320px;margin:0 auto;padding:0 36px;display:flex;justify-content:flex-start;align-items:center;text-align:left;position:relative;z-index:1;width:100%}
 .hero-left{display:flex;flex-direction:column;align-items:flex-start;text-align:left;max-width:580px;width:100%}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border:1.5px solid rgba(59,91,255,.2);border-radius:50px;padding:7px 18px;font-size:12px;font-weight:700;letter-spacing:.5px;color:var(--blue);margin-bottom:22px;box-shadow:0 4px 16px rgba(59,91,255,.08)}
@@ -201,7 +394,27 @@ img{max-width:100%;display:block}
 .btn-out{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1.5px solid #cbd5e1;color:#0f172a;padding:12px 26px;border-radius:12px;font-size:14px;font-weight:700;transition:all .25s ease;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
 .btn-out:hover{background:#fff;border-color:var(--blue);color:var(--blue);transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,91,255,.15)}
 .hero-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.hero-trust.liquid-glass{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  padding:10px 22px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(240,245,255,0.65) 100%);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-radius:50px;
+  border:1.5px solid rgba(255,255,255,0.95);
+  box-shadow:0 12px 32px -4px rgba(59,91,255,0.12), 0 4px 12px rgba(15,23,42,0.03), inset 0 1.5px 2px rgba(255,255,255,1), inset 0 -1px 2px rgba(59,91,255,0.06);
+  margin-top:24px;
+}
 .trust-item{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#64748b}
+.trust-glass-sep{width:1.5px;height:18px;background:linear-gradient(to bottom, rgba(59,91,255,0.05), rgba(59,91,255,0.35), rgba(59,91,255,0.05));border-radius:2px;flex-shrink:0}
+.trust-score strong{color:var(--blue);font-weight:800}
+.trust-stars{color:#f59e0b;font-size:12px;letter-spacing:1px;filter:drop-shadow(0 1px 3px rgba(245,158,11,0.4))}
+.trust-lbl{color:#64748b;font-size:11px;font-weight:600}
+.trust-svg{width:14px;height:14px;flex-shrink:0}
+.trust-svg.prj-svg{color:var(--blue)}
+.trust-svg.cli-svg{color:#7c3aed}
 .hero-mobile-visual{display:none}
 @keyframes flt{from{transform:translateY(0)}to{transform:translateY(-16px)}}
 
@@ -228,7 +441,7 @@ img{max-width:100%;display:block}
 
 /* MARQUEE */
 .mq{background:var(--blue);padding:14px 0;overflow:hidden;position:relative;z-index:10}
-.mq-top{margin-top:68px;border-bottom:1px solid rgba(255,255,255,.15);box-shadow:0 2px 10px rgba(59,91,255,.2)}
+.mq-top{display:none!important}
 .mq-track{display:flex;gap:28px;white-space:nowrap;animation:mqs 28s linear infinite;width:max-content}
 .mq-track span{font-size:12px;font-weight:600;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:2px}
 .mq-track .dot{color:rgba(255,255,255,.4)}
@@ -311,10 +524,14 @@ img{max-width:100%;display:block}
 .int-left h2{font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:16px}
 .int-left p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px}
 .int-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
-.int-meta-item{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
-.int-meta-item svg{margin:0 auto 8px}
-.int-meta-item strong{display:block;font-size:13px;font-weight:700;color:var(--blue);margin-bottom:2px}
-.int-meta-item span{font-size:11px;color:var(--muted)}
+.int-meta-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;transition:all .3s ease;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
+.int-meta-item:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:var(--shadow)}
+.int-meta-ico{width:40px;height:40px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:10px;flex-shrink:0;transition:all .3s ease}
+.int-meta-ico svg{margin:0;display:block}
+.int-meta-item:hover .int-meta-ico{background:var(--blue);color:#fff}
+.int-meta-txt{display:flex;flex-direction:column;align-items:center;gap:2px}
+.int-meta-txt strong{display:block;font-size:13px;font-weight:700;color:var(--blue)}
+.int-meta-txt span{font-size:11px;color:var(--muted)}
 .int-benefits-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0f172a;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .int-benefits-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -373,7 +590,7 @@ img{max-width:100%;display:block}
 .mentor-cta{margin-top:40px;background:linear-gradient(135deg,#0B1130,#1B1150 55%,#2A0F4A);border-radius:22px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;color:#fff;position:relative;overflow:hidden}
 .mentor-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:24px 24px;opacity:.5}
 .mentor-cta-txt{position:relative;z-index:1;max-width:580px}
-.mentor-cta-txt h3{font-size:clamp(20px,2.8vw,28px);font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
+.mentor-cta-txt h3{font-size:clamp(20px,2.8vw,28px);font-weight:800;letter-spacing:-.5px;margin-bottom:0}
 .mentor-cta-txt p{font-size:13.5px;color:#cbd5e1;line-height:1.6}
 .mentor-cta-btn{position:relative;z-index:1;background:var(--grad);color:#fff;padding:12px 28px;border-radius:10px;font-size:13.5px;font-weight:700;white-space:nowrap;box-shadow:0 6px 20px rgba(59,91,255,.35);transition:all .2s;flex-shrink:0}
 .mentor-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(139,62,242,.45)}
@@ -615,9 +832,9 @@ img{max-width:100%;display:block}
 .sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
 .sl-btn{display:flex;align-items:center;gap:12px;border:1.5px solid var(--border);padding:13px 14px;border-radius:14px;font-size:13px;font-weight:600;color:#0f172a;background:#fff;transition:all .25s;position:relative;overflow:hidden}
 .sl-btn:hover{border-color:transparent;color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.sl-btn.fb:hover{background:#1877f2}.sl-btn.tt:hover{background:#0f172a}.sl-btn.ig:hover{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}.sl-btn.wa:hover{background:#25d366}.sl-btn.wg:hover{background:#128c7e}.sl-btn.gm:hover{background:#ea4335}
+.sl-btn.fb:hover{background:#1877f2}.sl-btn.tt:hover{background:#000000}.sl-btn.ig:hover{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}.sl-btn.wa:hover{background:#25d366}.sl-btn.wg:hover{background:#128c7e}.sl-btn.gm:hover{background:#ea4335}
 .sl-ico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
-.si-fb{background:#1877f2}.si-tt{background:#0f172a}.si-ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}.si-wa{background:#25d366}.si-wg{background:#128c7e}.si-gm{background:#ea4335}
+.si-fb{background:#1877f2}.si-tt{background:#000000;box-shadow:0 3px 10px rgba(0,0,0,.35)}.si-ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}.si-wa{background:#25d366}.si-wg{background:#128c7e}.si-gm{background:#ea4335}
 .sl-txt strong{font-size:13px;font-weight:700;display:block}
 .sl-txt small{font-size:10px;color:var(--muted)}
 .sl-btn:hover .sl-txt small{color:rgba(255,255,255,.7)}
@@ -686,6 +903,120 @@ img{max-width:100%;display:block}
 .c-action-btn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:var(--grad);color:#fff!important;text-decoration:none!important;padding:7px 14px;border-radius:8px;font-size:11.5px;font-weight:700;box-shadow:0 2px 8px rgba(59,91,255,.25);transition:transform .2s}
 .c-action-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,91,255,.35)}
 
+/* ── BACK TO TOP BUTTON ── */
+.back-to-top{
+  position:fixed;
+  bottom:96px;
+  right:28px;
+  width:48px;
+  height:48px;
+  background:linear-gradient(135deg,#0c1c4f,#131f4a);
+  border:1.5px solid rgba(56,189,248,0.45);
+  border-radius:50%;
+  color:#38bdf8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:995;
+  box-shadow:0 8px 24px rgba(15,23,42,0.35),0 0 12px rgba(56,189,248,0.15);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(16px) scale(0.9);
+  transition:opacity .32s cubic-bezier(0.16,1,0.3,1),transform .32s cubic-bezier(0.16,1,0.3,1),visibility .32s,background .25s,border-color .25s,box-shadow .25s;
+}
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+.back-to-top:hover{
+  transform:translateY(-3px) scale(1.08);
+  color:#ffffff;
+  background:linear-gradient(135deg,#3B5BFF,#2563eb);
+  border-color:#60a5fa;
+  box-shadow:0 12px 28px rgba(59,91,255,0.45),0 0 18px rgba(96,165,250,0.35);
+}
+.back-to-top:active{
+  transform:scale(0.92);
+}
+
+/* ── AI SIDE PEEKER TAB (Shows on scroll when AI FAB tucks) ── */
+.ai-peeker{
+  position:fixed;
+  bottom:32px;
+  right:0;
+  z-index:998;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  background:linear-gradient(135deg,#0c1c4f 0%,#152968 50%,#1e50d8 100%);
+  border:1.5px solid #38bdf8;
+  border-right:none;
+  border-radius:18px 0 0 18px;
+  padding:8px 10px 8px 12px;
+  color:#ffffff;
+  cursor:pointer;
+  box-shadow:-4px 8px 24px rgba(12,28,79,0.5),0 0 14px rgba(56,189,248,0.25);
+  transform:translateX(108%);
+  transition:transform .35s cubic-bezier(0.16,1,0.3,1),box-shadow .25s ease;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.ai-peeker.show{
+  transform:translateX(0);
+}
+.ai-peeker:hover{
+  transform:translateX(-4px);
+  box-shadow:-6px 10px 28px rgba(59,91,255,0.55),0 0 20px rgba(96,165,250,0.4);
+}
+.ai-peeker-arrow{
+  color:#38bdf8;
+  animation:peekerNudge 1.8s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes peekerNudge{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(-3px)}
+}
+.ai-peeker-avatar{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  overflow:hidden;
+  border:1.5px solid #38bdf8;
+  flex-shrink:0;
+}
+.ai-peeker-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.ai-peeker-text{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:#ffffff;
+}
+
+/* ── CFAB TUCKED / SLIDE-INTO-EDGE STATE ── */
+.cfab.tucked{
+  transform:translateX(120px) scale(0.85)!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.cfab.pop-attention{
+  animation:popAttention .5s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes popAttention{
+  0%{transform:scale(0.8)}
+  50%{transform:scale(1.15)}
+  100%{transform:scale(1)}
+}
+
 /* ── DESKTOP VS MOBILE BANNER DISPLAY ── */
 .desktop-banner-only{display:block}
 .mobile-banner-only{display:none}
@@ -752,15 +1083,56 @@ img{max-width:100%;display:block}
   .ss{font-size:14px!important;line-height:1.65!important}
   .sl{font-size:10.5px!important;letter-spacing:2px!important;margin-bottom:8px!important}
 
-  /* Header & Navigation */
-  .nav{height:60px!important}
+  /* Header & Navigation - Circle-Type Curved Bottom Corners */
+  .nav{
+    height:60px!important;
+    border-radius:0 0 28px 28px!important;
+    border-bottom:1.5px solid rgba(59,91,255,0.16)!important;
+    border-left:1.5px solid rgba(59,91,255,0.1)!important;
+    border-right:1.5px solid rgba(59,91,255,0.1)!important;
+    border-top:none!important;
+    box-shadow:0 8px 28px -4px rgba(15,23,42,0.08)!important;
+  }
   .nav-in{height:60px!important;padding:0 16px 0 16px!important;width:100%!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:space-between!important}
   .nav-logo{gap:8px!important;flex-shrink:0!important;margin-left:0!important}
   .nav-ico{width:32px!important;height:32px!important}
   .nav-txt strong{font-size:12.5px!important}
   .nav-txt small{font-size:9px!important}
   .nav-btn{display:none!important}
-  .hbg{display:flex!important;width:38px!important;height:38px!important;flex-shrink:0!important;margin-left:auto!important;margin-right:0!important}
+  .hbg{
+    display:flex!important;
+    width:38px!important;
+    height:38px!important;
+    flex-shrink:0!important;
+    margin-left:auto!important;
+    margin-right:0!important;
+    background:linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(238,244,255,0.58) 50%, rgba(220,235,255,0.78) 100%)!important;
+    backdrop-filter:blur(16px) saturate(180%)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(180%)!important;
+    border:1.5px solid rgba(255,255,255,0.95)!important;
+    border-radius:12px!important;
+    box-shadow:0 4px 16px -2px rgba(59,91,255,0.18), 0 2px 6px rgba(15,23,42,0.06), inset 0 1.5px 2px rgba(255,255,255,1), inset 0 -1px 2px rgba(59,91,255,0.14)!important;
+    transition:all .3s cubic-bezier(0.4,0,0.2,1)!important;
+  }
+  .hbg:active{
+    transform:scale(0.94)!important;
+    box-shadow:0 2px 8px -1px rgba(59,91,255,0.25), inset 0 1px 2px rgba(59,91,255,0.2)!important;
+  }
+  .hbg span{
+    display:block!important;
+    width:19px!important;
+    height:2.2px!important;
+    background:#0f172a!important;
+    border-radius:3px!important;
+  }
+  .hbg.active{
+    background:linear-gradient(135deg, rgba(238,244,255,0.95) 0%, rgba(215,232,255,0.85) 100%)!important;
+    border-color:rgba(59,91,255,0.35)!important;
+    box-shadow:0 6px 20px -2px rgba(59,91,255,0.28), inset 0 1px 2px rgba(255,255,255,1)!important;
+  }
+  .hbg.active span{
+    background:var(--blue)!important;
+  }
   .nav-ul{
     display:flex!important;
     flex-direction:column!important;
@@ -772,7 +1144,7 @@ img{max-width:100%;display:block}
     background:rgba(255,255,255,0.98)!important;
     backdrop-filter:blur(24px)!important;
     -webkit-backdrop-filter:blur(24px)!important;
-    border-radius:0 0 20px 20px!important;
+    border-radius:0 0 28px 28px!important;
     padding:14px 18px 20px!important;
     box-shadow:0 18px 48px rgba(0,0,0,0.18)!important;
     border-bottom:1.5px solid rgba(59,91,255,0.15)!important;
@@ -797,32 +1169,191 @@ img{max-width:100%;display:block}
   .nav-ul li{width:100%!important}
   .nav-ul li a{display:flex!important;align-items:center!important;gap:12px!important;padding:12px 14px!important;font-size:14px!important;font-weight:600!important;border-radius:12px!important;width:100%!important}
 
-  /* Marquee */
-  .mq-top{margin-top:60px!important}
-  .mq{padding:8px 0!important}
-  .mq-track span{font-size:11px!important;letter-spacing:1px!important}
-
-  /* Hero Section */
+  /* Hero Section - Vertically Balanced & Filled Mobile View */
   .hero{
     min-height:auto!important;
-    padding:30px 0 26px!important;
+    margin-top:0!important;
+    padding:96px 0 46px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
     background-color:#ffffff!important;
     background-image:
-      radial-gradient(ellipse 70% 50% at 85% 15%, rgba(59,91,255,0.15) 0%, rgba(34,211,238,0.08) 45%, transparent 75%),
-      linear-gradient(to right, rgba(15,23,42,0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(15,23,42,0.045) 1px, transparent 1px)!important;
-    background-size:100% 100%, 38px 38px, 38px 38px!important;
-    background-position:0 0, -1px -1px, -1px -1px!important;
+      linear-gradient(to right, rgba(15,23,42,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15,23,42,0.04) 1px, transparent 1px)!important;
+    background-size:38px 38px!important;
+    background-position:-1px -1px!important;
     overflow:hidden!important;
     width:100%!important;
   }
-  .hero-deco{display:none!important}
-  .hero-in{padding:0 18px!important;width:100%!important;max-width:100%!important}
-  .hero-left{max-width:100%!important;width:100%!important;text-align:left!important;align-items:flex-start!important}
-  .hero-h1{font-size:clamp(22px,6.2vw,27px)!important;line-height:1.24!important;margin-bottom:18px!important;letter-spacing:-.6px!important;word-break:break-word!important;text-align:left!important}
-  .hero-btns{display:flex!important;flex-direction:row!important;gap:10px!important;width:100%!important;margin-bottom:6px!important}
-  .btn-blue,.btn-out{flex:1 1 0%!important;min-height:42px!important;padding:9px 12px!important;font-size:13px!important;font-weight:700!important;border-radius:10px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;white-space:nowrap!important;gap:6px!important}
-  .btn-blue svg,.btn-out svg{width:15px!important;height:15px!important;flex-shrink:0!important}
+  .hero-deco{display:block!important;opacity:0.85!important}
+  .hero-glow-orb{filter:blur(40px)!important}
+  .hero-glow-orb.orb-1{width:320px!important;height:320px!important;top:-50px!important;right:-60px!important}
+  .hero-glow-orb.orb-2{width:280px!important;height:280px!important;bottom:-50px!important;left:-60px!important}
+  .hero-glow-orb.orb-3{display:none!important}
+  .hero-glow-orb.orb-4{display:none!important}
+  .hero-glow-orb.orb-5{width:250px!important;height:250px!important}
+  .hero-bubble{transform:scale(0.7)}
+  .hero-in{
+    padding:0 14px!important;
+    width:100%!important;
+    max-width:100%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    box-sizing:border-box!important;
+  }
+  .hero-left{
+    max-width:100%!important;
+    width:100%!important;
+    text-align:left!important;
+    align-items:flex-start!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    margin:0!important;
+  }
+  .hero-badge{display:none!important}
+  .hero-h1{
+    font-size:clamp(32px,8.8vw,40px)!important;
+    line-height:1.16!important;
+    margin-bottom:26px!important;
+    letter-spacing:-1px!important;
+    word-break:break-word!important;
+    text-align:left!important;
+    font-weight:800!important;
+  }
+  .hero-p{display:none!important}
+  .hero-btns{
+    display:flex!important;
+    flex-direction:row!important;
+    gap:10px!important;
+    width:100%!important;
+    margin-bottom:22px!important;
+  }
+  .btn-blue,.btn-out{
+    flex:1 1 0%!important;
+    min-height:52px!important;
+    padding:13px 12px!important;
+    font-size:14px!important;
+    font-weight:700!important;
+    border-radius:16px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    gap:7px!important;
+    box-sizing:border-box!important;
+  }
+  .btn-blue{
+    box-shadow:0 8px 24px rgba(59,91,255,0.28)!important;
+  }
+  .btn-out{
+    box-shadow:0 4px 16px rgba(15,23,42,0.06)!important;
+    border-color:#cbd5e1!important;
+  }
+  .btn-blue svg,.btn-out svg{width:16px!important;height:16px!important;flex-shrink:0!important}
+  .hero-mobile-visual{display:none!important}
+
+  /* Liquid Glass Rating Bar - Strictly Single Row with Comfortable Size */
+  .hero-trust.liquid-glass{
+    display:flex!important;
+    flex-direction:row!important;
+    flex-wrap:nowrap!important;
+    white-space:nowrap!important;
+    align-items:center!important;
+    justify-content:space-around!important;
+    width:100%!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    padding:11px 8px!important;
+    min-height:50px!important;
+    margin-top:0!important;
+    background:radial-gradient(120% 120% at 15% 0%, rgba(255,255,255,0.96) 0%, rgba(235,243,255,0.78) 50%, rgba(255,255,255,0.95) 100%)!important;
+    backdrop-filter:blur(28px) saturate(190%)!important;
+    -webkit-backdrop-filter:blur(28px) saturate(190%)!important;
+    border-radius:50px!important;
+    border:1.5px solid rgba(255,255,255,1)!important;
+    box-shadow:
+      0 14px 34px -4px rgba(59,91,255,0.18),
+      0 4px 14px rgba(15,23,42,0.05),
+      inset 0 2px 3px rgba(255,255,255,1),
+      inset 0 -1.5px 2px rgba(59,91,255,0.08)!important;
+    position:relative!important;
+    overflow:hidden!important;
+  }
+  .hero-trust.liquid-glass::before{
+    content:''!important;
+    position:absolute!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    height:50%!important;
+    background:linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)!important;
+    border-radius:50px 50px 0 0!important;
+    pointer-events:none!important;
+  }
+  .hero-trust.liquid-glass::after{
+    content:''!important;
+    position:absolute!important;
+    top:1px!important;
+    left:14px!important;
+    right:14px!important;
+    height:1px!important;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,1), transparent)!important;
+    pointer-events:none!important;
+  }
+  .trust-item{
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:3px!important;
+    font-size:10.5px!important;
+    color:#334155!important;
+    white-space:nowrap!important;
+    flex-shrink:0!important;
+    position:relative!important;
+    z-index:1!important;
+  }
+  .trust-item strong,.trust-num strong{
+    color:#0f172a!important;
+    font-weight:800!important;
+    font-size:11px!important;
+  }
+  .trust-score strong{
+    color:var(--blue)!important;
+    font-weight:800!important;
+    font-size:11.5px!important;
+  }
+  .trust-stars{
+    color:#f59e0b!important;
+    font-size:9.5px!important;
+    letter-spacing:-0.2px!important;
+    filter:drop-shadow(0 1px 2px rgba(245,158,11,0.4))!important;
+  }
+  .trust-svg{
+    width:12px!important;
+    height:12px!important;
+    flex-shrink:0!important;
+  }
+  .trust-svg.prj-svg{color:var(--blue)!important}
+  .trust-svg.cli-svg{color:#7c3aed!important}
+  .trust-lbl{
+    color:#64748b!important;
+    font-size:9.5px!important;
+    font-weight:600!important;
+  }
+  .trust-glass-sep{
+    display:block!important;
+    width:1px!important;
+    height:16px!important;
+    background:linear-gradient(to bottom, rgba(59,91,255,0.05), rgba(59,91,255,0.35), rgba(59,91,255,0.05))!important;
+    border-radius:2px!important;
+    flex-shrink:0!important;
+    margin:0 1px!important;
+  }
+  .mq-sub{display:none!important}
 
   /* Photo Banner / Live Stats */
   .photo-banner{min-height:auto!important;padding:40px 0!important;width:100%!important;overflow:hidden!important}
@@ -833,7 +1364,17 @@ img{max-width:100%;display:block}
   .pb-stat strong{font-size:clamp(24px,6vw,30px)!important;margin-bottom:4px!important}
   .pb-stat span{font-size:10.5px!important}
 
-  /* Services */
+  /* Services Section - Curved Circle-Type Top Border */
+  .services{
+    background:#ffffff!important;
+    border-radius:36px 36px 0 0!important;
+    border:1.5px solid rgba(59,91,255,0.16)!important;
+    border-bottom:none!important;
+    box-shadow:0 -12px 36px -4px rgba(15,23,42,0.08)!important;
+    position:relative!important;
+    z-index:5!important;
+    margin-top:-22px!important;
+  }
   .svc-head{display:flex!important;flex-direction:column!important;gap:14px!important;align-items:flex-start!important;margin-bottom:24px!important}
   .svc-head-right{display:none!important}
   .svc-grid{display:flex!important;flex-direction:column!important;gap:12px!important;width:100%!important}
@@ -874,8 +1415,13 @@ img{max-width:100%;display:block}
   /* Internship */
   .int-grid{grid-template-columns:1fr!important;gap:22px!important}
   .int-left{font-size:clamp(22px,6vw,28px)!important;margin-bottom:16px!important}
-  .int-meta{display:flex!important;flex-direction:column!important;gap:8px!important;margin-bottom:18px!important}
-  .int-meta-item{padding:12px 14px!important;border-radius:12px!important;background:#fff!important;border:1px solid var(--border)!important;display:flex!important;align-items:center!important;gap:12px!important}
+  .int-meta{display:flex!important;flex-direction:column!important;gap:10px!important;margin-bottom:20px!important}
+  .int-meta-item{padding:12px 16px!important;border-radius:14px!important;background:#fff!important;border:1.5px solid var(--border)!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:14px!important;text-align:left!important;transform:none!important}
+  .int-meta-ico{width:40px!important;height:40px!important;border-radius:10px!important;background:var(--blue-l)!important;color:var(--blue)!important;margin:0!important;flex-shrink:0!important}
+  .int-meta-ico svg{width:20px!important;height:20px!important;margin:0!important;display:block!important}
+  .int-meta-txt{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:2px!important;text-align:left!important;flex:1!important}
+  .int-meta-txt strong{font-size:13.5px!important;font-weight:700!important;color:var(--blue)!important;line-height:1.25!important}
+  .int-meta-txt span{font-size:11px!important;font-weight:500!important;color:var(--muted)!important;line-height:1.25!important}
   .int-banner-card{border-radius:16px!important;width:100%!important;overflow:hidden!important}
 
   /* Mentorship */
@@ -901,12 +1447,121 @@ img{max-width:100%;display:block}
   .partner-reps{padding:18px 14px!important;border-radius:16px!important;margin-top:12px!important}
   .partner-reps-grid{grid-template-columns:1fr!important;gap:10px!important}
 
-  /* Leadership & Team */
-  .lead-section-wrap{margin-bottom:28px!important}
-  .lead-grid{grid-template-columns:1fr!important;gap:18px!important;width:100%!important;max-width:100%!important;margin:0 0 16px!important}
-  .lead-card{border-radius:20px!important;width:100%!important;overflow:hidden!important}
+  /* Leadership & Team - Mobile Horizontal Scroll Carousel (Like Courses) */
+  .lead-section-wrap{margin-bottom:20px!important}
+
+  /* ── CUBIC 3D CAROUSEL WRAPPER ── */
+  .lead-grid-perspective{
+    perspective:1200px!important;
+    perspective-origin:50% 50%!important;
+    overflow:visible!important;
+    margin:0 -18px 0!important;
+    padding-bottom:8px!important;
+    position:relative!important;
+  }
+  .lead-grid{
+    display:flex!important;
+    grid-template-columns:none!important;
+    overflow-x:auto!important;
+    scroll-snap-type:x mandatory!important;
+    scroll-behavior:smooth!important;
+    -webkit-overflow-scrolling:touch!important;
+    gap:16px!important;
+    padding:24px calc(50% - 130px) 28px!important;
+    scroll-padding:0 calc(50% - 130px)!important;
+    margin:0!important;
+    width:auto!important;
+    max-width:none!important;
+    scrollbar-width:none!important;
+    -ms-overflow-style:none!important;
+    transform-style:preserve-3d!important;
+  }
+  .lead-grid::-webkit-scrollbar{
+    display:none!important;
+  }
+  .lead-card{
+    flex:0 0 260px!important;
+    width:260px!important;
+    min-width:260px!important;
+    max-width:260px!important;
+    scroll-snap-align:center!important;
+    scroll-snap-stop:always!important;
+    border-radius:22px!important;
+    overflow:hidden!important;
+    opacity:1!important;
+    border:1.5px solid rgba(255,255,255,0.12)!important;
+    box-shadow:0 14px 34px -6px rgba(10,15,30,0.5),0 0 0 1px rgba(255,255,255,0.06)!important;
+    transform-origin:center center!important;
+    transition:box-shadow 0.28s ease, border-color 0.28s ease!important;
+    will-change:transform!important;
+    backface-visibility:hidden!important;
+    -webkit-backface-visibility:hidden!important;
+    user-select:none!important;
+  }
+  .lead-card:first-child{
+    margin-left:0!important;
+  }
+  .lead-card:last-child{
+    margin-right:0!important;
+  }
+  /* Active card in smooth zoom carousel */
+  .lead-card.cube-active{
+    box-shadow:0 24px 60px -8px rgba(59,91,255,0.55),0 0 0 2px rgba(96,165,250,0.5)!important;
+    border-color:rgba(96,165,250,0.65)!important;
+  }
+  /* Carousel Navigation Buttons & Dots */
+  .lead-carousel-nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:14px!important;
+    margin-top:8px!important;
+    margin-bottom:14px!important;
+  }
+  .lead-nav-btn{
+    width:36px!important;
+    height:36px!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,0.08)!important;
+    border:1px solid rgba(255,255,255,0.18)!important;
+    color:#ffffff!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    cursor:pointer!important;
+    transition:all .2s ease!important;
+    backdrop-filter:blur(8px)!important;
+    -webkit-backdrop-filter:blur(8px)!important;
+    padding:0!important;
+  }
+  .lead-nav-btn:active{
+    transform:scale(0.9)!important;
+    background:rgba(59,91,255,0.35)!important;
+    border-color:rgba(96,165,250,0.5)!important;
+  }
+  .lead-dots{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+  .lead-dot{
+    width:8px!important;
+    height:8px!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,0.25)!important;
+    border:none!important;
+    padding:0!important;
+    cursor:pointer!important;
+    transition:all .3s cubic-bezier(0.16,1,0.3,1)!important;
+  }
+  .lead-dot.active{
+    width:24px!important;
+    border-radius:10px!important;
+    background:linear-gradient(90deg,#3B5BFF,#60a5fa)!important;
+    box-shadow:0 0 12px rgba(59,91,255,0.65)!important;
+  }
   .lead-card-photo-wrap{aspect-ratio:1/1.05!important}
-  .lead-card-body{padding:18px 16px 20px!important}
+  .lead-card-body{padding:16px 16px 18px!important}
   .team-grid{grid-template-columns:1fr 1fr!important;gap:12px!important;width:100%!important;max-width:100%!important}
   .tc{border-radius:16px!important;width:100%!important;overflow:hidden!important}
 
@@ -930,6 +1585,8 @@ img{max-width:100%;display:block}
   .ft-in{grid-template-columns:1fr!important;gap:22px!important;padding:32px 16px 20px!important}
   .ft-bot{padding:16px!important}
   .cfab{bottom:16px!important;right:16px!important;width:50px!important;height:50px!important}
+  .back-to-top{bottom:74px!important;right:16px!important;width:42px!important;height:42px!important}
+  .ai-peeker{bottom:20px!important;padding:6px 8px 6px 10px!important}
   .cwin{left:10px!important;right:10px!important;width:auto!important;bottom:74px!important;max-height:72vh!important;border-radius:16px!important;transform-origin:bottom right!important}
 
   /* Popup Modal */
@@ -946,6 +1603,8 @@ img{max-width:100%;display:block}
   .stat-num{font-size:24px!important}
   .ft-bot p{font-size:11.5px!important}
   .cfab{bottom:14px!important;right:14px!important;width:46px!important;height:46px!important}
+  .back-to-top{bottom:68px!important;right:14px!important;width:38px!important;height:38px!important}
+  .ai-peeker{bottom:16px!important;padding:5px 7px 5px 9px!important}
 }
 
 /* ── MENTORSHIP POSTER POPUP ── */
@@ -1057,9 +1716,50 @@ img{max-width:100%;display:block}
 
 /* ── LEADERSHIP (Enterprise Luxury Card Design) ── */
 .lead-section-wrap{text-align:center;max-width:760px;margin:0 auto 48px}
-.lead-dept-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,91,255,0.08);border:1px solid rgba(59,91,255,0.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--blue);border-radius:50px;padding:7px 18px;font-size:11.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:16px;box-shadow:0 4px 14px rgba(59,91,255,0.06)}
-.lead-dept-badge svg{color:var(--blue);flex-shrink:0}
-.lead-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:24px}
+.lead-dept-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:radial-gradient(120% 120% at 15% 0%, rgba(255,255,255,0.98) 0%, rgba(235,243,255,0.85) 50%, rgba(255,255,255,0.95) 100%);
+  border:1.5px solid rgba(255,255,255,0.95);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  color:var(--blue);
+  border-radius:50px;
+  padding:8px 20px;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  box-shadow:0 12px 32px -4px rgba(59,91,255,0.12), 0 4px 12px rgba(15,23,42,0.04), inset 0 1.5px 2px rgba(255,255,255,1), inset 0 -1px 2px rgba(59,91,255,0.06);
+  position:relative;
+  overflow:hidden;
+}
+.lead-dept-badge::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:50%;
+  background:linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 100%);
+  border-radius:50px 50px 0 0;
+  pointer-events:none;
+}
+.lead-dept-badge::after{
+  content:'';
+  position:absolute;
+  top:1px;
+  left:14px;
+  right:14px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,1), transparent);
+  pointer-events:none;
+}
+.lead-dept-badge svg{color:var(--blue);flex-shrink:0;position:relative;z-index:1}
+.lead-dept-badge span{position:relative;z-index:1}
+.lead-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:24px}
 .lead-card{background:linear-gradient(160deg,#0d1527 0%,#090e1c 55%,#060a14 100%);border:1.5px solid rgba(255,255,255,0.09);border-radius:24px;overflow:hidden;position:relative;transition:all .35s cubic-bezier(0.16,1,0.3,1);cursor:pointer;display:flex;flex-direction:column;box-shadow:0 18px 40px -12px rgba(15,23,42,0.14),0 0 0 1px rgba(15,23,42,0.03)}
 .lead-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(59,91,255,0.14) 0%,transparent 65%);pointer-events:none;z-index:1;transition:opacity .35s ease}
 .lead-card:hover,.lead-card.tapped{transform:translateY(-8px);box-shadow:0 30px 60px -15px rgba(59,91,255,0.28),0 0 0 1.5px rgba(96,165,250,0.4);border-color:rgba(96,165,250,0.4)}
@@ -1078,6 +1778,7 @@ img{max-width:100%;display:block}
 .lead-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:50px;width:fit-content;margin-bottom:12px;color:#ffffff;line-height:1}
 .lead-badge.bg-amber{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 4px 14px rgba(217,119,6,0.38)}
 .lead-badge.bg-purple{background:linear-gradient(135deg,#8b5cf6,#6366f1);box-shadow:0 4px 14px rgba(139,92,246,0.38)}
+.lead-badge.bg-blue{background:linear-gradient(135deg,#3B5BFF,#8B3EF2);box-shadow:0 4px 14px rgba(59,91,255,0.38)}
 .lead-badge.bg-cyan{background:linear-gradient(135deg,#06b6d4,#2563eb);box-shadow:0 4px 14px rgba(6,182,212,0.38)}
 .lead-badge.bg-green{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 14px rgba(16,185,129,0.38)}
 
@@ -1094,41 +1795,73 @@ img{max-width:100%;display:block}
 .lead-card-cta svg{transition:transform .25s ease}
 .lead-card:hover .lead-card-cta{color:#67e8f9}
 .lead-card:hover .lead-card-cta svg{transform:translateX(4px)}
+.lead-carousel-nav{display:none}
 
-@media(max-width:1100px){.lead-grid{grid-template-columns:repeat(2,1fr);gap:20px}}
-@media(max-width:540px){.lead-grid{grid-template-columns:1fr;gap:18px}}
+@media(min-width:901px) and (max-width:1200px){.lead-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+@media(min-width:769px) and (max-width:900px){.lead-grid{grid-template-columns:repeat(2,1fr);gap:20px}}
 
-/* ── TEAM PROFILE MODAL ── */
-.tm-overlay{position:fixed;inset:0;background:rgba(8,11,22,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease}
+/* ── TEAM PROFILE MODAL (Executive Luxury Dossier) ── */
+.tm-overlay{position:fixed;inset:0;background:rgba(6,9,19,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px 16px;opacity:0;transition:opacity .3s cubic-bezier(0.16,1,0.3,1)}
 .tm-overlay.open{display:flex;opacity:1}
-.tm-modal{background:linear-gradient(160deg,#0d1527 0%,#090e1c 55%,#060a14 100%);border:1.5px solid rgba(255,255,255,.14);border-radius:26px;width:100%;max-width:680px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 32px 90px rgba(0,0,0,.6);animation:tmPop .35s cubic-bezier(.2,.8,.2,1) both}
-@keyframes tmPop{from{transform:scale(.92) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-.tm-modal-top{display:flex;align-items:center;gap:20px;padding:28px 28px 22px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;flex-shrink:0}
-.tm-modal-photo{width:82px;height:82px;border-radius:20px;object-fit:cover;object-position:top center;border:2px solid rgba(255,255,255,.18);box-shadow:0 8px 24px rgba(0,0,0,.4);flex-shrink:0}
-.tm-modal-info{flex:1}
-.tm-modal-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:6px}
-.tm-modal-role-badge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:6px}
+.tm-modal{background:linear-gradient(165deg,#0d1527 0%,#090e1c 55%,#050812 100%);border:1.5px solid rgba(255,255,255,0.14);border-radius:26px;width:100%;max-width:640px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 32px 90px -10px rgba(0,0,0,0.8),0 0 0 1px rgba(59,91,255,0.18);animation:tmPop .35s cubic-bezier(.2,.8,.2,1) both;position:relative}
+@keyframes tmPop{from{transform:scale(.92) translateY(24px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.tm-modal-top{display:flex;align-items:center;gap:18px;padding:22px 24px 18px;background:radial-gradient(ellipse at 85% 0%,rgba(59,91,255,0.22) 0%,transparent 65%),linear-gradient(180deg,rgba(255,255,255,0.04) 0%,transparent 100%);border-bottom:1px solid rgba(255,255,255,0.08);position:relative;flex-shrink:0}
+.tm-photo-wrap{position:relative;flex-shrink:0}
+.tm-modal-photo{width:76px;height:76px;border-radius:18px;object-fit:cover;object-position:top center;border:2px solid rgba(255,255,255,0.22);box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 0 1px rgba(59,91,255,0.3);display:block}
+.tm-status-dot{position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;background:#10b981;border:2.5px solid #0d1527;border-radius:50%;box-shadow:0 0 8px rgba(16,185,129,0.8);animation:statusPulse 2s infinite ease-in-out}
+@keyframes statusPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.85}}
+.tm-modal-info{flex:1;min-width:0;padding-right:48px}
+.tm-modal-name{font-size:22px;font-weight:800;color:#ffffff;letter-spacing:-0.4px;margin:4px 0 6px;line-height:1.2}
+.tm-modal-role-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;padding:4px 12px;border-radius:50px;max-width:100%;white-space:normal;line-height:1.35;word-break:break-word;box-sizing:border-box}
+.tm-modal-role-badge.cto{background:linear-gradient(135deg,rgba(59,91,255,0.35),rgba(139,92,246,0.35));color:#93c5fd;border:1px solid rgba(59,91,255,.45)}
 .tm-modal-role-badge.co{background:linear-gradient(135deg,rgba(139,92,246,0.35),rgba(99,102,241,0.35));color:#c4b5fd;border:1px solid rgba(139,92,246,.45)}
 .tm-modal-role-badge.ld{background:linear-gradient(135deg,rgba(6,182,212,0.3),rgba(37,99,235,0.3));color:#67e8f9;border:1px solid rgba(6,182,212,.4)}
 .tm-modal-role-badge.ad{background:linear-gradient(135deg,rgba(34,197,94,0.3),rgba(16,185,129,0.3));color:#86efac;border:1px solid rgba(34,197,94,.4)}
 .tm-modal-role-badge.fd{background:linear-gradient(135deg,rgba(245,158,11,0.35),rgba(217,119,6,0.35));color:#fde68a;border:1px solid rgba(245,158,11,.45)}
-.tm-modal-org{font-size:12px;color:rgba(255,255,255,.5);font-weight:500}
-.tm-close{position:absolute;top:20px;right:20px;width:36px;height:36px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.7);font-size:16px;transition:all .2s;line-height:1;flex-shrink:0}
-.tm-close:hover{background:rgba(239,68,68,.75);border-color:transparent;color:#fff}
-.tm-modal-body{overflow-y:auto;padding:24px 28px 28px;display:flex;flex-direction:column;gap:22px}
+.tm-modal-org{font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:6px;font-weight:500}
+.tm-modal-org svg{color:var(--blue);flex-shrink:0}
+.tm-close{position:absolute;top:18px;right:18px;width:36px;height:36px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.75);font-size:15px;transition:all .2s;line-height:1;flex-shrink:0;z-index:20}
+.tm-close:hover{background:rgba(239,68,68,0.8);border-color:transparent;color:#fff;transform:rotate(90deg) scale(1.06)}
+.tm-modal-body{overflow-y:auto;padding:22px 26px 24px;display:flex;flex-direction:column;gap:20px}
 .tm-modal-body::-webkit-scrollbar{width:5px}
 .tm-modal-body::-webkit-scrollbar-track{background:rgba(255,255,255,.04)}
 .tm-modal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:4px}
-.tm-section-label{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.tm-section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
-.tm-qual-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
-.tm-qual-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#e2e8f0;line-height:1.5}
-.tm-qual-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px;background:var(--grad)}
-.tm-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tm-skill-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;font-size:12px;font-weight:600;color:#c7d3f5;display:flex;align-items:center;gap:8px;transition:all .2s}
-.tm-skill-tag:hover{background:rgba(59,91,255,.18);border-color:rgba(59,91,255,.4);color:#fff}
-.tm-skill-icon{font-size:15px;flex-shrink:0}
-@media(max-width:560px){.tm-modal{border-radius:18px}.tm-modal-top{padding:20px 18px 16px;gap:14px}.tm-modal-photo{width:64px;height:64px}.tm-modal-name{font-size:18px}.tm-modal-body{padding:18px 18px 22px}.tm-skills-grid{grid-template-columns:1fr}}
+.tm-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tm-stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.tm-stat-val{font-size:12.5px;font-weight:700;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tm-stat-lbl{font-size:10px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#64748b}
+.tm-section-label{font-size:10.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#94a3b8;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tm-section-label svg{color:var(--blue);flex-shrink:0}
+.tm-section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08)}
+.tm-bio-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;padding:12px 16px;font-size:13px;line-height:1.65;color:#cbd5e1}
+.tm-qual-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.tm-qual-item{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:#e2e8f0;line-height:1.5}
+.tm-qual-icon{width:18px;height:18px;border-radius:50%;background:rgba(59,91,255,0.2);color:#60a5fa;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.tm-qual-icon svg{width:11px;height:11px}
+.tm-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tm-skill-tag{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 12px;font-size:11.5px;font-weight:600;color:#cbd5e1;display:flex;align-items:center;gap:8px;transition:all .2s ease}
+.tm-skill-tag:hover{background:rgba(59,91,255,0.15);border-color:rgba(96,165,250,0.35);color:#ffffff;transform:translateY(-1px)}
+.tm-skill-icon{font-size:14px;flex-shrink:0}
+.tm-modal-footer{padding:16px 26px 20px;border-top:1px solid rgba(255,255,255,0.08);background:rgba(8,12,22,0.95);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tm-btn-wa{width:100%;background:#22c55e;color:#ffffff;padding:13px 20px;border-radius:14px;font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:all .25s ease;box-shadow:0 4px 16px rgba(34,197,94,0.35)}
+.tm-btn-wa:hover{background:#16a34a;transform:translateY(-1px);box-shadow:0 6px 22px rgba(34,197,94,0.45);color:#fff}
+@media(max-width:560px){
+  .tm-modal{border-radius:22px!important;max-height:92vh!important;margin:0 4px!important}
+  .tm-modal-top{padding:16px 14px 14px!important;gap:12px!important;position:relative!important}
+  .tm-modal-photo{width:60px!important;height:60px!important}
+  .tm-modal-info{padding-right:42px!important}
+  .tm-modal-role-badge{font-size:9px!important;padding:3.5px 10px!important;letter-spacing:0.6px!important}
+  .tm-modal-name{font-size:18px!important}
+  .tm-close{top:12px!important;right:12px!important;width:32px!important;height:32px!important;font-size:13px!important}
+  .tm-modal-body{padding:16px 14px 18px!important;gap:16px!important}
+  .tm-stats-grid{gap:6px!important}
+  .tm-stat-card{padding:8px 6px!important}
+  .tm-stat-val{font-size:11px!important}
+  .tm-stat-lbl{font-size:8.5px!important}
+  .tm-skills-grid{grid-template-columns:1fr!important;gap:6px!important}
+  .tm-modal-footer{padding:14px 16px 16px!important}
+  .tm-btn-wa{width:100%!important;min-height:46px!important}
+}
 
 /* ── PRELOADER ANIMATION ── */
 #preloader {
@@ -1220,6 +1953,33 @@ img{max-width:100%;display:block}
 .int-perk-check{width:20px;height:20px;border-radius:50%;background:rgba(59,91,255,0.3);border:1.5px solid #60a5fa;display:flex;align-items:center;justify-content:center;color:#93c5fd;flex-shrink:0;margin-top:2px}
 @media(max-width:768px){.int-perks-card{padding:24px 18px;border-radius:20px}}
 
+/* ── STANDALONE GROUP B SECTIONS & ROUTING ── */
+.standalone-section {
+  display: none !important;
+}
+.standalone-section.active-standalone {
+  display: block !important;
+  padding-top: 68px !important;
+}
+@media(max-width:768px){
+  .standalone-section.active-standalone {
+    padding-top: 60px !important;
+  }
+}
+
+/* When in Standalone Mode, completely hide all Group A sections including HERO with !important */
+body.standalone-mode #home,
+body.standalone-mode .hero,
+body.standalone-mode .mq,
+body.standalone-mode #services,
+body.standalone-mode .photo-banner,
+body.standalone-mode #courses,
+body.standalone-mode #mission,
+body.standalone-mode #why,
+body.standalone-mode #about,
+body.standalone-mode #contact {
+  display: none !important;
+}
 </style>
 </head>
 <body>
@@ -1244,36 +2004,46 @@ img{max-width:100%;display:block}
     </a>
     <ul class="nav-ul" id="navUl">
       <li><a href="#home"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a></li>
-      <li><a href="#about"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>About Us</a></li>
-      <li><a href="#mission"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Our Mission</a></li>
       <li><a href="#services"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Services</a></li>
       <li><a href="#courses"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Courses</a></li>
+      <li><a href="#mission"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Our Mission</a></li>
+      <li><a href="#why"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Why Us</a></li>
+      <li><a href="#about"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>About Us</a></li>
+      <li><a href="#contact"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Contact</a></li>
+      <li><a href="#hiring"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Hirings</a></li>
       <li><a href="#internship"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Internships</a></li>
       <li><a href="#mentorship"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Mentorship</a></li>
-      <li><a href="#partnership"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/><circle cx="12" cy="14" r="2"/></svg>Partners</a></li>
-      <li><a href="#hiring"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Hirings</a></li>
       <li><a href="#team"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Team</a></li>
-      <li><a href="#why"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Why Us</a></li>
-      <li><a href="#contact"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Contact</a></li>
+      <li><a href="#partnership"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/><circle cx="12" cy="14" r="2"/></svg>Partners</a></li>
     </ul>
     <a href="https://wa.me/923485168409" target="_blank" class="nav-btn">Get in Touch</a>
     <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- TOP MARQUEE -->
-<div class="mq mq-top">
-  <div class="mq-track">
-    <span>Web Development</span><span class="dot">•</span><span>Mobile Apps</span><span class="dot">•</span><span>Graphic Design</span><span class="dot">•</span><span>UI/UX Design</span><span class="dot">•</span><span>Digital Marketing</span><span class="dot">•</span><span>Video Editing</span><span class="dot">•</span><span>Branding</span><span class="dot">•</span><span>SEO &amp; Ads</span><span class="dot">•</span><span>Internship Program</span><span class="dot">•</span><span>Online Courses</span><span class="dot">•</span><span>Web Development</span><span class="dot">•</span><span>Mobile Apps</span><span class="dot">•</span><span>Graphic Design</span><span class="dot">•</span><span>UI/UX Design</span><span class="dot">•</span><span>Digital Marketing</span><span class="dot">•</span><span>Video Editing</span><span class="dot">•</span><span>Branding</span><span class="dot">•</span><span>SEO &amp; Ads</span><span class="dot">•</span><span>Internship Program</span><span class="dot">•</span><span>Online Courses</span><span class="dot">•</span>
-  </div>
-</div>
-
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-deco">
-    <div class="hero-circle hc1"></div>
-    <div class="hero-circle hc2"></div>
-    <div class="hero-dots"></div>
+  <div class="hero-deco" id="heroDeco">
+    <!-- Ambient Living Mesh Glow Orbs -->
+    <div class="hero-glow-orb orb-1"></div>
+    <div class="hero-glow-orb orb-2"></div>
+    <div class="hero-glow-orb orb-3"></div>
+    <div class="hero-glow-orb orb-4"></div>
+    <div class="hero-glow-orb orb-5"></div>
+
+    <!-- Live Floating Glass Bubbles -->
+    <div class="hero-bubble hb-1"></div>
+    <div class="hero-bubble hb-2"></div>
+    <div class="hero-bubble hb-3"></div>
+    <div class="hero-bubble hb-4"></div>
+    <div class="hero-bubble hb-5"></div>
+    <div class="hero-bubble hb-6"></div>
+    <div class="hero-bubble hb-7"></div>
+    <div class="hero-bubble hb-8"></div>
+    <div class="hero-bubble hb-9"></div>
+    <div class="hero-bubble hb-10"></div>
+    <div class="hero-bubble hb-11"></div>
+    <div class="hero-bubble hb-12"></div>
   </div>
   <div class="hero-in">
     <div class="hero-left">
@@ -1283,6 +2053,7 @@ img{max-width:100%;display:block}
         <span id="typeLine3"></span><br/>
         <span id="typeLine4"></span><span class="typing-cursor" id="typeCursor">|</span>
       </h1>
+
       <div class="hero-btns">
         <a href="#services" class="btn-blue">
           <span>Explore Services</span>
@@ -1293,12 +2064,33 @@ img{max-width:100%;display:block}
           <span>WhatsApp Us</span>
         </a>
       </div>
+
+      <!-- Liquid Glass Rating & Trust Bar -->
+      <div class="hero-trust liquid-glass">
+        <div class="trust-item">
+          <span class="trust-stars">★★★★★</span>
+          <span class="trust-score"><strong>4.9</strong>/5</span>
+          <span class="trust-lbl">Rating</span>
+        </div>
+        <span class="trust-glass-sep"></span>
+        <div class="trust-item">
+          <svg class="trust-svg prj-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><polyline points="9 13 12 16 16 11"></polyline></svg>
+          <span class="trust-num"><strong>50+</strong></span>
+          <span class="trust-lbl">Projects</span>
+        </div>
+        <span class="trust-glass-sep"></span>
+        <div class="trust-item">
+          <svg class="trust-svg cli-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="trust-num"><strong>30+</strong></span>
+          <span class="trust-lbl">Clients</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="mq">
+<!-- MARQUEE (Desktop Only) -->
+<div class="mq mq-sub desktop-banner-only">
   <div class="mq-track">
     <span>Web Development</span><span class="dot">•</span><span>Mobile Apps</span><span class="dot">•</span><span>Graphic Design</span><span class="dot">•</span><span>UI/UX Design</span><span class="dot">•</span><span>Digital Marketing</span><span class="dot">•</span><span>Video Editing</span><span class="dot">•</span><span>Branding</span><span class="dot">•</span><span>SEO &amp; Ads</span><span class="dot">•</span><span>Internship Program</span><span class="dot">•</span><span>Online Courses</span><span class="dot">•</span><span>Web Development</span><span class="dot">•</span><span>Mobile Apps</span><span class="dot">•</span><span>Graphic Design</span><span class="dot">•</span><span>UI/UX Design</span><span class="dot">•</span><span>Digital Marketing</span><span class="dot">•</span><span>Video Editing</span><span class="dot">•</span><span>Branding</span><span class="dot">•</span><span>SEO &amp; Ads</span><span class="dot">•</span><span>Internship Program</span><span class="dot">•</span><span>Online Courses</span><span class="dot">•</span>
   </div>
@@ -1347,38 +2139,6 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- FEATURE TWO COL -->
-<section class="feature">
-  <div class="sw">
-    <div class="feat-grid">
-      <div class="feat-card reveal-l">
-        <div class="feat-ico-wrap" style="background:#fff;padding:0;border:none"><svg width="68" height="68" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:20px"><defs><linearGradient id="fiBg1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#eff6ff"/></linearGradient><linearGradient id="fiRocket" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3B5BFF"/><stop offset="50%" stop-color="#8B3EF2"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient><filter id="fiShadow1" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3B5BFF" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#fiBg1)" stroke="#dbeafe" stroke-width="2"/><g filter="url(#fiShadow1)"><rect x="22" y="52" width="12" height="26" rx="4" fill="#60a5fa" opacity="0.8"/><rect x="38" y="40" width="12" height="38" rx="4" fill="#3B5BFF"/><rect x="54" y="28" width="12" height="50" rx="4" fill="#8B3EF2"/><rect x="70" y="18" width="12" height="60" rx="4" fill="#22D3EE"/><path d="M20 62 L38 48 L54 36 L76 20" stroke="url(#fiRocket)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="76" cy="20" r="5" fill="#22D3EE"/></g></svg></div>
-        <h3>Grow Your Business Digitally</h3>
-        <p>We transform your brand by combining stunning visuals with a powerful digital presence. Our tailored solutions are designed to captivate your audience and elevate your identity.</p>
-        <div class="feat-checks">
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Professional Design &amp; Branding</div>
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Web Development &amp; Online Presence</div>
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Video Production &amp; Marketing</div>
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Fast Delivery, Affordable Pricing</div>
-        </div>
-        <a href="https://wa.me/923485168409" target="_blank" class="btn-solid">Start Project</a>
-      </div>
-      <div class="feat-card reveal-r">
-        <div class="feat-ico-wrap" style="background:#fff;padding:0;border:none"><svg width="68" height="68" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:20px"><defs><linearGradient id="fiBg2" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f5f3ff"/></linearGradient><linearGradient id="fiGrad2" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8B3EF2"/><stop offset="50%" stop-color="#3B5BFF"/><stop offset="100%" stop-color="#ec4899"/></linearGradient><filter id="fiShadow2" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#8B3EF2" flood-opacity="0.3"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#fiBg2)" stroke="#ddd6fe" stroke-width="2"/><g filter="url(#fiShadow2)"><polygon points="50,22 84,36 50,50 16,36" fill="url(#fiGrad2)"/><polygon points="50,22 84,36 50,30" fill="#a855f7" opacity="0.6"/><path d="M30 43 v16 c0 6 10 10 20 10 s20 -4 20 -10 v-16" fill="url(#fiGrad2)" opacity="0.9"/><path d="M74 38 v22" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round"/><circle cx="74" cy="62" r="5" fill="#f59e0b"/></g></svg></div>
-        <h3>Learn, Grow &amp; Earn Digitally</h3>
-        <p>Master in-demand creative and technical skills. Join hundreds of students who have launched careers with our industry-grade courses and internship programs.</p>
-        <div class="feat-checks">
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Industry Expert Instructors</div>
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Hands-on Project-Based Learning</div>
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Job-Ready Portfolio Building</div>
-          <div class="feat-check"><div class="fck"><svg width="11" height="11" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Internship &amp; Career Support</div>
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-solid">Enroll Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PHOTO BANNER -->
 <div class="photo-banner">
   <div class="pb-glow g1"></div>
@@ -1422,41 +2182,82 @@ img{max-width:100%;display:block}
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="sw about-in">
-    <div class="reveal-l">
-      <span class="sl">Who We Are</span>
-      <h2 class="st">About <span class="g-text">Digital Hunarmand</span></h2>
-      <p class="ss" style="margin-bottom:0">Digital Hunarmand is a professional digital solutions agency providing creative, technical, and business-support services. Our skilled team specializes in graphic design, web development, app development, content creation, social media management, data analytics, and business productivity solutions.</p>
-      <div class="about-checks">
-        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Professional team of 6 dedicated experts</div>
-        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Fast delivery &amp; 1-hour reply guarantee</div>
-        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Affordable pricing for every budget</div>
-        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>12+ complete digital services under one roof</div>
-      </div>
-      <a href="https://wa.me/923485168409" target="_blank" class="btn-blue">Start a Project</a>
+<!-- COURSES (COURSERA ROW TEMPLATE) -->
+<section class="courses" id="courses">
+  <div class="sw" style="padding-top:48px;padding-bottom:48px">
+    <div class="reveal" style="margin-bottom:24px">
+      <span class="sl" style="color:var(--blue)">Featured Programs</span>
+      <h2 class="st" style="margin-bottom:8px">Top In-Demand <span class="g-text">Courses &amp; Training</span></h2>
     </div>
-    <div class="about-stat-box reveal-r">
-      <div class="stat-title">Our Numbers</div>
-      <div class="stat-grid">
-        <div class="stat-item">
-          <strong class="cnt" data-target="50" data-suffix="+">0</strong>
-          <span>Projects Done</span>
+
+    <div class="courses-grid-row reveal">
+      <!-- Card 1 -->
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="coursera-card">
+        <div class="coursera-thumb">
+          <img src="thumb_graphic_design.jpg" alt="Graphic Design Masterclass"/>
         </div>
-        <div class="stat-item">
-          <strong class="cnt" data-target="30" data-suffix="+">0</strong>
-          <span>Happy Clients</span>
+        <div class="coursera-body">
+          <div class="coursera-org">
+            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
+            <span class="coursera-org-name">Digital Hunarmand Hub</span>
+          </div>
+          <div class="coursera-title">Graphic Design &amp; Brand Identity Masterclass</div>
+          <div class="coursera-type">Online Course</div>
+          <div class="coursera-pill">Job ready</div>
         </div>
-        <div class="stat-item">
-          <strong class="cnt" data-target="6" data-suffix="">0</strong>
-          <span>Team Experts</span>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="coursera-card">
+        <div class="coursera-thumb">
+          <img src="thumb_digital_marketing.jpg" alt="Digital Marketing Course"/>
         </div>
-        <div class="stat-item">
-          <strong class="cnt" data-target="12" data-suffix="+">0</strong>
-          <span>Services</span>
+        <div class="coursera-body">
+          <div class="coursera-org">
+            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
+            <span class="coursera-org-name">Digital Hunarmand Hub</span>
+          </div>
+          <div class="coursera-title">Digital Marketing, SEO &amp; Social Media Ads</div>
+          <div class="coursera-type">Online Course</div>
+          <div class="coursera-pill">Job ready</div>
         </div>
-      </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%203-Month%20Internship%20Program" target="_blank" class="coursera-card">
+        <div class="coursera-thumb">
+          <img src="thumb_internship_program.jpg" alt="Internship Program"/>
+        </div>
+        <div class="coursera-body">
+          <div class="coursera-org">
+            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
+            <span class="coursera-org-name">Digital Hunarmand Hub</span>
+          </div>
+          <div class="coursera-title">3-Month Professional Agency Internship</div>
+          <div class="coursera-type">Internship Program</div>
+          <div class="coursera-pill">Job ready</div>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20book%20a%201-on-1%20Mentorship%20Session" target="_blank" class="coursera-card">
+        <div class="coursera-thumb">
+          <img src="thumb_career_mentorship.jpg" alt="Mentorship Program"/>
+        </div>
+        <div class="coursera-body">
+          <div class="coursera-org">
+            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
+            <span class="coursera-org-name">Digital Hunarmand Hub</span>
+          </div>
+          <div class="coursera-title">1-on-1 Career Mentorship &amp; Client Strategy</div>
+          <div class="coursera-type">Mentorship Program</div>
+          <div class="coursera-pill">Job ready</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="coursera-btn-row reveal">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-coursera-more">Apply on Google Form</a>
     </div>
   </div>
 </section>
@@ -1483,118 +2284,6 @@ img{max-width:100%;display:block}
         <div class="vmc-ico" style="background:#fff;padding:0;border:none"><svg width="70" height="70" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:20px"><defs><linearGradient id="conBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#ecfeff"/></linearGradient><linearGradient id="conGrad" x1="20" y1="15" x2="80" y2="85" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#06b6d4"/><stop offset="50%" stop-color="#3B5BFF"/><stop offset="100%" stop-color="#10b981"/></linearGradient><filter id="conShad" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#06b6d4" flood-opacity="0.32"/></filter></defs><rect width="100" height="100" rx="24" fill="url(#conBg)" stroke="#cffafe" stroke-width="2"/><g filter="url(#conShad)"><circle cx="50" cy="36" r="10" fill="url(#conGrad)"/><path d="M30 68 C30 56, 40 50, 50 50 C60 50, 70 56, 70 68" stroke="url(#conGrad)" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="28" cy="42" r="7" fill="#06b6d4" opacity="0.8"/><path d="M16 66 C16 58, 23 54, 30 54" stroke="#06b6d4" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="72" cy="42" r="7" fill="#10b981" opacity="0.8"/><path d="M70 54 C77 54, 84 58, 84 66" stroke="#10b981" stroke-width="4" stroke-linecap="round" opacity="0.8"/><polygon points="50,14 53,21 60,21 54,25 56,32 50,28 44,32 46,25 40,21 47,21" fill="#f59e0b"/></g></svg></div>
         <h3>Our Contribution</h3>
         <p>We are actively training students, building skilled teams, delivering digital solutions, and conducting sessions in schools and institutions to promote digital awareness and career development.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LEADERSHIP -->
-<section class="team" id="team">
-  <div class="sw">
-    <div class="lead-section-wrap reveal">
-      <div class="lead-dept-badge">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 19h12a2 2 0 002-2V7l-5 4-3-4-3 4-5-4v10a2 2 0 002 2z"/></svg>
-        <span>Department Leadership</span>
-      </div>
-      <h2 class="st" style="margin-bottom:12px">Leadership &amp; <span class="g-text">Management</span></h2>
-      <p class="ss">The visionaries and innovators building a modern digital ecosystem, empowering talent, and steering Digital Hunarmand Hub forward.</p>
-    </div>
-
-    <div class="lead-grid">
-      <!-- Nidal Munir -->
-      <div class="lead-card reveal" data-member="nidal">
-        <div class="lead-card-photo-wrap">
-          <img src="nidal.png" alt="Nidal Munir - Founder &amp; CEO"/>
-          <div class="lead-card-photo-overlay"></div>
-        </div>
-        <div class="lead-card-body">
-          <div class="lead-badge bg-amber">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 19h12a2 2 0 002-2V7l-5 4-3-4-3 4-5-4v10a2 2 0 002 2z"/></svg>
-            <span>Founder &amp; CEO</span>
-          </div>
-          <h3>Nidal Munir</h3>
-          <p class="lead-card-desc">Founder &amp; CEO | Digital Strategy Leader &amp; Brand Architect | Business Development Specialist</p>
-          <div class="lead-card-pill">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>Bookable for Mentorship</span>
-          </div>
-          <div class="lead-card-cta">
-            <span>View Profile</span>
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Geeto Shakeel -->
-      <div class="lead-card reveal" data-member="geeto">
-        <div class="lead-card-photo-wrap">
-          <img src="Geeto Shakeel.png" alt="Geeto Shakeel - Co-Founder &amp; Director"/>
-          <div class="lead-card-photo-overlay"></div>
-        </div>
-        <div class="lead-card-body">
-          <div class="lead-badge bg-purple">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span>Co-Founder &amp; Director</span>
-          </div>
-          <h3>Geeto Shakeel</h3>
-          <p class="lead-card-desc">Co-Founder &amp; Director | Strategic Planning | Digital Growth &amp; Tech Operations Lead</p>
-          <div class="lead-card-pill">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <span>Web Dev &amp; Tech Growth</span>
-          </div>
-          <div class="lead-card-cta">
-            <span>View Profile</span>
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sayed Muhammad Arif Khan -->
-      <div class="lead-card reveal" data-member="sayed">
-        <div class="lead-card-photo-wrap">
-          <img src="Sayed M. Arif Khan.png" alt="Sayed M. Arif Khan - Leader"/>
-          <div class="lead-card-photo-overlay"></div>
-        </div>
-        <div class="lead-card-body">
-          <div class="lead-badge bg-cyan">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span>Leader</span>
-          </div>
-          <h3>Sayed M. Arif Khan</h3>
-          <p class="lead-card-desc">Project Leader | Quality Assurance &amp; Project Delivery Specialist | Community &amp; Digital Education</p>
-          <div class="lead-card-pill">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <span>Project &amp; Quality Lead</span>
-          </div>
-          <div class="lead-card-cta">
-            <span>View Profile</span>
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Muhammad Rizwan -->
-      <div class="lead-card reveal" data-member="rizwan">
-        <div class="lead-card-photo-wrap">
-          <img src="Muhammad Rizwan.png" alt="Muhammad Rizwan - Administrator"/>
-          <div class="lead-card-photo-overlay"></div>
-        </div>
-        <div class="lead-card-body">
-          <div class="lead-badge bg-green">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Administrator</span>
-          </div>
-          <h3>Muhammad Rizwan</h3>
-          <p class="lead-card-desc">Administrator | Multi-Disciplinary Digital &amp; IT Professional | Community Management &amp; IT Support</p>
-          <div class="lead-card-pill">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-            <span>Admin &amp; Community Lead</span>
-          </div>
-          <div class="lead-card-cta">
-            <span>View Profile</span>
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1634,61 +2323,83 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- INTERNSHIP -->
-<section class="internship" id="internship">
-  <div class="sw">
-    <div class="int-grid">
-      <div class="reveal-l">
-        <div class="int-badge"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Internship Program 2026</div>
-        <h2 class="int-left" style="font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:24px;line-height:1.1">3-Month Professional<br/><span class="g-text">Internship Program</span></h2>
-        <div class="int-meta">
-          <div class="int-meta-item"><svg width="22" height="22" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><strong>3 Months</strong><span>Duration</span></div>
-          <div class="int-meta-item"><svg width="22" height="22" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><strong>Online/Hybrid</strong><span>Mode</span></div>
-          <div class="int-meta-item"><svg width="22" height="22" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h18v18H3z" rx="2"/><path d="M12 8v8M8 12h8"/></svg><strong>Digital Hunarmand</strong><span>Organization</span></div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sw about-in">
+    <div class="reveal-l">
+      <span class="sl">Who We Are</span>
+      <h2 class="st">About <span class="g-text">Digital Hunarmand</span></h2>
+      <p class="ss" style="margin-bottom:0">Digital Hunarmand is a professional digital solutions agency providing creative, technical, and business-support services. Our skilled team specializes in graphic design, web development, app development, content creation, social media management, data analytics, and business productivity solutions.</p>
+      <div class="about-checks">
+        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Professional team of 6 dedicated experts</div>
+        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Fast delivery &amp; 1-hour reply guarantee</div>
+        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Affordable pricing for every budget</div>
+        <div class="ack"><div class="ack-ico"><svg width="12" height="12" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>12+ complete digital services under one roof</div>
+      </div>
+      <a href="https://wa.me/923485168409" target="_blank" class="btn-blue">Start a Project</a>
+    </div>
+    <div class="about-stat-box reveal-r">
+      <div class="stat-title">Our Numbers</div>
+      <div class="stat-grid">
+        <div class="stat-item">
+          <strong class="cnt" data-target="50" data-suffix="+">0</strong>
+          <span>Projects Done</span>
         </div>
-        <a href="https://wa.me/923485168409" target="_blank" class="btn-blue">Apply Now</a>
+        <div class="stat-item">
+          <strong class="cnt" data-target="30" data-suffix="+">0</strong>
+          <span>Happy Clients</span>
+        </div>
+        <div class="stat-item">
+          <strong class="cnt" data-target="6" data-suffix="">0</strong>
+          <span>Team Experts</span>
+        </div>
+        <div class="stat-item">
+          <strong class="cnt" data-target="12" data-suffix="+">0</strong>
+          <span>Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sw">
+    <div class="center reveal" style="margin-bottom:52px">
+      <span class="sl">Get In Touch</span>
+      <h2 class="st">Let's Build Something <span class="g-text">Together</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal-l">
+        <div class="cbox">
+          <h3>Contact Information</h3>
+          <div class="ci"><div class="ci-ico ci-ph"><img src="phone logo.png" alt="Phone Logo"/></div><div><div class="ci-lbl">Phone / WhatsApp</div><a href="tel:+923485168409" class="ci-val">+92 348 5168409</a></div></div>
+          <div class="ci"><div class="ci-ico ci-em"><img src="gmail logo.jpg" alt="Gmail Logo"/></div><div><div class="ci-lbl">Email</div><a href="mailto:digitalhunarmand1@gmail.com" class="ci-val">digitalhunarmand1@gmail.com</a></div></div>
+          <div class="ctag">Your Vision. Our Mission.<br/><span class="g-text">Digital Success.</span></div>
+        </div>
       </div>
       <div class="reveal-r">
-        <div class="int-banner-card" style="background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);transition:all .35s ease">
-          <div class="desktop-banner-only">
-            <img src="thumb_internship_program.jpg" alt="3-Month Internship Program 2026 - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:24px;"/>
+        <div class="cbox">
+          <h3>Follow &amp; Connect</h3>
+          <div class="sg">
+            <a href="https://www.facebook.com/share/1CSRDP9kP9/" target="_blank" class="sl-btn fb"><div class="sl-ico si-fb"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div class="sl-txt"><strong>Facebook</strong><small>Follow our page</small></div></a>
+            <a href="https://www.tiktok.com/@difitalhunarmand" target="_blank" class="sl-btn tt"><div class="sl-ico si-tt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.5 2.76 1.05-.03 2.07-.63 2.64-1.51.35-.55.49-1.22.49-1.87.03-4.5.01-9 .01-13.5z" fill="#25F4EE" transform="translate(-0.9, 0.6)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.5 2.76 1.05-.03 2.07-.63 2.64-1.51.35-.55.49-1.22.49-1.87.03-4.5.01-9 .01-13.5z" fill="#FE2C55" transform="translate(0.9, -0.6)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.5 2.76 1.05-.03 2.07-.63 2.64-1.51.35-.55.49-1.22.49-1.87.03-4.5.01-9 .01-13.5z" fill="#FFFFFF"/></svg></div><div class="sl-txt"><strong>TikTok</strong><small>Watch our videos</small></div></a>
+            <a href="https://www.instagram.com" target="_blank" class="sl-btn ig"><div class="sl-ico si-ig"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div class="sl-txt"><strong>Instagram</strong><small>See our work</small></div></a>
+            <a href="https://whatsapp.com/channel/0029VbBdcnn2UPBMGhuoA51M" target="_blank" class="sl-btn wa"><div class="sl-ico si-wa"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.293-.506.32-.446.32-.446s.207.012.33.138c.123.126.267.368.267.368s.14.19.207.194c.067.004.14-.033.15-.063.01-.03-.01-.264-.01-.264s-.02-.48-.19-.55l-.44-.09s-.64-.067-.917.4c-.277.467-.84 1.26-.84 2.4 0 1.14.61 2.24.84 2.52.23.28 1.67 2.55 4.07 3.477.557.216 1.066.38 1.45.486.613.182 1.17.157 1.61.095.491-.066 1.51-.616 1.722-1.212.213-.597.213-1.108.15-1.214-.064-.106-.26-.17-.56-.3z"/><path d="M11.99 2C6.467 2 2 6.467 2 11.99c0 1.78.493 3.44 1.354 4.864L2 22l5.278-1.328A9.932 9.932 0 0 0 11.99 22c5.524 0 9.99-4.467 9.99-9.99C21.98 6.467 17.514 2 11.99 2z"/></svg></div><div class="sl-txt"><strong>WA Channel</strong><small>Join our channel</small></div></a>
+            <a href="https://chat.whatsapp.com/LMokSZxK4rEJnqlnUeaYuu" target="_blank" class="sl-btn wg"><div class="sl-ico si-wg"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="sl-txt"><strong>WA Group</strong><small>Join community</small></div></a>
+            <a href="mailto:digitalhunarmand1@gmail.com" class="sl-btn gm"><div class="sl-ico si-gm" style="padding:0;overflow:hidden"><img src="gmail logo.jpg" alt="Gmail Logo" style="width:100%;height:100%;object-fit:cover"/></div><div class="sl-txt"><strong>Gmail</strong><small>Send an email</small></div></a>
           </div>
-          <div class="mobile-banner-only">
-            <img src="thumb_internship_program.jpg" alt="3-Month Internship Program Mobile - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:18px;"/>
-          </div>
+          <a href="https://wa.me/923485168409" target="_blank" class="btn-wa-big"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.27 2 2 8.27 2 16c0 2.4.63 4.65 1.74 6.59L2 30l7.59-1.74A14 14 0 0016 30c7.73 0 14-6.27 14-14S23.73 2 16 2z" fill="white"/><path d="M23.1 19.9c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.67-2.09-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51H12c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#22c55e"/></svg>Chat on WhatsApp</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MENTORSHIP -->
-<section class="mentorship" id="mentorship">
-  <div class="sw">
-    <div class="center reveal">
-      <span class="sl">Expert Guidance</span>
-      <h2 class="st">1-on-1 <span class="g-text">Mentorship</span> Program</h2>
-    </div>
-    <div class="mentor-banner-wrap reveal" style="margin:36px auto;max-width:1080px;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);border:1.5px solid var(--border);background:#fff">
-      <div class="desktop-banner-only">
-        <img src="mentorship_desktop_banner.jpg" alt="1-on-1 Mentorship Program - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:24px;"/>
-      </div>
-      <div class="mobile-banner-only">
-        <img src="mentorship_mobile_banner.jpg" alt="1-on-1 Mentorship Program Mobile Poster - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:18px;"/>
-      </div>
-    </div>
-    <div class="mentor-cta reveal">
-      <div class="mentor-cta-txt">
-        <h3>Ready to Take Your Digital Career to the Next Level?</h3>
-        <p>Book your personalized mentorship slot today and learn directly from industry specialists.</p>
-      </div>
-      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20know%20more%20about%20the%20Mentorship%20Program" target="_blank" class="mentor-cta-btn">Book a Mentorship Session</a>
-    </div>
-  </div>
-</section>
+<!-- STANDALONE SECTIONS (GROUP B: DIRECT QUICK LINK ONLY) -->
 
 <!-- HIRING -->
-<section class="hiring" id="hiring">
+<section class="hiring standalone-section" id="hiring">
   <div class="sw">
     <div class="hiring-in">
       <div class="reveal-l">
@@ -1712,8 +2423,238 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+<!-- INTERNSHIP -->
+<section class="internship standalone-section" id="internship">
+  <div class="sw">
+    <div class="int-grid">
+      <div class="reveal-l">
+        <div class="int-badge"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Internship Program 2026</div>
+        <h2 class="int-left" style="font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:24px;line-height:1.1">3-Month Professional<br/><span class="g-text">Internship Program</span></h2>
+        <div class="int-meta">
+          <div class="int-meta-item">
+            <div class="int-meta-ico">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="int-meta-txt">
+              <strong>3 Months</strong>
+              <span>Duration</span>
+            </div>
+          </div>
+          <div class="int-meta-item">
+            <div class="int-meta-ico">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="int-meta-txt">
+              <strong>Online/Hybrid</strong>
+              <span>Mode</span>
+            </div>
+          </div>
+          <div class="int-meta-item">
+            <div class="int-meta-ico">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/></svg>
+            </div>
+            <div class="int-meta-txt">
+              <strong>Digital Hunarmand</strong>
+              <span>Organization</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/923485168409" target="_blank" class="btn-blue">Apply Now</a>
+      </div>
+      <div class="reveal-r">
+        <div class="int-banner-card" style="background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);transition:all .35s ease">
+          <div class="desktop-banner-only">
+            <img src="thumb_internship_program.jpg" alt="3-Month Internship Program 2026 - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:24px;"/>
+          </div>
+          <div class="mobile-banner-only">
+            <img src="thumb_internship_program.jpg" alt="3-Month Internship Program Mobile - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:18px;"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENTORSHIP -->
+<section class="mentorship standalone-section" id="mentorship">
+  <div class="sw">
+    <div class="center reveal">
+      <span class="sl">Expert Guidance</span>
+      <h2 class="st">1-on-1 <span class="g-text">Mentorship</span> Program</h2>
+    </div>
+    <div class="mentor-banner-wrap reveal" style="margin:36px auto;max-width:1080px;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(15,23,42,.1);border:1.5px solid var(--border);background:#fff">
+      <div class="desktop-banner-only">
+        <img src="mentorship_desktop_banner.jpg" alt="1-on-1 Mentorship Program - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:24px;"/>
+      </div>
+      <div class="mobile-banner-only">
+        <img src="mentorship_mobile_banner.jpg" alt="1-on-1 Mentorship Program Mobile Poster - Digital Hunarmand Hub" style="width:100%;height:auto;display:block;border-radius:18px;"/>
+      </div>
+    </div>
+    <div class="mentor-cta reveal">
+      <div class="mentor-cta-txt">
+        <h3>Ready to Take Your Digital Career to the Next Level?</h3>
+      </div>
+      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20know%20more%20about%20the%20Mentorship%20Program" target="_blank" class="mentor-cta-btn">Book a Mentorship Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="team standalone-section" id="team">
+  <div class="sw">
+    <div class="lead-section-wrap reveal">
+      <div class="lead-dept-badge">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 19h12a2 2 0 002-2V7l-5 4-3-4-3 4-5-4v10a2 2 0 002 2z"/></svg>
+        <span>Department Leadership</span>
+      </div>
+      <h2 class="st" style="margin-bottom:0">Leadership &amp; <span class="g-text">Management</span></h2>
+    </div>
+
+    <div class="lead-grid-perspective">
+    <div class="lead-grid" id="leadCubeGrid">
+      <!-- Nidal Munir -->
+      <div class="lead-card" data-member="nidal">
+        <div class="lead-card-photo-wrap">
+          <img src="nidal.png" alt="Nidal Munir - Founder &amp; CEO"/>
+          <div class="lead-card-photo-overlay"></div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-badge bg-amber">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 19h12a2 2 0 002-2V7l-5 4-3-4-3 4-5-4v10a2 2 0 002 2z"/></svg>
+            <span>Founder &amp; CEO</span>
+          </div>
+          <h3>Nidal Munir</h3>
+          <p class="lead-card-desc">Founder &amp; CEO | Digital Strategy Leader &amp; Brand Architect | Business Development Specialist</p>
+          <div class="lead-card-pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Brand Strategy &amp; Leadership</span>
+          </div>
+          <div class="lead-card-cta">
+            <span>View Profile</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Geeto Shakeel -->
+      <div class="lead-card" data-member="geeto">
+        <div class="lead-card-photo-wrap">
+          <img src="Geeto Shakeel.png" alt="Geeto Shakeel - Co-Founder &amp; Director"/>
+          <div class="lead-card-photo-overlay"></div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-badge bg-purple">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>Co-Founder &amp; Director</span>
+          </div>
+          <h3>Geeto Shakeel</h3>
+          <p class="lead-card-desc">Co-Founder &amp; Director | Full-Stack Web Development | Digital Growth &amp; Tech Operations Lead</p>
+          <div class="lead-card-pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span>Web Dev &amp; Tech Growth</span>
+          </div>
+          <div class="lead-card-cta">
+            <span>View Profile</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adil Rahman -->
+      <div class="lead-card" data-member="adil">
+        <div class="lead-card-photo-wrap">
+          <img src="DP.jpeg" alt="Adil Rahman - Chief Technology &amp; Creative Officer"/>
+          <div class="lead-card-photo-overlay"></div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-badge bg-blue">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+            <span>CTCO</span>
+          </div>
+          <h3>Adil Rahman</h3>
+          <p class="lead-card-desc">Chief Technology &amp; Creative Officer | AI / ML Engineer &amp; Full-Stack Builder | Autonomous Systems &amp; Innovation</p>
+          <div class="lead-card-pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg>
+            <span>AI, ML &amp; Automation</span>
+          </div>
+          <div class="lead-card-cta">
+            <span>View Profile</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sayed Muhammad Arif Khan -->
+      <div class="lead-card" data-member="sayed">
+        <div class="lead-card-photo-wrap">
+          <img src="Sayed M. Arif Khan.png" alt="Sayed M. Arif Khan - Leader"/>
+          <div class="lead-card-photo-overlay"></div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-badge bg-cyan">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Leader</span>
+          </div>
+          <h3>Sayed M. Arif Khan</h3>
+          <p class="lead-card-desc">Project Leader | Quality Assurance &amp; Project Delivery Specialist | Community &amp; Digital Education</p>
+          <div class="lead-card-pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Project &amp; Quality Lead</span>
+          </div>
+          <div class="lead-card-cta">
+            <span>View Profile</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Muhammad Rizwan -->
+      <div class="lead-card" data-member="rizwan">
+        <div class="lead-card-photo-wrap">
+          <img src="Muhammad Rizwan.png" alt="Muhammad Rizwan - Administrator"/>
+          <div class="lead-card-photo-overlay"></div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-badge bg-green">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Administrator</span>
+          </div>
+          <h3>Muhammad Rizwan</h3>
+          <p class="lead-card-desc">Administrator | Multi-Disciplinary Digital &amp; IT Professional | Community Management &amp; IT Support</p>
+          <div class="lead-card-pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <span>Admin &amp; Community Lead</span>
+          </div>
+          <div class="lead-card-cta">
+            <span>View Profile</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+    </div><!-- /lead-grid -->
+
+    <!-- Team Carousel Dots & Navigation -->
+    <div class="lead-carousel-nav" id="leadCarouselNav">
+      <button class="lead-nav-btn lead-prev-btn" id="leadPrevBtn" type="button" aria-label="Previous Member">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="lead-dots" id="leadDots">
+        <button class="lead-dot active" data-index="0" type="button" aria-label="Nidal Munir"></button>
+        <button class="lead-dot" data-index="1" type="button" aria-label="Geeto Shakeel"></button>
+        <button class="lead-dot" data-index="2" type="button" aria-label="Adil Rahman"></button>
+        <button class="lead-dot" data-index="3" type="button" aria-label="Sayed M. Arif Khan"></button>
+        <button class="lead-dot" data-index="4" type="button" aria-label="Muhammad Rizwan"></button>
+      </div>
+      <button class="lead-nav-btn lead-next-btn" id="leadNextBtn" type="button" aria-label="Next Member">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    </div><!-- /lead-grid-perspective -->
+  </div>
+</section>
+
 <!-- PARTNERSHIP -->
-<section class="partner" id="partnership">
+<section class="partner standalone-section" id="partnership">
   <div class="sw">
     <div class="partner-in">
       <div class="reveal-l partner-left">
@@ -1805,120 +2746,6 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- COURSES (COURSERA ROW TEMPLATE) -->
-<section class="courses" id="courses">
-  <div class="sw" style="padding-top:48px;padding-bottom:48px">
-    <div class="reveal" style="margin-bottom:24px">
-      <span class="sl" style="color:var(--blue)">Featured Programs</span>
-      <h2 class="st" style="margin-bottom:8px">Top In-Demand <span class="g-text">Courses &amp; Training</span></h2>
-    </div>
-
-    <div class="courses-grid-row reveal">
-      <!-- Card 1 -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="coursera-card">
-        <div class="coursera-thumb">
-          <img src="thumb_graphic_design.jpg" alt="Graphic Design Masterclass"/>
-        </div>
-        <div class="coursera-body">
-          <div class="coursera-org">
-            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
-            <span class="coursera-org-name">Digital Hunarmand Hub</span>
-          </div>
-          <div class="coursera-title">Graphic Design &amp; Brand Identity Masterclass</div>
-          <div class="coursera-type">Online Course</div>
-          <div class="coursera-pill">Job ready</div>
-        </div>
-      </a>
-
-      <!-- Card 2 -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="coursera-card">
-        <div class="coursera-thumb">
-          <img src="thumb_digital_marketing.jpg" alt="Digital Marketing Course"/>
-        </div>
-        <div class="coursera-body">
-          <div class="coursera-org">
-            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
-            <span class="coursera-org-name">Digital Hunarmand Hub</span>
-          </div>
-          <div class="coursera-title">Digital Marketing, SEO &amp; Social Media Ads</div>
-          <div class="coursera-type">Online Course</div>
-          <div class="coursera-pill">Job ready</div>
-        </div>
-      </a>
-
-      <!-- Card 3 -->
-      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20apply%20for%20the%203-Month%20Internship%20Program" target="_blank" class="coursera-card">
-        <div class="coursera-thumb">
-          <img src="thumb_internship_program.jpg" alt="Internship Program"/>
-        </div>
-        <div class="coursera-body">
-          <div class="coursera-org">
-            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
-            <span class="coursera-org-name">Digital Hunarmand Hub</span>
-          </div>
-          <div class="coursera-title">3-Month Professional Agency Internship</div>
-          <div class="coursera-type">Internship Program</div>
-          <div class="coursera-pill">Job ready</div>
-        </div>
-      </a>
-
-      <!-- Card 4 -->
-      <a href="https://wa.me/923485168409?text=Hi%2C%20I%20want%20to%20book%20a%201-on-1%20Mentorship%20Session" target="_blank" class="coursera-card">
-        <div class="coursera-thumb">
-          <img src="thumb_career_mentorship.jpg" alt="Mentorship Program"/>
-        </div>
-        <div class="coursera-body">
-          <div class="coursera-org">
-            <img src="favicon.png" alt="Digital Hunarmand" class="coursera-org-ico"/>
-            <span class="coursera-org-name">Digital Hunarmand Hub</span>
-          </div>
-          <div class="coursera-title">1-on-1 Career Mentorship &amp; Client Strategy</div>
-          <div class="coursera-type">Mentorship Program</div>
-          <div class="coursera-pill">Job ready</div>
-        </div>
-      </a>
-    </div>
-
-    <div class="coursera-btn-row reveal">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_lNFmcS41MbQ1KkLuHW6YzI9menzCMv8iIj_dDWR-BKz7vg/viewform?usp=publish-editor" target="_blank" class="btn-coursera-more">Apply on Google Form</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="sw">
-    <div class="center reveal" style="margin-bottom:52px">
-      <span class="sl">Get In Touch</span>
-      <h2 class="st">Let's Build Something <span class="g-text">Together</span></h2>
-    </div>
-    <div class="contact-grid">
-      <div class="reveal-l">
-        <div class="cbox">
-          <h3>Contact Information</h3>
-          <div class="ci"><div class="ci-ico ci-ph"><img src="phone logo.png" alt="Phone Logo"/></div><div><div class="ci-lbl">Phone / WhatsApp</div><a href="tel:+923485168409" class="ci-val">+92 348 5168409</a></div></div>
-          <div class="ci"><div class="ci-ico ci-em"><img src="gmail logo.jpg" alt="Gmail Logo"/></div><div><div class="ci-lbl">Email</div><a href="mailto:digitalhunarmand1@gmail.com" class="ci-val">digitalhunarmand1@gmail.com</a></div></div>
-          <div class="ctag">Your Vision. Our Mission.<br/><span class="g-text">Digital Success.</span></div>
-        </div>
-      </div>
-      <div class="reveal-r">
-        <div class="cbox">
-          <h3>Follow &amp; Connect</h3>
-          <div class="sg">
-            <a href="https://www.facebook.com/share/1CSRDP9kP9/" target="_blank" class="sl-btn fb"><div class="sl-ico si-fb"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div class="sl-txt"><strong>Facebook</strong><small>Follow our page</small></div></a>
-            <a href="https://www.tiktok.com/@difitalhunarmand" target="_blank" class="sl-btn tt"><div class="sl-ico si-tt"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="sl-txt"><strong>TikTok</strong><small>Watch our videos</small></div></a>
-            <a href="https://www.instagram.com" target="_blank" class="sl-btn ig"><div class="sl-ico si-ig"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div class="sl-txt"><strong>Instagram</strong><small>See our work</small></div></a>
-            <a href="https://whatsapp.com/channel/0029VbBdcnn2UPBMGhuoA51M" target="_blank" class="sl-btn wa"><div class="sl-ico si-wa"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.293-.506.32-.446.32-.446s.207.012.33.138c.123.126.267.368.267.368s.14.19.207.194c.067.004.14-.033.15-.063.01-.03-.01-.264-.01-.264s-.02-.48-.19-.55l-.44-.09s-.64-.067-.917.4c-.277.467-.84 1.26-.84 2.4 0 1.14.61 2.24.84 2.52.23.28 1.67 2.55 4.07 3.477.557.216 1.066.38 1.45.486.613.182 1.17.157 1.61.095.491-.066 1.51-.616 1.722-1.212.213-.597.213-1.108.15-1.214-.064-.106-.26-.17-.56-.3z"/><path d="M11.99 2C6.467 2 2 6.467 2 11.99c0 1.78.493 3.44 1.354 4.864L2 22l5.278-1.328A9.932 9.932 0 0 0 11.99 22c5.524 0 9.99-4.467 9.99-9.99C21.98 6.467 17.514 2 11.99 2z"/></svg></div><div class="sl-txt"><strong>WA Channel</strong><small>Join our channel</small></div></a>
-            <a href="https://chat.whatsapp.com/LMokSZxK4rEJnqlnUeaYuu" target="_blank" class="sl-btn wg"><div class="sl-ico si-wg"><svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="sl-txt"><strong>WA Group</strong><small>Join community</small></div></a>
-            <a href="mailto:digitalhunarmand1@gmail.com" class="sl-btn gm"><div class="sl-ico si-gm" style="padding:0;overflow:hidden"><img src="gmail logo.jpg" alt="Gmail Logo" style="width:100%;height:100%;object-fit:cover"/></div><div class="sl-txt"><strong>Gmail</strong><small>Send an email</small></div></a>
-          </div>
-          <a href="https://wa.me/923485168409" target="_blank" class="btn-wa-big"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 2C8.27 2 2 8.27 2 16c0 2.4.63 4.65 1.74 6.59L2 30l7.59-1.74A14 14 0 0016 30c7.73 0 14-6.27 14-14S23.73 2 16 2z" fill="white"/><path d="M23.1 19.9c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.67-2.09-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51H12c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#22c55e"/></svg>Chat on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer class="footer">
   <div class="ft-in">
@@ -1929,21 +2756,17 @@ img{max-width:100%;display:block}
     <div class="ft-col">
       <h4>Quick Links</h4>
       <a href="#home">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#mission">Our Vision &amp; Mission</a>
       <a href="#services">Our Services</a>
       <a href="#courses">Online Courses</a>
-      <a href="digital-marketing-course.html">Digital Marketing Course</a>
-      <a href="graphic-design-course.html">Graphic Design Course</a>
-      <a href="internship-program.html">Internship Program Details</a>
-      <a href="career-mentorship.html">Career Mentorship Details</a>
+      <a href="#mission">Our Vision &amp; Mission</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#hiring">We're Hiring</a>
       <a href="#internship">Internship 2026</a>
       <a href="#mentorship">Mentorship</a>
-      <a href="#partnership">Partners &amp; Collaborations</a>
-      <a href="#why">Why Choose Us</a>
       <a href="#team">Our Team</a>
-      <a href="#hiring">We're Hiring</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#partnership">Partners &amp; Collaborations</a>
     </div>
     <div class="ft-col">
       <h4>Follow Us</h4>
@@ -1957,6 +2780,20 @@ img{max-width:100%;display:block}
   </div>
   <div class="ft-bot"><p>&copy; 2025 Digital Hunarmand Hub. All Rights Reserved.</p></div>
 </footer>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">
+  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- AI SIDE PEEKER TAB (Shows on scroll when AI FAB tucks) -->
+<button class="ai-peeker" id="aiPeeker" title="Hunarmand AI" aria-label="Open Hunarmand AI">
+  <svg class="ai-peeker-arrow" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  <div class="ai-peeker-avatar">
+    <img src="ai logo.png" alt="AI"/>
+  </div>
+  <span class="ai-peeker-text">AI</span>
+</button>
 
 <!-- CHATBOT -->
 <div class="cfab" id="cfab" title="Chat with Hunarmand AI"><img src="ai logo.png" alt="Hunarmand AI"/></div>
@@ -1980,15 +2817,16 @@ img{max-width:100%;display:block}
     <div class="cm bot"><div class="cb">Hello! I'm <strong>Hunarmand AI</strong>, your digital smart assistant. How can I help you today?</div></div>
     <div class="cqr" id="cqr">
       <button onclick="qr('services')">Our Services</button>
-      <button onclick="qr('mission')">Our Mission</button>
       <button onclick="qr('courses')">Courses</button>
-      <button onclick="qr('partnership')">Partners</button>
+      <button onclick="qr('mission')">Our Mission</button>
       <button onclick="qr('why')">Why Us</button>
+      <button onclick="qr('about')">About Us</button>
+      <button onclick="qr('contact')">Contact</button>
+      <button onclick="qr('hiring')">We're Hiring</button>
       <button onclick="qr('internship')">Internship</button>
       <button onclick="qr('mentorship')">Mentorship</button>
-      <button onclick="qr('hiring')">We're Hiring</button>
       <button onclick="qr('team')">Our Team</button>
-      <button onclick="qr('contact')">Contact</button>
+      <button onclick="qr('partnership')">Partners</button>
     </div>
   </div>
   <div class="cfoot"><input id="cin" type="text" placeholder="Type a message..."/><button class="csend" onclick="sc()"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
@@ -1999,7 +2837,8 @@ img{max-width:100%;display:block}
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('s',window.scrollY>20));
 const hbg=document.getElementById('hbg'),nul=document.getElementById('navUl');
-hbg.addEventListener('click',()=>{
+hbg.addEventListener('click', function(e){
+  e.stopPropagation();
   nul.classList.toggle('open');
   hbg.classList.toggle('active');
 });
@@ -2110,18 +2949,138 @@ if(!isTouch){
     card.addEventListener('mouseleave',()=>{card.style.transform='perspective(700px) rotateX(0) rotateY(0) translateY(0)';});
   });
 }
-const secs=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)c=s.id});nul.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+c));});
-const cfab=document.getElementById('cfab'),cwin=document.getElementById('cwin'),chx=document.getElementById('chx'),chClear=document.getElementById('chClear'),cbody=document.getElementById('cbody'),cin=document.getElementById('cin');
-function toggleChat(){
-  const isOpen = cwin.classList.toggle('open');
-  cfab.classList.toggle('active', isOpen);
-  if(isOpen && cin) { setTimeout(() => cin.focus(), 150); }
+/* ── STANDALONE GROUP B ROUTING & ISOLATION ── */
+const groupASelectors = ['#home', '.mq', '#services', '.photo-banner', '#courses', '#mission', '#why', '#about', '#contact'];
+const groupBIds = ['hiring', 'internship', 'mentorship', 'team', 'partnership'];
+const secs = document.querySelectorAll('section[id]');
+
+function handleGroupRouting() {
+  const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
+
+  if (groupBIds.includes(rawHash)) {
+    // ── STANDALONE MODE (Only active Group B section + Footer visible) ──
+    document.body.classList.add('standalone-mode');
+    groupASelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+      });
+    });
+
+    document.querySelectorAll('.standalone-section').forEach(sec => {
+      if (sec.id === rawHash) {
+        sec.classList.add('active-standalone');
+        sec.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(r => r.classList.add('v'));
+      } else {
+        sec.classList.remove('active-standalone');
+      }
+    });
+
+    nul.querySelectorAll('a').forEach(a => {
+      a.classList.toggle('on', a.getAttribute('href') === '#' + rawHash);
+    });
+
+    window.scrollTo(0, 0);
+  } else {
+    // ── MAIN WEBSITE FLOW (Group A sections visible in sequence, Group B hidden) ──
+    document.body.classList.remove('standalone-mode');
+    groupASelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        el.style.removeProperty('display');
+      });
+    });
+
+    document.querySelectorAll('.standalone-section').forEach(sec => {
+      sec.classList.remove('active-standalone');
+    });
+
+    if (rawHash && rawHash !== 'home') {
+      const targetEl = document.getElementById(rawHash);
+      if (targetEl) {
+        setTimeout(() => {
+          const navH = nav.offsetHeight || 70;
+          const topPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navH;
+          window.scrollTo({ top: topPos, behavior: 'smooth' });
+        }, 60);
+      }
+    } else if (rawHash === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
 }
+
+window.addEventListener('hashchange', handleGroupRouting);
+window.addEventListener('DOMContentLoaded', handleGroupRouting);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  handleGroupRouting();
+}
+
+// Click listener on all hash anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetHash = this.getAttribute('href').replace('#', '').toLowerCase();
+    if (!targetHash) return;
+    if (window.location.hash.replace('#', '').toLowerCase() === targetHash) {
+      handleGroupRouting();
+    }
+  });
+});
+
+window.addEventListener('scroll', () => {
+  const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
+  if (groupBIds.includes(rawHash)) {
+    nul.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + rawHash));
+    return;
+  }
+  let c = '';
+  secs.forEach(s => {
+    if (s.offsetParent !== null && window.scrollY >= s.offsetTop - 120) {
+      c = s.id;
+    }
+  });
+  if (c) {
+    nul.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + c));
+  }
+});
+const cfab=document.getElementById('cfab'),cwin=document.getElementById('cwin'),chx=document.getElementById('chx'),chClear=document.getElementById('chClear'),cbody=document.getElementById('cbody'),cin=document.getElementById('cin');
+const peeker=document.getElementById('aiPeeker');
+const btt=document.getElementById('backToTop');
+const TUCK_SCROLL_THRESHOLD = 200;
+const BTT_SCROLL_THRESHOLD = 320;
+
+function tuckAI() {
+  if (!cfab || !peeker) return;
+  cfab.classList.add('tucked');
+  peeker.classList.add('show');
+}
+
+function untuckAI() {
+  if (!cfab || !peeker) return;
+  cfab.classList.remove('tucked');
+  peeker.classList.remove('show');
+}
+
+function toggleChat(){
+  if (!cwin || !cfab) return;
+  const willOpen = !cwin.classList.contains('open');
+  if (willOpen) {
+    untuckAI();
+    cwin.classList.add('open');
+    cfab.classList.add('active');
+    if(cin) { setTimeout(() => cin.focus(), 150); }
+  } else {
+    closeChat();
+  }
+}
+
 function closeChat(){
+  if (!cwin || !cfab) return;
   cwin.classList.remove('open');
   cfab.classList.remove('active');
+  if (window.scrollY > TUCK_SCROLL_THRESHOLD) {
+    tuckAI();
+  }
 }
+
 let chatHistory = [];
 const _chatCache = new Map();
 
@@ -2132,31 +3091,118 @@ function clearChat(){
     <div class="cm bot"><div class="cb">Hello! I'm <strong>Hunarmand AI</strong>, your digital smart assistant. How can I help you today?</div></div>
     <div class="cqr" id="cqr">
       <button onclick="qr('services')">Our Services</button>
-      <button onclick="qr('mission')">Our Mission</button>
       <button onclick="qr('courses')">Courses</button>
-      <button onclick="qr('partnership')">Partners</button>
+      <button onclick="qr('mission')">Our Mission</button>
       <button onclick="qr('why')">Why Us</button>
+      <button onclick="qr('about')">About Us</button>
+      <button onclick="qr('contact')">Contact</button>
+      <button onclick="qr('hiring')">We're Hiring</button>
       <button onclick="qr('internship')">Internship</button>
       <button onclick="qr('mentorship')">Mentorship</button>
-      <button onclick="qr('hiring')">We're Hiring</button>
       <button onclick="qr('team')">Our Team</button>
-      <button onclick="qr('contact')">Contact</button>
+      <button onclick="qr('partnership')">Partners</button>
     </div>
   `;
 }
-cfab.addEventListener('click', toggleChat);
-chx.addEventListener('click', closeChat);
-if(chClear) chClear.addEventListener('click', clearChat);
-document.addEventListener('click', e => {
-  if (cwin.classList.contains('open') && !cwin.contains(e.target) && !cfab.contains(e.target)) {
-    closeChat();
-  }
+
+cfab.addEventListener('click', function(e){
+  e.stopPropagation();
+  toggleChat();
 });
+
+if (peeker) {
+  peeker.addEventListener('click', function(e){
+    e.stopPropagation();
+    toggleChat();
+  });
+}
+
+chx.addEventListener('click', function(e){
+  e.stopPropagation();
+  closeChat();
+});
+
+if(chClear) chClear.addEventListener('click', clearChat);
+
+function handleOutsideDismiss(e) {
+  const isInsideChat = cwin && cwin.contains(e.target);
+  const isInsideFab = cfab && cfab.contains(e.target);
+  const isInsidePeeker = peeker && peeker.contains(e.target);
+
+  if (cwin && cwin.classList.contains('open')) {
+    if (!isInsideChat && !isInsideFab && !isInsidePeeker) {
+      closeChat();
+    }
+  } else if (cfab && !cfab.classList.contains('tucked')) {
+    // If FAB is expanded while scrolled, tapping outside dismisses/tucks it back
+    if (window.scrollY > TUCK_SCROLL_THRESHOLD && !isInsideFab && !isInsidePeeker) {
+      tuckAI();
+    }
+  }
+}
+
+document.addEventListener('click', handleOutsideDismiss);
+document.addEventListener('touchend', handleOutsideDismiss, {passive: true});
+
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && cwin.classList.contains('open')) {
     closeChat();
   }
 });
+
+/* ── BACK TO TOP & SMART AI SCROLL TUCK CONTROLLER ── */
+(function(){
+  if (!btt) return;
+
+  function onScroll(){
+    const y = window.scrollY;
+
+    // 1. Back to Top Button visibility
+    if (y > BTT_SCROLL_THRESHOLD) {
+      btt.classList.add('show');
+    } else {
+      btt.classList.remove('show');
+    }
+
+    // 2. If chat window is open, keep it expanded
+    if (cwin && cwin.classList.contains('open')) {
+      untuckAI();
+      return;
+    }
+
+    // 3. Near top of page: show normal round FAB
+    if (y <= TUCK_SCROLL_THRESHOLD) {
+      untuckAI();
+      return;
+    }
+
+    // 4. In deeper page scroll: tuck AI into side peeker
+    tuckAI();
+  }
+
+  // Back to Top click: Smooth scroll to top
+  btt.addEventListener('click', function(){
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Passive RAF scroll listener
+  let ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking) {
+      requestAnimationFrame(function(){
+        onScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive: true});
+
+  // Initial call on page load
+  onScroll();
+})();
 
 const GEMINI_API_KEY = 'AIzaSyCXfAJVpGDldTXLQepSZNkk3rzGmbSpekA';
 
@@ -2173,6 +3219,7 @@ const HUNARMAND_SYSTEM_INSTRUCTION = `You are "Hunarmand AI", the official intel
 2. LEADERSHIP & TEAM:
 - Nidal Munir: Founder & CEO
 - Geeto Shakeel: Co-Founder & Director
+- Adil Rahman: Chief Technology & Creative Officer (AI / ML Engineer & Full-Stack Builder)
 - Sayed Muhammad Arif Khan: Team Leader
 - Muhammad Rizwan: Administrator
 - Strategic Partner: Nojawan Awaz Foundation (President: Muhammad Islam)
@@ -2501,10 +3548,10 @@ function smartFallback(t, isEng) {
       ? "📍 **Location & Reach:**\n\nDigital Hunarmand Hub operates from **Swat, KPK, Pakistan (Fizagat, Mingora)** while providing live online training and digital agency services globally!\n\n[Chat on WhatsApp](https://wa.me/923485168409)"
       : "📍 **Hamari Location:**\n\nDigital Hunarmand Hub **Fizagat, Mingora, Swat (KPK, Pakistan)** mein waqia hai, aur hum poori dunya ke students aur clients ko live online services aur training provide karte hain!\n\n[WhatsApp par Rabta Karein](https://wa.me/923485168409)";
   }
-  else if (l.match(/team|leadership|founder|ceo|director|nidal|geeto|arif|rizwan|owner/)) {
+  else if (l.match(/team|leadership|founder|ceo|director|cto|ctco|nidal|geeto|adil|arif|rizwan|owner/)) {
     r = isEng
-      ? "Digital Hunarmand Hub leadership team:\n\n• **Nidal Munir** — Founder & CEO\n• **Geeto Shakeel** — Co-Founder & Director\n• **Sayed Muhammad Arif Khan** — Team Leader\n• **Muhammad Rizwan** — Administrator\n\n[Contact Leadership](https://wa.me/923485168409)"
-      : "Digital Hunarmand Hub ki leadership team:\n\n• **Nidal Munir** — Founder & CEO\n• **Geeto Shakeel** — Co-Founder & Director\n• **Sayed Muhammad Arif Khan** — Team Leader\n• **Muhammad Rizwan** — Administrator\n\n[Leadership se Rabta Karein](https://wa.me/923485168409)";
+      ? "Digital Hunarmand Hub leadership team:\n\n• **Nidal Munir** — Founder & CEO\n• **Geeto Shakeel** — Co-Founder & Director\n• **Adil Rahman** — Chief Technology & Creative Officer\n• **Sayed Muhammad Arif Khan** — Team Leader\n• **Muhammad Rizwan** — Administrator\n\n[Contact Leadership](https://wa.me/923485168409)"
+      : "Digital Hunarmand Hub ki leadership team:\n\n• **Nidal Munir** — Founder & CEO\n• **Geeto Shakeel** — Co-Founder & Director\n• **Adil Rahman** — Chief Technology & Creative Officer\n• **Sayed Muhammad Arif Khan** — Team Leader\n• **Muhammad Rizwan** — Administrator\n\n[Leadership se Rabta Karein](https://wa.me/923485168409)";
   }
   else if (l.match(/hire|hiring|job|jobs|vacancy|admin|apply for job/)) {
     r = isEng
@@ -2529,15 +3576,16 @@ function smartFallback(t, isEng) {
 function qr(k){
   const queries = {
     services: 'Tell me about all your 12 services',
+    courses: 'Which online courses are open for admission right now?',
     mission: 'What is your Vision, Mission & Contribution?',
-    partnership: 'Who are your strategic partners?',
-    team: 'Who are your team members and leadership?',
     why: 'Why should I choose Digital Hunarmand?',
+    about: 'Tell me about Digital Hunarmand Hub',
+    contact: 'How can I contact Digital Hunarmand?',
+    hiring: 'What admin positions are you hiring for?',
     internship: 'Tell me about the 3-Month Internship Program 2026',
     mentorship: 'How does the 1-on-1 Mentorship Program work?',
-    courses: 'Which online courses are open for admission right now?',
-    hiring: 'What admin positions are you hiring for?',
-    contact: 'How can I contact Digital Hunarmand?'
+    team: 'Who are your team members and leadership?',
+    partnership: 'Who are your strategic partners?'
   };
   const q = document.getElementById('cqr');
   if(q) q.remove();
@@ -2690,6 +3738,44 @@ function startHeroTyping() {
     });
   });
 }
+
+// ── INTERACTIVE MOUSE PARALLAX FOR HERO BUBBLES & ORBS ──
+(function(){
+  var hero = document.getElementById('home');
+  var heroDeco = document.getElementById('heroDeco');
+  if (!hero || !heroDeco || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var mouseX = 0, mouseY = 0;
+  var currentX = 0, currentY = 0;
+
+  hero.addEventListener('mouseleave', function(){
+    mouseX = 0;
+    mouseY = 0;
+  });
+
+  hero.addEventListener('mousemove', function(e){
+    var rect = hero.getBoundingClientRect();
+    var x = e.clientX - rect.left - rect.width / 2;
+    var y = e.clientY - rect.top - rect.height / 2;
+    mouseX = x / (rect.width / 2);
+    mouseY = y / (rect.height / 2);
+  }, {passive: true});
+
+  function renderParallax(){
+    currentX += (mouseX - currentX) * 0.05;
+    currentY += (mouseY - currentY) * 0.05;
+
+    if (Math.abs(currentX) > 0.001 || Math.abs(currentY) > 0.001) {
+      heroDeco.style.transform = 'translate3d(' + (currentX * 22).toFixed(2) + 'px,' + (currentY * 22).toFixed(2) + 'px,0)';
+    }
+
+    requestAnimationFrame(renderParallax);
+  }
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    requestAnimationFrame(renderParallax);
+  }
+})();
 </script>
 
 <script>
@@ -2729,35 +3815,292 @@ function closePopup(){
 })();
 </script>
 
-<!-- ── TEAM PROFILE MODAL ── -->
+<script>
+/* ── LEADERSHIP SMOOTH CAROUSEL & TRANSFORMATION ── */
+(function(){
+  var grid = document.getElementById('leadCubeGrid');
+  if(!grid) return;
+
+  var cards = Array.from(grid.querySelectorAll('.lead-card'));
+  if(!cards.length) return;
+
+  var dots = Array.from(document.querySelectorAll('#leadDots .lead-dot'));
+  var prevBtn = document.getElementById('leadPrevBtn');
+  var nextBtn = document.getElementById('leadNextBtn');
+
+  var currentIndex = 0;
+  var isThrottled = false;
+  var throttleTimer = null;
+  var rafId = null;
+
+  function isCarouselActive(){
+    return window.innerWidth <= 768;
+  }
+
+  function getScrollLeftForIndex(idx){
+    if(!cards[idx]) return 0;
+    var card = cards[idx];
+    return card.offsetLeft - (grid.clientWidth - card.offsetWidth) / 2;
+  }
+
+  function updateActiveStates(idx){
+    cards.forEach(function(c, i){
+      if(i === idx){
+        c.classList.add('cube-active');
+      } else {
+        c.classList.remove('cube-active');
+      }
+    });
+
+    dots.forEach(function(d, i){
+      if(i === idx){
+        d.classList.add('active');
+      } else {
+        d.classList.remove('active');
+      }
+    });
+  }
+
+  /* Smooth transformation without fade or glitch */
+  function applyTransforms(){
+    if(!isCarouselActive()){
+      cards.forEach(function(card){
+        card.style.removeProperty('transform');
+        card.style.removeProperty('opacity');
+        card.style.removeProperty('z-index');
+        card.classList.remove('cube-active');
+      });
+      return;
+    }
+
+    var scrollLeft = grid.scrollLeft;
+    var containerCenter = scrollLeft + grid.clientWidth / 2;
+    var closestIdx = 0;
+    var minDiff = Infinity;
+
+    cards.forEach(function(card, i){
+      var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      var diff = cardCenter - containerCenter;
+      var absDiff = Math.abs(diff);
+
+      if(absDiff < minDiff){
+        minDiff = absDiff;
+        closestIdx = i;
+      }
+
+      var step = card.offsetWidth + 16;
+      var ratio = diff / step;
+      var absRatio = Math.min(1.5, Math.abs(ratio));
+
+      // Zoom in/out: center card zooms IN (1.08), side cards smoothly zoom OUT (down to 0.82)
+      var scale = 0.82 + 0.26 * Math.max(0, Math.cos(Math.min(1, absRatio) * (Math.PI / 2)));
+
+      card.style.transform = 'scale(' + scale.toFixed(3) + ')';
+      card.style.zIndex = Math.round((1 - Math.min(1, absRatio)) * 10) + 1;
+      card.style.opacity = '1';
+    });
+
+    if(closestIdx !== currentIndex && !isThrottled){
+      currentIndex = closestIdx;
+      updateActiveStates(currentIndex);
+    }
+  }
+
+  function goToMember(idx, smooth){
+    if(idx < 0) idx = 0;
+    if(idx >= cards.length) idx = cards.length - 1;
+
+    currentIndex = idx;
+    updateActiveStates(currentIndex);
+
+    var targetLeft = getScrollLeftForIndex(currentIndex);
+    grid.scrollTo({
+      left: targetLeft,
+      behavior: smooth !== false ? 'smooth' : 'auto'
+    });
+
+    if(rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(applyTransforms);
+  }
+
+  // Scroll event with requestAnimationFrame for silky 60fps / 120fps sync
+  grid.addEventListener('scroll', function(){
+    if(rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(applyTransforms);
+  }, {passive: true});
+
+  /* ── 1-SCROLL-PER-MEMBER WHEEL CONTROLLER ── */
+  // Intercept wheel so each single scroll gesture advances exactly 1 member
+  grid.addEventListener('wheel', function(e){
+    if(!isCarouselActive()) return;
+
+    var delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if(Math.abs(delta) < 14) return;
+
+    if(delta > 0){
+      // Next member
+      if(currentIndex < cards.length - 1){
+        e.preventDefault();
+        if(!isThrottled){
+          isThrottled = true;
+          goToMember(currentIndex + 1, true);
+          clearTimeout(throttleTimer);
+          throttleTimer = setTimeout(function(){ isThrottled = false; }, 450);
+        }
+      }
+      // If at last member, allow page to continue scrolling down naturally
+    } else if(delta < 0){
+      // Previous member
+      if(currentIndex > 0){
+        e.preventDefault();
+        if(!isThrottled){
+          isThrottled = true;
+          goToMember(currentIndex - 1, true);
+          clearTimeout(throttleTimer);
+          throttleTimer = setTimeout(function(){ isThrottled = false; }, 450);
+        }
+      }
+      // If at first member, allow page to continue scrolling up naturally
+    }
+  }, {passive: false});
+
+  /* ── 1-SWIPE-PER-MEMBER TOUCH CONTROLLER ── */
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var isSwiping = false;
+
+  grid.addEventListener('touchstart', function(e){
+    if(!isCarouselActive()) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    isSwiping = true;
+  }, {passive: true});
+
+  grid.addEventListener('touchend', function(e){
+    if(!isCarouselActive() || !isSwiping) return;
+    isSwiping = false;
+
+    var touchEndX = e.changedTouches[0].clientX;
+    var touchEndY = e.changedTouches[0].clientY;
+    var diffX = touchEndX - touchStartX;
+    var diffY = touchEndY - touchStartY;
+
+    // Detect intentional horizontal swipe gesture
+    if(Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)){
+      if(diffX < 0 && currentIndex < cards.length - 1){
+        goToMember(currentIndex + 1, true);
+      } else if(diffX > 0 && currentIndex > 0){
+        goToMember(currentIndex - 1, true);
+      } else {
+        goToMember(currentIndex, true);
+      }
+    }
+  }, {passive: true});
+
+  // Dot Navigation
+  dots.forEach(function(dot){
+    dot.addEventListener('click', function(e){
+      e.stopPropagation();
+      var targetIdx = parseInt(dot.getAttribute('data-index'), 10);
+      if(!isNaN(targetIdx)){
+        goToMember(targetIdx, true);
+      }
+    });
+  });
+
+  // Next / Prev Buttons
+  if(prevBtn){
+    prevBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      goToMember(currentIndex - 1, true);
+    });
+  }
+  if(nextBtn){
+    nextBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      goToMember(currentIndex + 1, true);
+    });
+  }
+
+  // Keyboard navigation when focusing inside carousel
+  grid.addEventListener('keydown', function(e){
+    if(!isCarouselActive()) return;
+    if(e.key === 'ArrowRight'){
+      goToMember(currentIndex + 1, true);
+    } else if(e.key === 'ArrowLeft'){
+      goToMember(currentIndex - 1, true);
+    }
+  });
+
+  // Initialize
+  function init(){
+    if(isCarouselActive()){
+      goToMember(0, false);
+      applyTransforms();
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('resize', function(){
+    if(isCarouselActive()){
+      goToMember(currentIndex, false);
+      applyTransforms();
+    } else {
+      applyTransforms();
+    }
+  });
+})();
+</script>
+
+<!-- ── TEAM PROFILE MODAL (Executive Luxury Dossier) ── -->
 <div class="tm-overlay" id="tmOverlay" role="dialog" aria-modal="true" aria-label="Team Member Profile">
   <div class="tm-modal" id="tmModal">
     <div class="tm-modal-top">
-      <img class="tm-modal-photo" id="tmPhoto" src="" alt=""/>
+      <div class="tm-photo-wrap">
+        <img class="tm-modal-photo" id="tmPhoto" src="" alt=""/>
+        <span class="tm-status-dot" title="Active Leader"></span>
+      </div>
       <div class="tm-modal-info">
-        <div class="tm-modal-name" id="tmName"></div>
         <div class="tm-modal-role-badge" id="tmRoleBadge"></div>
-        <div class="tm-modal-org">Digital Hunarmand Hub</div>
+        <h3 class="tm-modal-name" id="tmName"></h3>
+        <p class="tm-modal-org">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span>Digital Hunarmand Hub • Leadership</span>
+        </p>
       </div>
       <button class="tm-close" id="tmClose" aria-label="Close">&#10005;</button>
     </div>
     <div class="tm-modal-body" id="tmBody"></div>
+    <div class="tm-modal-footer" id="tmFooter"></div>
   </div>
 </div>
 
 <script>
 (function(){
-  /* ── TEAM DATA ── */
+  /* ── EXECUTIVE TEAM DATA ── */
   var teamData = {
     nidal: {
       name: 'Nidal Munir',
       role: 'Founder & CEO',
       roleClass: 'fd',
       photo: 'nidal.png',
+      tagline: 'Leading the vision of empowering youth and transforming businesses through digital innovation.',
+      bio: 'Visionary Founder & CEO steering Digital Hunarmand Hub forward. Spearheading brand development, digital service architectures, and youth talent enablement across Pakistan with high standards of design and execution.',
+      stats: [
+        { label: 'Role Tier', val: 'Executive Board' },
+        { label: 'Primary Focus', val: 'Strategy & Brand' },
+        { label: 'Experience', val: '4+ Years' }
+      ],
       quals: [
         'Founder & CEO — Digital Hunarmand Hub',
-        'Digital Solutions Strategist & Business Leader',
-        'Expertise in Digital Services & Team Building'
+        'Digital Strategy Leader & Brand Architect',
+        'Business Development & Entrepreneurship Specialist',
+        'Head of Creative Direction & Strategic Brand Architecture'
       ],
       skills: [
         {icon:'🎨', label:'Graphic Design & Branding'},
@@ -2768,76 +4111,130 @@ function closePopup(){
         {icon:'📊', label:'Project Management'},
         {icon:'🌐', label:'Digital Marketing'},
         {icon:'🤝', label:'Client Relations'}
-      ]
+      ],
+      waText: 'Hi Nidal Munir, I would like to connect with you regarding Digital Hunarmand Hub.'
     },
     geeto: {
       name: 'Geeto Shakeel',
       role: 'Co-Founder & Director',
       roleClass: 'co',
       photo: 'Geeto Shakeel.png',
+      tagline: 'Architecting modern web platforms and accelerating digital business growth.',
+      bio: 'Co-Founder & Director directing technical development and operational growth at Digital Hunarmand Hub. Passionate about full-stack web engineering, scalable architectures, and modern digital business strategies.',
+      stats: [
+        { label: 'Role Tier', val: 'Director' },
+        { label: 'Primary Focus', val: 'Web Dev & Tech' },
+        { label: 'Tech Lead', val: 'Active' }
+      ],
       quals: [
         'Co-Founder & Director — Digital Hunarmand Hub',
-        'Web Development & Digital Growth Specialist',
-        'Strategic Planning & Operations Lead'
+        'Full-Stack Web Development & Technical Lead',
+        'Digital Growth & Tech Operations Strategist',
+        'Systems Architecture & Platform Scalability Specialist'
       ],
       skills: [
-        {icon:'💻', label:'Web Development'},
+        {icon:'💻', label:'Full-Stack Web Dev'},
         {icon:'📈', label:'Digital Growth Strategy'},
         {icon:'🎯', label:'Strategic Planning'},
         {icon:'⚙️', label:'Operations Management'},
-        {icon:'🔧', label:'Technical Development'},
+        {icon:'🔧', label:'Technical Architecture'},
         {icon:'📊', label:'Project Coordination'},
-        {icon:'🌐', label:'Digital Solutions'},
-        {icon:'🤝', label:'Partnership Development'}
-      ]
+        {icon:'🌐', label:'Web Applications'},
+        {icon:'🤝', label:'Partnership Growth'}
+      ],
+      waText: 'Hi Geeto Shakeel, I would like to connect with you regarding Web Development and Digital Growth at Digital Hunarmand Hub.'
+    },
+    adil: {
+      name: 'Adil Rahman',
+      role: 'Chief Technology & Creative Officer',
+      roleClass: 'cto',
+      photo: 'DP.jpeg',
+      tagline: 'Engineering state-of-the-art AI/ML architectures, autonomous systems, and creative digital products.',
+      bio: 'Chief Technology & Creative Officer and hands-on AI/ML Engineer with 3+ years of experience building intelligent systems. Specializes in autonomous trading bots, multi-model AI routing platforms, Python machine learning pipelines, and production-grade full-stack web applications.',
+      stats: [
+        { label: 'Role Tier', val: 'Executive Board' },
+        { label: 'Primary Focus', val: 'AI / ML & Tech' },
+        { label: 'Experience', val: '3+ Years' }
+      ],
+      quals: [
+        'Chief Technology & Creative Officer — Digital Hunarmand Hub',
+        'AI / ML Engineer & Full-Stack Application Architect',
+        'Specialist in Autonomous Systems & Multi-Model AI Routing',
+        'Lead AI Solutions, Generative AI & Automation Engineering'
+      ],
+      skills: [
+        {icon:'🤖', label:'Artificial Intelligence (AI)'},
+        {icon:'🧠', label:'Machine Learning & Deep Learning'},
+        {icon:'⚡', label:'Generative AI & LLMs'},
+        {icon:'🐍', label:'Python & Data Science'},
+        {icon:'🔄', label:'Autonomous Systems & Bots'},
+        {icon:'💻', label:'Full-Stack Web Development'},
+        {icon:'🔌', label:'REST APIs & Model Routing'},
+        {icon:'🗄️', label:'Database Design & Backend'}
+      ],
+      waText: 'Hi Adil Rahman, I would like to connect with you regarding AI/ML solutions and Tech Innovation at Digital Hunarmand Hub.'
     },
     sayed: {
       name: 'Sayed M. Arif Khan',
-      role: 'Leader',
+      role: 'Leader & QA Lead',
       roleClass: 'ld',
       photo: 'Sayed M. Arif Khan.png',
+      tagline: 'Delivering excellence through quality assurance, project discipline, and community education.',
+      bio: 'Project Leader and Quality Assurance Specialist ensuring timely, high-standard execution across all digital initiatives. Passionate advocate for digital literacy, student training, and community development.',
+      stats: [
+        { label: 'Role Tier', val: 'Project Leader' },
+        { label: 'Primary Focus', val: 'QA & Delivery' },
+        { label: 'Education', val: 'Community Lead' }
+      ],
       quals: [
         'Project Leader — Digital Hunarmand Hub',
         'Quality Assurance & Project Delivery Specialist',
-        'Community Development & Digital Education Advocate'
+        'Community Development & Youth Digital Education Advocate',
+        'Workflow Optimization & Delivery Excellence'
       ],
       skills: [
         {icon:'📋', label:'Project Leadership'},
-        {icon:'✅', label:'Quality Assurance'},
+        {icon:'✅', label:'Quality Assurance (QA)'},
         {icon:'🎓', label:'Digital Education'},
         {icon:'👥', label:'Community Development'},
         {icon:'📊', label:'Planning & Coordination'},
-        {icon:'🌐', label:'Digital Services'},
-        {icon:'🤝', label:'Team Collaboration'},
-        {icon:'📱', label:'Social Media Management'}
-      ]
+        {icon:'🌐', label:'Digital Solutions'},
+        {icon:'🤝', label:'Cross-Functional Teams'},
+        {icon:'📱', label:'Digital Campaigns'}
+      ],
+      waText: 'Hi Sayed Arif Khan, I would like to connect with you regarding Project Delivery and Services at Digital Hunarmand Hub.'
     },
     rizwan: {
       name: 'Muhammad Rizwan',
       role: 'Administrator',
       roleClass: 'ad',
       photo: 'Muhammad Rizwan.png',
+      tagline: 'Empowering organization workflows, IT systems, and multimedia digital operations.',
+      bio: 'Administrator overseeing day-to-day operations, IT infrastructure, and multimedia production workflows. A versatile digital practitioner dedicated to smooth agency functioning and student support.',
+      stats: [
+        { label: 'Role Tier', val: 'Administrator' },
+        { label: 'Primary Focus', val: 'IT & Operations' },
+        { label: 'Support', val: 'Full-Time' }
+      ],
       quals: [
         'Administrator — Digital Hunarmand Hub',
         'Multi-Disciplinary Digital & IT Professional',
-        'Expert in Design, Development & Management'
+        'Lead IT Infrastructure, Computer & Systems Support',
+        'Multimedia & Creative Content Production Specialist'
       ],
       skills: [
-        {icon:'🎨', label:'Graphic Design — Photoshop, Illustrator, CorelDRAW & Canva'},
+        {icon:'🎨', label:'Graphic Design (PS, AI, Corel, Canva)'},
         {icon:'🖥️', label:'UI/UX & Web Development'},
-        {icon:'📱', label:'App & Game Development'},
-        {icon:'🎬', label:'Video Editing & Content Creation'},
-        {icon:'📣', label:'Digital Marketing & Social Media Management'},
-        {icon:'🤖', label:'AI Tools & ChatGPT'},
-        {icon:'📋', label:'MS Office, Data Entry & Office Management'},
-        {icon:'📝', label:'Research, Thesis & Assignment Writing'},
-        {icon:'🔧', label:'Windows, Software & Computer Troubleshooting'},
-        {icon:'🌐', label:'Networking & Computer / IT Support'},
-        {icon:'📐', label:'AutoCAD'},
-        {icon:'💼', label:'Freelancing & Project Management'},
-        {icon:'🚀', label:'Planning & Entrepreneurship'},
-        {icon:'🏷️', label:'Logo & Branding Design'}
-      ]
+        {icon:'📱', label:'App & Game Design'},
+        {icon:'🎬', label:'Video Editing & Motion'},
+        {icon:'📣', label:'Digital Marketing & Ads'},
+        {icon:'🤖', label:'AI Tools & Automation'},
+        {icon:'📋', label:'MS Office & Data Analytics'},
+        {icon:'🔧', label:'IT & Hardware Troubleshooting'},
+        {icon:'📐', label:'AutoCAD & Technical Drafts'},
+        {icon:'💼', label:'Freelancing & Client Delivery'}
+      ],
+      waText: 'Hi Muhammad Rizwan, I would like to connect with you regarding IT Administration and Support at Digital Hunarmand Hub.'
     }
   };
 
@@ -2847,6 +4244,7 @@ function closePopup(){
   var tmName  = document.getElementById('tmName');
   var tmBadge = document.getElementById('tmRoleBadge');
   var tmBody  = document.getElementById('tmBody');
+  var tmFooter= document.getElementById('tmFooter');
   var tmClose = document.getElementById('tmClose');
 
   function openModal(key){
@@ -2863,18 +4261,37 @@ function closePopup(){
     /* build body */
     var html = '';
 
-    /* qualifications */
+    /* quick stats */
+    html += '<div class="tm-stats-grid">';
+    d.stats.forEach(function(st){
+      html += '<div class="tm-stat-card">';
+      html += '<span class="tm-stat-val">' + st.val + '</span>';
+      html += '<span class="tm-stat-lbl">' + st.label + '</span>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    /* executive overview */
     html += '<div>';
-    html += '<div class="tm-section-label">Qualifications & Role</div>';
+    html += '<div class="tm-section-label"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg>Executive Overview</div>';
+    html += '<div class="tm-bio-box">' + d.bio + '</div>';
+    html += '</div>';
+
+    /* qualifications & scope */
+    html += '<div>';
+    html += '<div class="tm-section-label"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Leadership Credentials & Scope</div>';
     html += '<div class="tm-qual-box">';
     d.quals.forEach(function(q){
-      html += '<div class="tm-qual-item"><div class="tm-qual-dot"></div><span>' + q + '</span></div>';
+      html += '<div class="tm-qual-item">';
+      html += '<div class="tm-qual-icon"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>';
+      html += '<span>' + q + '</span>';
+      html += '</div>';
     });
     html += '</div></div>';
 
-    /* skills */
+    /* core skills */
     html += '<div>';
-    html += '<div class="tm-section-label">Skills & Expertise</div>';
+    html += '<div class="tm-section-label"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Core Competencies & Skills</div>';
     html += '<div class="tm-skills-grid">';
     d.skills.forEach(function(s){
       html += '<div class="tm-skill-tag"><span class="tm-skill-icon">' + s.icon + '</span><span>' + s.label + '</span></div>';
@@ -2883,6 +4300,15 @@ function closePopup(){
 
     tmBody.innerHTML = html;
     tmBody.scrollTop = 0;
+
+    /* build footer action buttons - WhatsApp direct connect */
+    var footHtml = '';
+    footHtml += '<a href="https://wa.me/923485168409?text=' + encodeURIComponent(d.waText) + '" target="_blank" class="tm-btn-wa">';
+    footHtml += '<svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="#ffffff" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>';
+    footHtml += '<span>Connect on WhatsApp</span>';
+    footHtml += '</a>';
+
+    tmFooter.innerHTML = footHtml;
 
     /* show overlay */
     overlay.style.display = 'flex';
@@ -2900,9 +4326,26 @@ function closePopup(){
     }, 300);
   }
 
-  /* click on lead-card */
+  /* click on lead-card (ignore if user was swiping) */
+  var leadTouchStartX = 0;
+  var leadTouchStartY = 0;
+  var leadTouchMoved = false;
+
   document.querySelectorAll('.lead-card[data-member]').forEach(function(card){
-    card.addEventListener('click', function(){
+    card.addEventListener('touchstart', function(e){
+      leadTouchMoved = false;
+      leadTouchStartX = e.touches[0].clientX;
+      leadTouchStartY = e.touches[0].clientY;
+    }, {passive:true});
+
+    card.addEventListener('touchmove', function(e){
+      if(Math.abs(e.touches[0].clientX - leadTouchStartX) > 10 || Math.abs(e.touches[0].clientY - leadTouchStartY) > 10){
+        leadTouchMoved = true;
+      }
+    }, {passive:true});
+
+    card.addEventListener('click', function(e){
+      if(leadTouchMoved) return;
       openModal(card.getAttribute('data-member'));
     });
   });
